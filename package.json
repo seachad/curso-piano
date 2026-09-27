@@ -1,0 +1,9 @@
+{
+  "name": "curso-piano",
+  "private": true,
+  "description": "Curso visual de piano de acompañamiento: pop y blues",
+  "scripts": {
+    "test": "node tests/run.mjs",
+    "start": "npx http-server -p 8765 -c-1"
+  }
+}

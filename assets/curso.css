@@ -151,6 +151,41 @@ figure.kbd figcaption b { color: #1d1a2e; }
 :root[data-theme="dark"] .chord { color: var(--ink); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chord { color: var(--ink); } }
 
+/* Progresiones */
+.prog { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 4px 2px; }
+.prog-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.prog-arrow { color: #a39a8c; font-weight: 700; }
+.pchip { --c: var(--maj); min-width: 64px; padding: 10px 12px 8px; border-radius: 16px; text-align: center; color: #1d1a2e;
+  background: color-mix(in srgb, var(--c) 22%, #fff); border: 2px solid var(--c); transition: transform .15s, box-shadow .15s; }
+.pchip b { display: block; font: 800 1.35rem/1.1 'Fraunces', Georgia, serif; }
+.pchip small { display: block; font: 700 .78rem 'Inter', sans-serif; color: #4b4660; margin-top: 2px; }
+.pchip.maj { --c: var(--maj); } .pchip.min { --c: var(--min); } .pchip.dom { --c: var(--dom); }
+.pchip.dim { --c: var(--dim); } .pchip.aug { --c: var(--aug); }
+.pchip.on { transform: translateY(-4px) scale(1.06); box-shadow: 0 8px 18px -6px var(--c); background: var(--c); }
+
+.pgrid { display: grid; grid-template-columns: 34px repeat(var(--n), minmax(26px, 1fr)); gap: 4px; margin-top: 14px; min-width: 300px; }
+.pg-count { text-align: center; font: 800 .85rem 'Inter', sans-serif; color: #1d1a2e; }
+.pg-count.off { color: #a39a8c; font-weight: 600; }
+.pg-name { font: 800 .72rem 'Inter', sans-serif; color: #7a7489; display: grid; place-items: center; }
+.pg-name.rh { color: var(--rh); } .pg-name.lh { color: var(--lh); }
+.pg-cell { height: 30px; border-radius: 8px; background: #f3ece0; display: grid; place-items: center; font: 800 .8rem 'Inter', sans-serif; color: #fff; }
+.pg-cell.on.rh { background: var(--rh); } .pg-cell.on.lh { background: var(--lh); }
+.pg-note { font-size: .85rem; color: #7a7489; margin: 8px 0 0; }
+
+/* Hoja de acordes (compases) */
+.sheet { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 16px 0; border-left: 3px solid var(--ink); }
+.sheet > div { border-right: 2px solid var(--ink); padding: 12px 10px; min-height: 58px; font: 800 1.2rem 'Fraunces', serif;
+  display: flex; gap: 10px; align-items: center; border-bottom: 1px dashed var(--line); }
+.sheet .lbl { grid-column: 1 / -1; border-right: 0; font: 700 .78rem 'Inter', sans-serif; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); min-height: 0; padding: 12px 10px 4px; border-bottom: 0; }
+@media (max-width: 520px) { .sheet { grid-template-columns: repeat(2, 1fr); } }
+
+/* Tabla sencilla */
+.tbl { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .95rem; background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
+.tbl th, .tbl td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+.tbl th { background: var(--bg-2); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tbl-wrap { overflow-x: auto; }
+
 /* Tabla de equivalencias letra / solfeo */
 .names { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 16px 0; }
 .names div { text-align: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 2px; box-shadow: var(--shadow); }

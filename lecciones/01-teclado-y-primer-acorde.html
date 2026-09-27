@@ -199,7 +199,7 @@
     <h2><span class="step-no">6</span>Tu primer acorde: <span class="chord maj">C</span></h2>
     <p>Un <strong>acorde</strong> son tres o más notas que suenan a la vez. El de <strong>C mayor</strong> (se escribe solo <strong>C</strong>) se forma con <strong>C, E y G</strong>: tocas una tecla, saltas una, tocas una, saltas una y tocas una.</p>
 
-    <figure class="kbd" data-alt="Acorde de C con la mano derecha: dedos 1, 3 y 5 sobre C, E y G"
+    <figure class="kbd" data-chord="C" data-alt="Acorde de C con la mano derecha: dedos 1, 3 y 5 sobre C, E y G"
       data-kbd='{"from":"A3","to":"C5","rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}}}'>
       <p class="fig-title">Acorde de C · mano derecha</p>
       <figcaption>Dedos <b>1–3–5</b> sobre <b>C–E–G</b>. Los dedos 2 y 4 (con borde discontinuo) quedan relajados en el aire, sin tocar. Baja los tres dedos a la vez, como si fueran uno solo.</figcaption>
@@ -207,7 +207,7 @@
 
     <p>En el pop, la mano izquierda suele tocar el <strong>bajo</strong>, que es la nota que da nombre al acorde. En un acorde de C, el bajo es <strong>C</strong>.</p>
 
-    <figure class="kbd" data-alt="Acorde de C completo: meñique izquierdo en C3 y mano derecha en C E G"
+    <figure class="kbd" data-chord="C" data-alt="Acorde de C completo: meñique izquierdo en C3 y mano derecha en C E G"
       data-kbd='{"from":"B2","to":"A4","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}}}'>
       <p class="fig-title">Acorde de C · con bajo</p>
       <figcaption><b>Mano izquierda:</b> meñique (5) en el C de abajo. <b>Mano derecha:</b> 1–3–5 en C–E–G. Esta es la plantilla del acompañamiento pop: <b>bajo a la izquierda y acorde a la derecha</b>. La usarás en cientos de canciones.</figcaption>
@@ -273,16 +273,14 @@
     <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
   </section>
 
-  <nav class="pager" aria-label="Navegación entre lecciones">
-    <a href="../index.html"><small>← Volver</small>Temario del curso</a>
-    <span class="next"><small>Próxima lección</small>2 · Tríadas mayores: C, F y G</span>
-  </nav>
+  <nav class="pager" data-pager="1" aria-label="Navegación entre lecciones"></nav>
 </main>
 
 <footer class="site">
   <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
 </footer>
 
+<script src="../assets/curso-data.js"></script>
 <script src="../assets/piano.js"></script>
 </body>
 </html>
