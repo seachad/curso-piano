@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 8 · Tonalidades y números</title>
+<meta name="description" content="La escala mayor, los siete acordes de una tonalidad y los números romanos: toca I–V–vi–IV en cualquier tono y transporta una canción en segundos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+<style>
+  .palette b { font-family: 'Fraunces', Georgia, serif; font-size: 1.35rem; }
+  .palette small { display: block; font-weight: 700; }
+  .tbl td.num { font-weight: 800; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#escala">Escala</a>
+      <a href="#acordes">Acordes</a>
+      <a href="#tabla">Tabla</a>
+      <a href="#transportar">Transportar</a>
+      <a href="#relativa">Relativa</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 2 · Lección 8</span>
+    <h1>Tonalidades y <em>números</em></h1>
+    <p class="lead">Ya sabes que <span class="chord maj">C</span>–<span class="chord maj">G</span>–<span class="chord min">Am</span>–<span class="chord maj">F</span> es «I–V–vi–IV». Hoy descubres qué significan esos números y por qué son tu mejor herramienta: con ellos puedes tocar la misma canción en cualquier tonalidad, por ejemplo para que encaje con tu voz.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 7–10 días</span>
+      <span class="chip">🎹 Antes: lecciones 1–7</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">🪜</span><span>Construir una <strong>escala mayor</strong> desde cualquier nota con la fórmula T T S T T T S.</span></li>
+      <li><span class="ic">🔢</span><span>Saber cuáles son los <strong>siete acordes</strong> de una tonalidad y nombrarlos con números romanos.</span></li>
+      <li><span class="ic">🔀</span><span><strong>Transportar</strong> I–V–vi–IV a G, D y F sin pensar nota a nota.</span></li>
+      <li><span class="ic">🌗</span><span>Entender la <strong>relativa menor</strong>: por qué C y Am comparten todos sus acordes.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. ESCALA MAYOR ============ -->
+  <section class="block" id="escala">
+    <h2><span class="step-no">1</span>La escala mayor: T T S T T T S</h2>
+    <p>Una <strong>escala</strong> es una serie ordenada de notas, de una nota hasta la misma nota una octava más arriba. La <strong>escala mayor</strong> de C es la más fácil de ver: son las <strong>teclas blancas de C a C</strong>.</p>
+
+    <figure class="kbd" data-alt="Escala de C mayor: C D E F G A B C numeradas del 1 al 8"
+      data-kbd='{"from":"B3","to":"D5",
+        "marks":[{"note":"C4","color":"#ffd6e8","main":"C","sub":"1","ink":"#c9184a"},{"note":"D4","color":"#e3e7fd","main":"D","sub":"2","ink":"#3b46b8"},
+                 {"note":"E4","color":"#e3e7fd","main":"E","sub":"3","ink":"#3b46b8"},{"note":"F4","color":"#e3e7fd","main":"F","sub":"4","ink":"#3b46b8"},
+                 {"note":"G4","color":"#e3e7fd","main":"G","sub":"5","ink":"#3b46b8"},{"note":"A4","color":"#e3e7fd","main":"A","sub":"6","ink":"#3b46b8"},
+                 {"note":"B4","color":"#e3e7fd","main":"B","sub":"7","ink":"#3b46b8"},{"note":"C5","color":"#ffd6e8","main":"C","sub":"8","ink":"#c9184a"}],
+        "seq":["C4","D4","E4","F4","G4","A4","B4","C5","B4","A4","G4","F4","E4","D4","C4"],"tempo":0.34,"playLabel":"Escuchar la escala de C"}'>
+      <p class="fig-title">Escala de C mayor</p>
+      <figcaption>Ocho notas, numeradas del <b>1</b> al <b>8</b>. Cada número es un <b>grado</b> de la escala. La nota 1 (y la 8, que es la misma una octava más arriba) es la <b>tónica</b>: la nota «casa» donde la melodía descansa.</figcaption>
+    </figure>
+
+    <p>El secreto está en las <strong>distancias</strong> entre notas vecinas. Recuerda de la lección 1: <strong>tono (T)</strong> = dos semitonos, con una tecla en medio; <strong>semitono (S)</strong> = teclas pegadas. Entre E–F y B–C no hay tecla negra, así que ahí hay semitonos:</p>
+
+    <figure class="kbd">
+      <p class="fig-title">La fórmula de la escala mayor</p>
+      <svg viewBox="0 0 640 160" role="img" aria-label="Escala de C con las distancias: tono, tono, semitono, tono, tono, tono, semitono" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif" style="display:block;width:100%;height:auto">
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path d="M58 88 Q80 28 102 88" stroke="#4f5bd5"/>
+          <path d="M138 88 Q160 28 182 88" stroke="#4f5bd5"/>
+          <path d="M218 88 Q240 62 262 88" stroke="#d64545"/>
+          <path d="M298 88 Q320 28 342 88" stroke="#4f5bd5"/>
+          <path d="M378 88 Q400 28 422 88" stroke="#4f5bd5"/>
+          <path d="M458 88 Q480 28 502 88" stroke="#4f5bd5"/>
+          <path d="M538 88 Q560 62 582 88" stroke="#d64545"/>
+        </g>
+        <g font-size="18" font-weight="800" text-anchor="middle">
+          <text x="80" y="46" fill="#4f5bd5">T</text><text x="160" y="46" fill="#4f5bd5">T</text><text x="240" y="66" fill="#d64545">S</text>
+          <text x="320" y="46" fill="#4f5bd5">T</text><text x="400" y="46" fill="#4f5bd5">T</text><text x="480" y="46" fill="#4f5bd5">T</text><text x="560" y="66" fill="#d64545">S</text>
+        </g>
+        <g stroke-width="2.5">
+          <circle cx="40" cy="108" r="24" fill="#ffd6e8" stroke="#ff5fa2"/>
+          <circle cx="120" cy="108" r="24" fill="#fff" stroke="#a9b4f5"/>
+          <circle cx="200" cy="108" r="24" fill="#fff" stroke="#a9b4f5"/>
+          <circle cx="280" cy="108" r="24" fill="#fff" stroke="#a9b4f5"/>
+          <circle cx="360" cy="108" r="24" fill="#fff" stroke="#a9b4f5"/>
+          <circle cx="440" cy="108" r="24" fill="#fff" stroke="#a9b4f5"/>
+          <circle cx="520" cy="108" r="24" fill="#fff" stroke="#a9b4f5"/>
+          <circle cx="600" cy="108" r="24" fill="#ffd6e8" stroke="#ff5fa2"/>
+        </g>
+        <g font-size="19" font-weight="800" fill="#1d1a2e" text-anchor="middle">
+          <text x="40" y="115">C</text><text x="120" y="115">D</text><text x="200" y="115">E</text><text x="280" y="115">F</text>
+          <text x="360" y="115">G</text><text x="440" y="115">A</text><text x="520" y="115">B</text><text x="600" y="115">C</text>
+        </g>
+        <g font-size="12" font-weight="700" fill="#7a7489" text-anchor="middle">
+          <text x="40" y="152">1</text><text x="120" y="152">2</text><text x="200" y="152">3</text><text x="280" y="152">4</text>
+          <text x="360" y="152">5</text><text x="440" y="152">6</text><text x="520" y="152">7</text><text x="600" y="152">8</text>
+        </g>
+      </svg>
+      <figcaption>Arcos altos en azul = <b>tono</b>; arcos bajos en rojo = <b>semitono</b>. Los semitonos caen <b>entre el 3 y el 4</b> y <b>entre el 7 y el 8</b>. Esta receta, <b>T T S T T T S</b>, es la misma para las doce escalas mayores.</figcaption>
+    </figure>
+
+    <div class="callout key">
+      <p><strong>Escala mayor = T T S T T T S</strong>, empezando desde cualquier nota. Si sigues la receta, a veces necesitarás una tecla negra para que las distancias cuadren. Esas teclas negras son las que definen cada tonalidad.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2. G Y F ============ -->
+  <section class="block" id="g-y-f">
+    <h2><span class="step-no">2</span>Escalas de G y de F: aparecen las teclas negras</h2>
+    <p>Apliquemos la receta desde <strong>G</strong>: G –T– A –T– B –S– C –T– D –T– E –<strong>T</strong>– ¿? Un tono por encima de E no es F (E–F es un semitono), sino <strong>F♯</strong>. Y de F♯ a G hay el semitono final. ¡Cuadra!</p>
+
+    <figure class="kbd" data-alt="Escala de G mayor: G A B C D E F sostenido G, con el F sostenido destacado"
+      data-kbd='{"from":"F4","to":"A5",
+        "marks":[{"note":"G4","color":"#ffd6e8","main":"G","sub":"1","ink":"#c9184a"},{"note":"A4","color":"#e3e7fd","main":"A","sub":"2","ink":"#3b46b8"},
+                 {"note":"B4","color":"#e3e7fd","main":"B","sub":"3","ink":"#3b46b8"},{"note":"C5","color":"#e3e7fd","main":"C","sub":"4","ink":"#3b46b8"},
+                 {"note":"D5","color":"#e3e7fd","main":"D","sub":"5","ink":"#3b46b8"},{"note":"E5","color":"#e3e7fd","main":"E","sub":"6","ink":"#3b46b8"},
+                 {"note":"F#5","color":"#8b5cf6","main":"F♯","sub":"7","ink":"#6d3fd6"},{"note":"G5","color":"#ffd6e8","main":"G","sub":"8","ink":"#c9184a"}],
+        "seq":["G4","A4","B4","C5","D5","E5","F#5","G5"],"tempo":0.36,"playLabel":"Escuchar la escala de G"}'>
+      <p class="fig-title">Escala de G mayor · una alteración: F♯</p>
+      <figcaption>Todas blancas excepto la <b>7.ª nota, F♯</b> (en violeta). Por eso decimos que la tonalidad de G «lleva un sostenido». Cualquier F de una canción en G será, casi siempre, F♯.</figcaption>
+    </figure>
+
+    <p>Ahora desde <strong>F</strong>: F –T– G –T– A –<strong>S</strong>– ¿? Un semitono por encima de A no es B (A–B es un tono), sino <strong>B♭</strong>. Después, B♭ –T– C –T– D –T– E –S– F.</p>
+
+    <figure class="kbd" data-alt="Escala de F mayor: F G A B bemol C D E F, con el B bemol destacado"
+      data-kbd='{"from":"E4","to":"G5",
+        "marks":[{"note":"F4","color":"#ffd6e8","main":"F","sub":"1","ink":"#c9184a"},{"note":"G4","color":"#e3e7fd","main":"G","sub":"2","ink":"#3b46b8"},
+                 {"note":"A4","color":"#e3e7fd","main":"A","sub":"3","ink":"#3b46b8"},{"note":"Bb4","color":"#8b5cf6","main":"B♭","sub":"4","ink":"#6d3fd6"},
+                 {"note":"C5","color":"#e3e7fd","main":"C","sub":"5","ink":"#3b46b8"},{"note":"D5","color":"#e3e7fd","main":"D","sub":"6","ink":"#3b46b8"},
+                 {"note":"E5","color":"#e3e7fd","main":"E","sub":"7","ink":"#3b46b8"},{"note":"F5","color":"#ffd6e8","main":"F","sub":"8","ink":"#c9184a"}],
+        "seq":["F4","G4","A4","Bb4","C5","D5","E5","F5"],"tempo":0.36,"playLabel":"Escuchar la escala de F"}'>
+      <p class="fig-title">Escala de F mayor · una alteración: B♭</p>
+      <figcaption>Todas blancas excepto la <b>4.ª nota, B♭</b>. La tonalidad de F «lleva un bemol». ¿Por qué B♭ y no A♯? Porque en una escala cada letra aparece <b>una sola vez</b>: ya tenemos A, así que la cuarta nota tiene que llamarse B.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 3. ACORDES DE LA TONALIDAD ============ -->
+  <section class="block" id="acordes">
+    <h2><span class="step-no">3</span>Los siete acordes de una tonalidad</h2>
+    <p>Una <strong>tonalidad</strong> es el conjunto de notas de una escala, con su tónica como centro. Una canción «en C» usa sobre todo las notas de la escala de C. Y con esas notas se construyen sus acordes: sobre cada grado, tomas una nota sí y otra no (1, 3 y 5 contando desde ese grado), <strong>sin salirte de la escala</strong>.</p>
+
+    <div class="palette" role="list" aria-label="Los siete acordes de C mayor">
+      <div role="listitem" style="--c:var(--maj)"><b>C</b><small>I · C–E–G</small></div>
+      <div role="listitem" style="--c:var(--min)"><b>Dm</b><small>ii · D–F–A</small></div>
+      <div role="listitem" style="--c:var(--min)"><b>Em</b><small>iii · E–G–B</small></div>
+      <div role="listitem" style="--c:var(--maj)"><b>F</b><small>IV · F–A–C</small></div>
+      <div role="listitem" style="--c:var(--maj)"><b>G</b><small>V · G–B–D</small></div>
+      <div role="listitem" style="--c:var(--min)"><b>Am</b><small>vi · A–C–E</small></div>
+      <div role="listitem" style="--c:var(--dim)"><b>B°</b><small>vii° · B–D–F</small></div>
+    </div>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"Dm","rh":["D4","F4","A4"],"bass":"D3"},
+        {"name":"Em","rh":["E4","G4","B4"],"bass":"E3"},
+        {"name":"F","rh":["F4","A4","C5"],"bass":"F3"},
+        {"name":"G","rh":["G4","B4","D5"],"bass":"G3"},
+        {"name":"Am","rh":["A4","C5","E5"],"bass":"A3"},
+        {"name":"B°","rh":["B4","D5","F5"],"bass":"B3"},
+        {"name":"C","rh":["C5","E5","G5"],"bass":"C4"}],
+      "nums":["I","ii","iii","IV","V","vi","vii°","I"],"bpm":88,"pattern":"X...C..."}'>
+      <p class="fig-title">La escalera de acordes de C</p>
+      <figcaption>La misma forma de mano (<b>1–3–5</b>) subiendo tecla a tecla por las blancas. Escucha cómo cambia el color: mayor, menor, menor, mayor, mayor, menor… y el <b>B°</b> (B disminuido), tenso e inestable, que pide volver a C.</figcaption>
+    </figure>
+
+    <div class="callout key">
+      <p><strong>Números romanos:</strong> cada acorde se nombra por el grado de la escala sobre el que se construye. <strong>Mayúsculas = mayor</strong> (I, IV, V). <strong>Minúsculas = menor</strong> (ii, iii, vi). El <strong>°</strong> = disminuido (vii°). Este patrón, <strong>I ii iii IV V vi vii°</strong>, es <strong>el mismo en todas las tonalidades mayores</strong>.</p>
+    </div>
+
+    <p>El <strong>disminuido</strong> (B–D–F) está formado por dos terceras menores (3 + 3 semitonos). En el pop se usa poco; los acordes que de verdad importan son los seis primeros, y sobre todo <strong>I, IV, V y vi</strong>.</p>
+  </section>
+
+  <!-- ============ 4. TABLA ============ -->
+  <section class="block" id="tabla">
+    <h2><span class="step-no">4</span>Tabla de tonalidades frecuentes</h2>
+    <p>Como el patrón es siempre el mismo, basta con construir la escala y aplicar «mayor, menor, menor, mayor, mayor, menor». Aquí tienes las siete tonalidades mayores más habituales en el pop, ya resueltas:</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tonalidad</th><th>Alteraciones</th><th>I</th><th>ii</th><th>iii</th><th>IV</th><th>V</th><th>vi</th></tr></thead>
+        <tbody>
+          <tr><td class="num">C</td><td>—</td><td>C</td><td>Dm</td><td>Em</td><td>F</td><td>G</td><td>Am</td></tr>
+          <tr><td class="num">G</td><td>F♯</td><td>G</td><td>Am</td><td>Bm</td><td>C</td><td>D</td><td>Em</td></tr>
+          <tr><td class="num">D</td><td>F♯ C♯</td><td>D</td><td>Em</td><td>F♯m</td><td>G</td><td>A</td><td>Bm</td></tr>
+          <tr><td class="num">A</td><td>F♯ C♯ G♯</td><td>A</td><td>Bm</td><td>C♯m</td><td>D</td><td>E</td><td>F♯m</td></tr>
+          <tr><td class="num">E</td><td>F♯ C♯ G♯ D♯</td><td>E</td><td>F♯m</td><td>G♯m</td><td>A</td><td>B</td><td>C♯m</td></tr>
+          <tr><td class="num">F</td><td>B♭</td><td>F</td><td>Gm</td><td>Am</td><td>B♭</td><td>C</td><td>Dm</td></tr>
+          <tr><td class="num">B♭</td><td>B♭ E♭</td><td>B♭</td><td>Cm</td><td>Dm</td><td>E♭</td><td>F</td><td>Gm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Fíjate en las cinco primeras filas: cada tonalidad es el <strong>V</strong> de la anterior (el V de C es G; el de G, D; el de D, A…) y suma <strong>un sostenido</strong> más. F y B♭ van en sentido contrario y suman <strong>bemoles</strong>. En la lección 18 verás que todo esto forma un círculo.</p>
+  </section>
+
+  <!-- ============ 5. TRANSPORTAR ============ -->
+  <section class="block" id="transportar">
+    <h2><span class="step-no">5</span>Transportar: I–V–vi–IV en cualquier tonalidad</h2>
+    <p><strong>Transportar</strong> es tocar una canción en otra tonalidad, más aguda o más grave, sin que cambie su «forma». Con números es inmediato: <strong>I–V–vi–IV</strong> significa «el I, el V, el vi y el IV de la tonalidad que sea». Solo tienes que leer esas columnas en la tabla.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"D","rh":["A3","D4","F#4"],"bass":"D3"},
+        {"name":"Em","rh":["B3","E4","G4"],"bass":"E2"},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"}],
+      "nums":["I","V","vi","IV"],"bpm":80,"pattern":"X.C.C.C.","loop":2}'>
+      <p class="fig-title">I–V–vi–IV en G · G–D–Em–C</p>
+      <figcaption>Posiciones cercanas: <b>B–D–G</b>, <b>A–D–F♯</b>, <b>B–E–G</b> y <b>C–E–G</b>. La única tecla negra es el <b>F♯</b> del acorde de D.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"D","rh":["A3","D4","F#4"],"bass":"D3"},
+        {"name":"A","rh":["A3","C#4","E4"],"bass":"A2"},
+        {"name":"Bm","rh":["B3","D4","F#4"],"bass":"B2"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"}],
+      "nums":["I","V","vi","IV"],"bpm":80,"pattern":"X.C.C.C.","loop":2}'>
+      <p class="fig-title">I–V–vi–IV en D · D–A–Bm–G</p>
+      <figcaption>Posiciones cercanas: <b>A–D–F♯</b>, <b>A–C♯–E</b>, <b>B–D–F♯</b> y <b>B–D–G</b>. Fíjate en que la D se mantiene en tres de los cuatro acordes (D, Bm y G).</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"F","rh":["A3","C4","F4"],"bass":"F2"},
+        {"name":"C","rh":["G3","C4","E4"],"bass":"C3"},
+        {"name":"Dm","rh":["A3","D4","F4"],"bass":"D3"},
+        {"name":"Bb","rh":["Bb3","D4","F4"],"bass":"Bb2"}],
+      "nums":["I","V","vi","IV"],"bpm":80,"pattern":"X.C.C.C.","loop":2}'>
+      <p class="fig-title">I–V–vi–IV en F · F–C–Dm–B♭</p>
+      <figcaption>Posiciones cercanas: <b>A–C–F</b>, <b>G–C–E</b>, <b>A–D–F</b> y <b>B♭–D–F</b>. La tecla negra de F mayor, el <b>B♭</b>, aparece en el IV.</figcaption>
+    </figure>
+
+    <p>Dos de estos acordes llevan tecla negra y conviene verlos de cerca. En estado fundamental, con la regla de siempre (<strong>MD 1–3–5</strong> y <strong>MI 5</strong> en la fundamental):</p>
+
+    <figure class="kbd" data-chord="D" data-alt="D mayor: mano izquierda con el 5 en D3 y mano derecha 1-3-5 en D4, F sostenido 4 y A4"
+      data-kbd='{"from":"C3","to":"B4","lh":{"fingers":{"5":"D3"}},"rh":{"fingers":{"1":"D4","3":"F#4","5":"A4"}}}'>
+      <p class="fig-title">D mayor · D–F♯–A</p>
+      <figcaption><b>MD 1–3–5 en D–F♯–A</b>: el dedo 3 cae en la tecla negra y los otros dos, en blancas. Adelanta un poco la mano hacia el fondo para que el 3 llegue a la negra sin estirarse. <b>MI 5 en D</b>.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="Bb" data-alt="B bemol mayor: mano izquierda con el 5 en B bemol 2 y mano derecha 1-3-5 en B bemol 3, D4 y F4"
+      data-kbd='{"from":"A2","to":"G4","lh":{"fingers":{"5":"Bb2"}},"rh":{"fingers":{"1":"Bb3","3":"D4","5":"F4"}}}'>
+      <p class="fig-title">B♭ mayor · B♭–D–F</p>
+      <figcaption><b>MD 1–3–5 en B♭–D–F</b>: esta vez es el <b>pulgar</b> el que toca la negra. Colócalo sobre el B♭ un poco hacia dentro y deja que los dedos 3 y 5 caigan en las blancas. <b>MI 5 en B♭</b>, también en tecla negra.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Bajo</span><span><i class="dot rh"></i>Acorde</span></div>
+    </figure>
+  </section>
+
+  <!-- ============ 6. RELATIVA MENOR ============ -->
+  <section class="block" id="relativa">
+    <h2><span class="step-no">6</span>La relativa menor: el vi como nueva casa</h2>
+    <p>El acorde <strong>vi</strong> tiene algo especial. Si tocas la escala de C empezando en A (A B C D E F G A), obtienes la <strong>escala menor de A</strong>: mismas teclas blancas, mismos acordes, pero con otra nota como «casa». Por eso decimos que <strong>Am es la relativa menor de C</strong>.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"}],
+      "nums":["vi","IV","I","V"],"bpm":76,"pattern":"X.C.C.C.","loop":2}'>
+      <p class="fig-title">Los mismos acordes, otra casa · Am–F–C–G</p>
+      <figcaption>Son los cuatro acordes de siempre, pero empezando por el <b>vi</b>. El centro de gravedad pasa a <b>Am</b> y todo suena más melancólico. Muchas canciones pop en tonalidad menor usan exactamente estos acordes.</figcaption>
+    </figure>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tonalidad mayor</th><th>C</th><th>G</th><th>D</th><th>A</th><th>E</th><th>F</th><th>B♭</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Relativa menor (vi)</strong></td><td>Am</td><td>Em</td><td>Bm</td><td>F♯m</td><td>C♯m</td><td>Dm</td><td>Gm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p>Truco: la relativa menor está siempre <strong>tres semitonos por debajo</strong> de la tónica mayor. De C bajas C → B → B♭ → A: Am. De G bajas G → F♯ → F → E: Em.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. MÉTODO ============ -->
+  <section class="block" id="metodo">
+    <h2><span class="step-no">7</span>Método práctico para transportar una canción</h2>
+    <p>Imagina que encuentras una canción en C, pero te queda demasiado grave para cantar y la quieres en D. Sigue estos pasos:</p>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h4 style="margin:0 0 6px">1 · Averigua la tonalidad</h4>
+        <p>Suele coincidir con el <strong>último acorde</strong> de la canción y, muchas veces, con el primero. Comprueba que los demás acordes están en su fila de la tabla. Aquí: C.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 6px">2 · Pasa los acordes a números</h4>
+        <p>Busca cada acorde en la fila de C y anota su columna: C = I, Am = vi, F = IV, G = V. La canción es <strong>I–vi–IV–V</strong>.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 6px">3 · Lee los números en la nueva tonalidad</h4>
+        <p>En la fila de D: I = D, vi = Bm, IV = G, V = A. La canción queda <strong>D–Bm–G–A</strong>.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 6px">4 · Conserva los «apellidos»</h4>
+        <p>Lo que va detrás de la letra se mantiene: si era <strong>G7</strong> (V7), en D será <strong>A7</strong>; si era <strong>Csus4</strong> (Isus4), será <strong>Dsus4</strong>. En los acordes con barra, transporta las dos notas: <strong>C/E</strong> → <strong>D/F♯</strong>.</p>
+      </div>
+    </div>
+
+    <div class="sheet" role="table" aria-label="La misma canción en C y transportada a D">
+      <div class="lbl">Original en C</div>
+      <div>C</div><div>Am</div><div>F</div><div>G</div>
+      <div class="lbl">Números</div>
+      <div>I</div><div>vi</div><div>IV</div><div>V</div>
+      <div class="lbl">Transportada a D (un tono más aguda)</div>
+      <div>D</div><div>Bm</div><div>G</div><div>A</div>
+    </div>
+
+    <div class="callout">
+      <p><strong>Atajo sin tabla:</strong> sube (o baja) <strong>todos los acordes el mismo número de semitonos</strong>. De C a D son 2 semitonos: C → D, Am → Bm, F → G, G → A. Con la tabla o con semitonos llegas al mismo resultado; usa el que te resulte más rápido.</p>
+    </div>
+  </section>
+
+  <!-- ============ 8. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">8</span>Rutina diaria</h2>
+    <p>Unos 18 minutos. El objetivo no es memorizar la tabla de golpe, sino <strong>pensar en números</strong> mientras tocas.</p>
+
+    <div data-metro data-bpm="72"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Escalas de C, G y F</h4>
+        <p>Toca cada escala subiendo y bajando, una nota por clic, diciendo el grado en voz alta («uno, dos, tres…»). Antes de tocar la de G, recuerda: F♯. Antes de la de F: B♭. Digitación de la derecha: en C y en G, 1–2–3, pasa el pulgar por debajo y sigue 1–2–3–4–5; en F, 1–2–3–4 (el 4 en B♭) y después 1–2–3–4.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>La escalera de acordes</h4>
+        <p>En C, sube por los siete acordes (I a vii°) y vuelve al I, con la mano derecha en 1–3–5 y el bajo en la izquierda. Nombra cada uno: «uno mayor, dos menor, tres menor…».</p>
+      </div>
+      <div class="card">
+        <span class="time">5 min</span>
+        <h4>I–V–vi–IV en cuatro tonalidades</h4>
+        <p>Toca la progresión dos vueltas en C, después en G, en D y en F, sin parar entre tonalidades. Usa las posiciones cercanas de las figuras. Si te atascas, toca solo los bajos hasta que la mano derecha encuentre el acorde.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Relativas</h4>
+        <p>Toca Am–F–C–G y después Em–C–G–D (la misma idea en G). Escucha cómo la «casa» se desplaza al acorde menor.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>Transporta una canción tuya</h4>
+        <p>Coge una canción de la lección 7. Escribe sus números en un papel y tócala en otra tonalidad de la tabla. Elige la que mejor te vaya para cantarla.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 9 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l8-a"> Recito la fórmula T T S T T T S y construyo las escalas de C, G y F.</label></li>
+      <li><label><input type="checkbox" data-save="l8-b"> Nombro los siete acordes de C con sus números (I ii iii IV V vi vii°).</label></li>
+      <li><label><input type="checkbox" data-save="l8-c"> Toco D mayor y B♭ mayor con la digitación correcta.</label></li>
+      <li><label><input type="checkbox" data-save="l8-d"> Toco I–V–vi–IV en C, G, D y F sin mirar la tabla.</label></li>
+      <li><label><input type="checkbox" data-save="l8-e"> Transporto una progresión de cuatro acordes a otra tonalidad en menos de un minuto.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <nav class="pager" data-pager="8" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>
