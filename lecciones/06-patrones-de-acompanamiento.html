@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 6 · Patrones de acompañamiento</title>
+<meta name="description" content="Bloques, corcheas, balada, arpegio y síncopa pop: un catálogo de patrones para acompañar cualquier canción con los mismos acordes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#rejilla">Rejilla</a>
+      <a href="#bloque">Bloque</a>
+      <a href="#balada">Balada</a>
+      <a href="#arpegio">Arpegio</a>
+      <a href="#sincopa">Síncopa</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 2 · Lección 6</span>
+    <h1>Patrones de <em>acompañamiento</em></h1>
+    <p class="lead">Con los mismos cuatro acordes puedes sonar a balada, a pop-rock o a canción de radio actual. La diferencia no está en las notas, sino en el <strong>ritmo</strong> con el que las tocas. Hoy te llevas un catálogo de siete patrones listos para usar.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 7–10 días</span>
+      <span class="chip">🎹 Antes: lecciones 4 y 5</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">📊</span><span>Leer la <strong>rejilla rítmica</strong>: qué toca cada mano en cada corchea.</span></li>
+      <li><span class="ic">🎛️</span><span>Dominar <strong>siete patrones</strong>: bloque, negras, corcheas, balada, arpegio, síncopa y octavas.</span></li>
+      <li><span class="ic">🎯</span><span>Saber <strong>cuándo usar</strong> cada uno según el estilo y el tempo de la canción.</span></li>
+      <li><span class="ic">🔁</span><span>Tocar <strong>C–G–Am–F</strong> con todos ellos, cambiando de patrón sin parar.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. REJILLA ============ -->
+  <section class="block" id="rejilla">
+    <h2><span class="step-no">1</span>Cómo leer la rejilla</h2>
+    <p>Todos los patrones de esta lección se dibujan igual: una <strong>rejilla</strong> con las 8 corcheas de un compás de 4/4 (recuerda de la lección 4: «1 y 2 y 3 y 4 y»). La fila <strong style="color:var(--rh)">MD</strong> es la mano derecha y la fila <strong style="color:var(--lh)">MI</strong>, la izquierda. Una casilla de color significa «toca aquí»; una vacía, «mantén o descansa».</p>
+
+    <figure class="kbd" data-prog='{"chords":[{"name":"C","rh":["C4","E4","G4"],"bass":"C3"}],"bpm":80,"pattern":"X.C.C.C.","grid":true,"loop":2}'>
+      <p class="fig-title">Ejemplo: el patrón de negras de la lección 4</p>
+      <figcaption>En el <b>1</b> tocan las dos manos (bajo + acorde). En el <b>2</b>, el <b>3</b> y el <b>4</b>, solo la derecha. Las «y» quedan vacías: ahí no se toca nada.</figcaption>
+    </figure>
+
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px">● Punto</h4><p style="margin:0;color:var(--ink-2)">En la fila MD, el <strong>acorde completo</strong>. En la fila MI, el <strong>bajo</strong> (la fundamental).</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">1 · 2 · 3</h4><p style="margin:0;color:var(--ink-2)">Un número en la fila MD es <strong>una sola nota</strong> del acorde, contando de grave a agudo: 1 = la de abajo, 3 = la de arriba.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">↑ Flecha</h4><p style="margin:0;color:var(--ink-2)">En la fila MI, el bajo <strong>una octava más arriba</strong> (lo usaremos en el patrón de octavas).</p></div>
+    </div>
+    <p style="margin-top:16px">En todos los ejemplos usamos <span class="chord maj">C</span>–<span class="chord maj">G</span>–<span class="chord min">Am</span>–<span class="chord maj">F</span> con las posiciones cercanas de la lección 5: C–E–G, B–D–G, C–E–A y C–F–A. Así solo tienes que pensar en el ritmo.</p>
+  </section>
+
+  <!-- ============ 2. BLOQUE ============ -->
+  <section class="block" id="bloque">
+    <h2><span class="step-no">2</span>Bloque: la balada lenta</h2>
+    <p>Un solo golpe por compás: bajo y acorde juntos en el <strong>1</strong>, y dejas que suene durante los cuatro pulsos. Es el patrón más sencillo, pero no el más fácil: exige <strong>paciencia</strong> para no soltar antes de tiempo.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":66,"pattern":"X.......","grid":true}'>
+      <p class="fig-title">Patrón 1 · Bloque · 60–75 ppm</p>
+      <figcaption>Una casilla de color y siete vacías. Durante las vacías, <b>mantén las teclas pulsadas</b> y cuenta «2, 3, 4» por dentro. Justo antes del siguiente 1, levanta y cambia.</figcaption>
+    </figure>
+
+    <p><strong>Cuándo usarlo:</strong> baladas muy lentas, el principio de una canción (para que la voz entre sola), los finales y cualquier momento en que quieras que la letra se oiga por encima de todo.</p>
+  </section>
+
+  <!-- ============ 3. CORCHEAS ============ -->
+  <section class="block" id="corcheas">
+    <h2><span class="step-no">3</span>Corcheas constantes: el motor pop-rock</h2>
+    <p>La mano derecha repite el acorde en <strong>todas las corcheas</strong>, como un tren, y la izquierda pone el bajo en el 1. Es el patrón que da energía a un estribillo.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":100,"pattern":"XCCCCCCC","grid":true}'>
+      <p class="fig-title">Patrón 2 · Corcheas con bajo en el 1 · 90–130 ppm</p>
+      <figcaption>Ocho golpes de acorde por compás. El bajo solo en el <b>1</b> y la izquierda lo mantiene. Para que no suene a máquina, toca los pulsos (1, 2, 3, 4) <b>un poco más fuerte</b> que las «y».</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":100,"pattern":"XCCCXCCC","grid":true}'>
+      <p class="fig-title">Variante · bajo en el 1 y el 3</p>
+      <figcaption>La izquierda repite el bajo en el <b>3</b>. Da más peso y ayuda a no perderte en tempos rápidos.</figcaption>
+    </figure>
+
+    <div class="callout warn">
+      <p><strong>No aprietes.</strong> Con tantas repeticiones, la mano se cansa si tocas con el brazo rígido. El movimiento sale de la <strong>muñeca</strong>, pequeño y rebotado, con los dedos cerca de las teclas. Si notas tensión en el antebrazo, para, sacude la mano y baja el tempo.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. BALADA ARPEGIADA ============ -->
+  <section class="block" id="balada">
+    <h2><span class="step-no">4</span>Balada arpegiada: la izquierda canta</h2>
+    <p>Aquí el protagonismo pasa a la mano izquierda. En lugar de un bajo solo, toca un <strong>arpegio</strong> (las notas de un acorde una tras otra) con tres notas: la fundamental, la quinta y la octava. Los músicos lo llaman <strong>1–5–8</strong>: si cuentas teclas blancas desde C, C es la 1.ª, G la 5.ª y el C de arriba, la 8.ª.</p>
+
+    <figure class="kbd" data-chord="C" data-chord-partial data-alt="Mano izquierda en 1-5-8 de C: dedo 5 en C3, dedo 2 en G3 y dedo 1 en C4"
+      data-kbd='{"from":"B2","to":"D4","lh":{"fingers":{"5":"C3","2":"G3","1":"C4"}},
+        "seq":["C3","G3","C4","G3","C3","G3","C4","G3"],"tempo":0.42,"playLabel":"Escuchar 1-5-8-5"}'>
+      <p class="fig-title">Mano izquierda · 1–5–8 de C</p>
+      <figcaption><b>5</b> en C (la fundamental), <b>2</b> en G (la quinta) y <b>1</b> en el C de arriba (la octava). Solo hay dos notas distintas, C y G, y por eso esta figura no es un acorde completo: <b>la E (la tercera) la pone la mano derecha</b>. El orden es 1–5–8–5: C, G, C, G.</figcaption>
+    </figure>
+
+    <p>La mano derecha coloca el acorde en el <strong>1</strong> y en el <strong>3</strong> y lo sostiene. Como la izquierda sube hasta el C central, la derecha se va un poco más arriba: usamos otras posiciones cercanas (C como E–G–C, G como D–G–B, Am como E–A–C y F como F–A–C).</p>
+
+    <figure class="kbd" data-chord="C" data-alt="Balada: mano izquierda 5-2-1 en C3, G3 y C4; mano derecha 1-2-5 en E4, G4 y C5"
+      data-kbd='{"from":"B2","to":"D5","lh":{"fingers":{"5":"C3","2":"G3","1":"C4"}},"rh":{"fingers":{"1":"E4","2":"G4","5":"C5"}}}'>
+      <p class="fig-title">Las dos manos en la balada · C</p>
+      <figcaption><b>MI 5–2–1</b> en C–G–C y <b>MD 1–2–5</b> en E–G–C (primera inversión). Entre las dos manos está el acorde completo: C, E y G. Las manos quedan juntas, pero no se pisan.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Arpegio 1–5–8</span><span><i class="dot rh"></i>Acorde sostenido</span></div>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["E4","G4","C5"],"bass":"C3","lh":["C3","G3","C4","G3"]},
+        {"name":"G","rh":["D4","G4","B4"],"bass":"G2","lh":["G2","D3","G3","D3"]},
+        {"name":"Am","rh":["E4","A4","C5"],"bass":"A2","lh":["A2","E3","A3","E3"]},
+        {"name":"F","rh":["F4","A4","C5"],"bass":"F2","lh":["F2","C3","F3","C3"]}],
+      "nums":["I","V","vi","IV"],"bpm":66,"pattern":"MLLLMLLL","grid":true}'>
+      <p class="fig-title">Patrón 3 · Balada arpegiada · 55–75 ppm</p>
+      <figcaption>La izquierda no para: <b>1–5–8–5</b> dos veces por compás, en corcheas. La derecha entra en el <b>1</b> y en el <b>3</b>, junto con el bajo. Los bajos son G–D–G para G, A–E–A para Am y F–C–F para F, siempre con 5–2–1.</figcaption>
+    </figure>
+
+    <p><strong>Cuándo usarlo:</strong> baladas de piano y voz, canciones lentas y emotivas, intros tranquilas. Es el sonido «piano de balada» por excelencia.</p>
+  </section>
+
+  <!-- ============ 5. ARPEGIO MD ============ -->
+  <section class="block" id="arpegio">
+    <h2><span class="step-no">5</span>Arpegio de mano derecha</h2>
+    <p>Ahora es la derecha la que desgrana el acorde, nota a nota, mientras la izquierda pone el bajo y lo mantiene. <strong>La mano no cambia de forma</strong>: los dedos ya están sobre sus teclas y solo tocan por turnos.</p>
+
+    <figure class="kbd" data-chord="C" data-alt="Arpegio de C: mano izquierda con el 5 en C3 y mano derecha 1-3-5 en C4, E4 y G4 tocando por turnos"
+      data-kbd='{"from":"B2","to":"A4","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}},
+        "seq":["C3","C4","E4","G4","C3","C4","E4","G4"],"tempo":0.36,"playLabel":"Escuchar bajo-1-3-5"}'>
+      <p class="fig-title">Arpegio de C · dedos 1–3–5 por turnos</p>
+      <figcaption>La posición es la del acorde en bloque: <b>MI 5</b> en C y <b>MD 1–3–5</b> en C–E–G. Pero ahora cada dedo toca solo: bajo, <b>1</b>, <b>3</b>, <b>5</b>… Deja los dedos apoyados en sus teclas para no perder la forma.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":80,"pattern":"B123B123","grid":true}'>
+      <p class="fig-title">Patrón 4a · Arpegio ascendente · 70–100 ppm</p>
+      <figcaption>Bajo en el <b>1</b> y en el <b>3</b>; en medio, la derecha sube: nota de abajo (1), la del medio (2) y la de arriba (3). Dos veces por compás.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":80,"pattern":"B1232123","grid":true}'>
+      <p class="fig-title">Patrón 4b · Arpegio de ida y vuelta · 70–100 ppm</p>
+      <figcaption>Bajo solo en el <b>1</b>. La derecha sube, baja y vuelve a subir: <b>1–2–3–2–1–2–3</b>. Suena más fluido, como una ola. La izquierda sostiene el bajo todo el compás.</figcaption>
+    </figure>
+
+    <p><strong>Cuándo usarlo:</strong> intros, estrofas tranquilas, pop suave y cualquier canción en la que un bloque suene demasiado «quieto». Si tu teclado tiene pedal de resonancia (el de la derecha), queda precioso: levántalo y vuelve a pisarlo justo en cada cambio de acorde.</p>
+  </section>
+
+  <!-- ============ 6. SÍNCOPA ============ -->
+  <section class="block" id="sincopa">
+    <h2><span class="step-no">6</span>Síncopa pop 3 + 3 + 2</h2>
+    <p>Una <strong>síncopa</strong> es un golpe que cae en una parte débil (una «y») en lugar de en el pulso. Es el ingrediente que hace que el pop actual «se mueva». El más usado agrupa las 8 corcheas del compás en <strong>3 + 3 + 2</strong>:</p>
+
+    <div class="beats" style="grid-template-columns:repeat(8,1fr)" aria-label="Ocho corcheas agrupadas en 3 más 3 más 2, con golpes en la primera, la cuarta y la séptima">
+      <div class="hit"><b>1</b><small>¡toca!</small></div>
+      <div class="hold"><b>2</b><small>&nbsp;</small></div>
+      <div class="hold"><b>3</b><small>&nbsp;</small></div>
+      <div class="hit"><b>1</b><small>¡toca!</small></div>
+      <div class="hold"><b>2</b><small>&nbsp;</small></div>
+      <div class="hold"><b>3</b><small>&nbsp;</small></div>
+      <div class="hit"><b>1</b><small>¡toca!</small></div>
+      <div class="hold"><b>2</b><small>&nbsp;</small></div>
+    </div>
+    <p>Cuenta las corcheas «<strong>1</strong>-2-3, <strong>1</strong>-2-3, <strong>1</strong>-2» y toca en cada 1. Con la cuenta normal del compás, los golpes caen en el <strong>1</strong>, en la <strong>«y» del 2</strong> y en el <strong>4</strong>. El golpe de la «y» del 2 es la síncopa.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":96,"pattern":"X..C..C.","grid":true,"loop":2}'>
+      <p class="fig-title">Patrón 5 · Síncopa 3+3+2 · 85–115 ppm</p>
+      <figcaption>Bajo y acorde en el <b>1</b>; la derecha repite en la <b>«y» del 2</b> y en el <b>4</b>. Aprende primero el ritmo con palmas contando en voz alta, y después pásalo al piano.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":96,"pattern":"X..X..X.","grid":true}'>
+      <p class="fig-title">Variante · las dos manos sincopan</p>
+      <figcaption>Ahora el bajo también toca en los tres golpes. Suena más contundente, muy de pop bailable. Cuando la domines, prueba a alternar las dos versiones: una en la estrofa y otra en el estribillo.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 7. OCTAVAS ============ -->
+  <section class="block" id="octavas">
+    <h2><span class="step-no">7</span>Bajo en octavas: la izquierda con peso</h2>
+    <p>La izquierda alterna el bajo y el mismo bajo <strong>una octava más arriba</strong> (la 8.ª tecla blanca, contando la de partida), con los dedos <strong>5</strong> y <strong>1</strong>. La mano se queda abierta en forma de octava y rebota de un dedo a otro.</p>
+
+    <figure class="kbd" data-chord="C" data-chord-partial data-alt="Mano izquierda en octava: dedo 5 en C2 y dedo 1 en C3"
+      data-kbd='{"from":"B1","to":"D3","lh":{"fingers":{"5":"C2","1":"C3"}},
+        "seq":["C2","C3","C2","C3"],"tempo":0.45,"playLabel":"Escuchar la octava"}'>
+      <p class="fig-title">Mano izquierda · octava de C</p>
+      <figcaption><b>5</b> en el C grave y <b>1</b> en el C de arriba. Las dos son la <b>fundamental</b> del acorde; no forman un acorde por sí solas, pero dan un bajo muy sólido. Para G, A y F, la misma forma: G–G, A–A y F–F.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C2"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"}],
+      "nums":["I","V","vi","IV"],"bpm":92,"pattern":"X.O.X.O.","grid":true}'>
+      <p class="fig-title">Patrón 6 · Octavas · 80–120 ppm</p>
+      <figcaption>En el <b>1</b> y el <b>3</b>, bajo grave + acorde. En el <b>2</b> y el <b>4</b>, la izquierda salta a la octava (↑) y la derecha descansa. Suena a pop-rock de himno, con mucho cuerpo.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 8. RESUMEN ============ -->
+  <section class="block" id="resumen">
+    <h2><span class="step-no">8</span>Tu catálogo de un vistazo</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Patrón</th><th>Rejilla</th><th>Estilo</th><th>Tempo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bloque</strong></td><td><code>X.......</code></td><td>Baladas lentas, intros, finales</td><td>60–75</td></tr>
+          <tr><td><strong>Negras</strong> (lección 4)</td><td><code>X.C.C.C.</code></td><td>Pop a medio tempo</td><td>70–100</td></tr>
+          <tr><td><strong>Corcheas</strong></td><td><code>XCCCCCCC</code></td><td>Pop-rock, estribillos con energía</td><td>90–130</td></tr>
+          <tr><td><strong>Balada arpegiada</strong></td><td><code>MLLLMLLL</code></td><td>Piano y voz, canciones emotivas</td><td>55–75</td></tr>
+          <tr><td><strong>Arpegio MD</strong></td><td><code>B123B123</code></td><td>Pop suave, intros, estrofas</td><td>70–100</td></tr>
+          <tr><td><strong>Síncopa 3+3+2</strong></td><td><code>X..C..C.</code></td><td>Pop actual, bailable</td><td>85–115</td></tr>
+          <tr><td><strong>Octavas</strong></td><td><code>X.O.X.O.</code></td><td>Pop-rock, himnos</td><td>80–120</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem">Clave de la rejilla: X = bajo + acorde · C = acorde · B = bajo · O = bajo una octava arriba · 1, 2, 3 = una nota del acorde · M = arpegio de la izquierda + acorde · L = siguiente nota del arpegio de la izquierda · . = mantener.</p>
+
+    <div class="callout key">
+      <p><strong>El patrón sirve a la canción, no al revés.</strong> Antes de elegir, escucha el original: ¿es lenta o rápida?, ¿íntima o enérgica?, ¿hay batería? Si hay voz, deja espacio: menos notas casi siempre suenan mejor. Un truco de profesional es usar un patrón <strong>suave en la estrofa</strong> (bloque, arpegio) y otro <strong>más denso en el estribillo</strong> (corcheas, síncopa, octavas).</p>
+    </div>
+  </section>
+
+  <!-- ============ 9. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">9</span>Rutina diaria</h2>
+    <p>Unos 18 minutos. No intentes aprender los siete patrones el mismo día: elige <strong>dos o tres</strong> por sesión y ve rotando. Ajusta el metrónomo al tempo más bajo de cada patrón.</p>
+
+    <div data-metro data-bpm="70"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">2 min</span>
+        <h4>La rejilla con palmas</h4>
+        <p>Elige un patrón. Con el metrónomo, cuenta «1 y 2 y 3 y 4 y» en voz alta y da una palmada en las casillas de la MD. Después golpea con la izquierda en el muslo las casillas de la MI y con la derecha las suyas.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Bloque y corcheas</h4>
+        <p>C–G–Am–F en bloque a 66 ppm (dos vueltas) y sin parar, en corcheas a 90 ppm (dos vueltas). Acentúa los pulsos en las corcheas.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>Balada arpegiada</h4>
+        <p>Primero solo la izquierda, 1–5–8–5 en C, G, Am y F, hasta que salga sin mirar. Después añade la derecha en el 1 y el 3. Empieza a 55 ppm.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Arpegio de mano derecha</h4>
+        <p>Patrón 4a y después 4b sobre C–G–Am–F a 70 ppm. Vigila que todas las notas suenen igual de fuerte, también las del pulgar.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Síncopa 3+3+2</h4>
+        <p>Con palmas, «1-2-3, 1-2-3, 1-2», hasta que sea automático. Luego en el piano, primero solo con C y después con los cuatro acordes, a 85 ppm.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Estrofa y estribillo</h4>
+        <p>Toca C–G–Am–F cuatro veces con un patrón suave (bloque o arpegio) y, sin parar, cuatro veces con uno enérgico (corcheas, síncopa u octavas). Es tu primer arreglo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 7 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l6-a"> Leo una rejilla y sé qué hace cada mano en cada corchea.</label></li>
+      <li><label><input type="checkbox" data-save="l6-b"> Toco C–G–Am–F en bloque y en corcheas sin cortar el sonido ni acelerar.</label></li>
+      <li><label><input type="checkbox" data-save="l6-c"> Hago el 1–5–8–5 con la izquierda (5–2–1) en C, G, Am y F sin mirar.</label></li>
+      <li><label><input type="checkbox" data-save="l6-d"> Toco la síncopa 3+3+2 contando en voz alta y sin perder el pulso.</label></li>
+      <li><label><input type="checkbox" data-save="l6-e"> Cambio de un patrón suave a uno enérgico sin detenerme.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <nav class="pager" data-pager="6" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>
