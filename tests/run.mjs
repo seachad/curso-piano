@@ -166,6 +166,9 @@ for (const rel of pages) {
     ok(/<title>[^<]{5,}<\/title>/.test(html), 'falta <title>');
     eq((html.match(/<h1\b/g) || []).length, 1, 'número de <h1>:');
     ok(!/<p class="err">/.test(html), 'contiene un error de diagrama escrito a mano');
+    // Móvil en vertical: nada puede exigir más ancho del que hay en un teléfono de 320 px.
+    [...html.matchAll(/min-width:\s*(\d+)px/g)].forEach(m => ok(+m[1] <= 260, `min-width:${m[1]}px rompe la vista en móvil vertical`));
+    (html.match(/<table class="tbl"/g) || []).length && eq((html.match(/<table class="tbl"/g) || []).length, (html.match(/<thead>/g) || []).length, 'cada tabla necesita <thead> (se usa para las tarjetas en móvil):');
     balance(html);
   });
 
@@ -205,6 +208,25 @@ for (const rel of pages) {
         const r = P.buildKeyboard(spec);
         ok(!/NaN|undefined/.test(r.svg), 'el SVG contiene NaN/undefined');
         checkHands(spec, where);
+        // Móvil en vertical: 8 teclas blancas (pantalla de 320 px) y 10 (375-414 px).
+        for (const maxW of [8, 10]) {
+          const segs = P.segmentSpecs(spec, maxW);
+          if (!segs) continue;
+          const seen = new Set();
+          segs.forEach(sg => {
+            const rr = P.buildKeyboard(sg.spec);
+            ok(!/NaN|undefined/.test(rr.svg), `móvil (${maxW}): SVG con NaN/undefined`);
+            [sg.spec.lh, sg.spec.rh].forEach(h => h && Object.values(h.fingers).forEach(n => seen.add(P.midi(n))));
+            (sg.spec.marks || []).forEach(mk => seen.add('m' + P.midi(mk.note)));
+            const w = P.whitesIn(sg.a, sg.b);
+            const need = sg.hands.length === 1
+              ? (() => { const ms = Object.values(spec[sg.hands[0]].fingers).map(P.midi); return P.whitesIn(Math.min(...ms), Math.max(...ms)) + 2; })()
+              : 0;
+            ok(w <= Math.max(maxW + 1, need), `móvil (${maxW}): un trozo ocupa ${w} teclas blancas`);
+          });
+          [spec.lh, spec.rh].forEach(h => h && Object.values(h.fingers).forEach(n => ok(seen.has(P.midi(n)), `móvil (${maxW}): la nota ${n} desaparece al partir el teclado`)));
+          (spec.marks || []).forEach(mk => ok(seen.has('m' + P.midi(mk.note)), `móvil (${maxW}): la marca ${mk.note} desaparece al partir el teclado`));
+        }
         if (t.attrs['data-chord']) {
           const c = P.parseChord(t.attrs['data-chord']);
           const got = pcsOf(r.sounding);

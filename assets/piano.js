@@ -203,7 +203,7 @@
     const totalH = TOP + H + LIP + 6;
 
     const id = 'k' + (++uid);
-    let s = `<svg viewBox="0 0 ${L.width + PADX * 2} ${totalH}" style="min-width:${Math.round(L.whites * 24)}px" role="img" aria-label="${esc(spec.alt || 'Diagrama de teclado')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
+    let s = `<svg viewBox="0 0 ${L.width + PADX * 2} ${totalH}" role="img" aria-label="${esc(spec.alt || 'Diagrama de teclado')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
     s += `<defs>
       <linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".82" stop-color="#fbfaf7"/><stop offset="1" stop-color="#e9e5de"/></linearGradient>
       <linearGradient id="${id}b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b2926"/><stop offset=".5" stop-color="#15130f"/><stop offset="1" stop-color="#050505"/></linearGradient>
@@ -267,6 +267,100 @@
       events = [{ t: 0, notes: sounding, dur: 2.2 }];
     }
     return { svg: s, legend: sides.length ? handLegend(sides.map(([side]) => side)) : '', events, sounding };
+  }
+
+  // ---------------------------------------------------------------- pantallas estrechas
+  // Si el teclado no cabe con al menos ~30 px por tecla blanca, se parte en trozos que sí caben:
+  // un teclado por mano (con un mini-mapa del conjunto) o, en los mapas sin manos, una fila por octava.
+  const whiteName = m => { const l = Object.keys(PC).find(k => PC[k] === ((m % 12) + 12) % 12); return l + (Math.floor(m / 12) - 1); };
+  const whitesIn = (lo, hi) => { let n = 0; for (let m = lo; m <= hi; m++) if (!BLACK.has(((m % 12) + 12) % 12)) n++; return n; };
+  const whiteBelow = m => { m--; while (BLACK.has(((m % 12) + 12) % 12)) m--; return m; };
+  const whiteAbove = m => { m++; while (BLACK.has(((m % 12) + 12) % 12)) m++; return m; };
+
+  // Rango con una tecla blanca de margen a cada lado y, si es muy corto, ampliado hasta minW teclas.
+  function padRange(lo, hi, minW) {
+    let a = whiteBelow(lo), b = whiteAbove(hi), side = 0;
+    while (whitesIn(a, b) < minW) { if (side++ % 2) a = whiteBelow(a); else b = whiteAbove(b); }
+    return { a, b };
+  }
+
+  function segmentSpecs(spec, maxW) {
+    const L = layout(spec.from, spec.to);
+    if (L.whites <= maxW) return null;
+    const M = n => parse(n).midi;
+    const marks = spec.marks || [];
+    const hands = [['lh', spec.lh], ['rh', spec.rh]].filter(([, h]) => h);
+    let groups = [];
+    if (hands.length) {
+      groups = hands.map(([k, h]) => { const ms = Object.values(h.fingers).map(M); return { hands: [k], lo: Math.min(...ms), hi: Math.max(...ms) }; })
+        .sort((x, y) => x.lo - y.lo);
+      // las teclas marcadas se unen al trozo de la mano más cercana, para que no se pierdan
+      marks.forEach(mk => {
+        const m = M(mk.note);
+        const g = groups.reduce((best, x) => (Math.max(x.lo - m, m - x.hi, 0) < Math.max(best.lo - m, m - best.hi, 0) ? x : best));
+        g.lo = Math.min(g.lo, m); g.hi = Math.max(g.hi, m);
+      });
+      const merged = [groups[0]];
+      groups.slice(1).forEach(g => {
+        const last = merged[merged.length - 1];
+        if (whitesIn(last.lo, Math.max(last.hi, g.hi)) + 2 <= maxW) { last.hands.push(...g.hands); last.hi = Math.max(last.hi, g.hi); }
+        else merged.push(g);
+      });
+      groups = merged;
+    } else if (marks.length) {
+      const ms = marks.map(mk => M(mk.note));
+      const lo = Math.min(...ms), hi = Math.max(...ms);
+      if (whitesIn(lo, hi) + 2 <= maxW) groups = [{ hands: [], lo, hi }];
+    }
+    let ranges;
+    if (groups.length) {
+      ranges = groups.map(g => Object.assign({ hands: g.hands }, padRange(g.lo, g.hi, Math.min(7, maxW))));
+    } else {
+      // mapa sin manos: una fila por octava (de C a B), uniendo trozos sueltos muy cortos
+      const a0 = parse(spec.from).midi, b0 = parse(spec.to).midi;
+      ranges = [];
+      let start = a0;
+      for (let m = a0 + 1; m <= b0; m++) {
+        if (m % 12 === 0) { ranges.push({ hands: [], a: start, b: m - 1 }); start = m; }
+      }
+      ranges.push({ hands: [], a: start, b: b0 });
+      const out = [];
+      ranges.forEach(r => {
+        const prev = out[out.length - 1];
+        if (prev && (whitesIn(r.a, r.b) < 3 || whitesIn(prev.a, prev.b) < 3) && whitesIn(prev.a, r.b) <= maxW + 1) prev.b = r.b;
+        else out.push(r);
+      });
+      ranges = out;
+    }
+    return ranges.map(r => {
+      const inR = n => { const m = M(n); return m >= r.a && m <= r.b; };
+      const seg = Object.assign({}, spec, { from: whiteName(r.a), to: whiteName(r.b), play: false, seq: undefined });
+      seg.marks = marks.filter(mk => inR(mk.note));
+      if (hands.length) { seg.lh = r.hands.includes('lh') ? spec.lh : undefined; seg.rh = r.hands.includes('rh') ? spec.rh : undefined; }
+      const title = hands.length ? r.hands.map(k => HAND[k === 'rh' ? 'R' : 'L'].name).join(' y ') : '';
+      return { spec: seg, hands: r.hands, a: r.a, b: r.b, title };
+    });
+  }
+
+  // Mini-mapa: el teclado completo en pequeño, con las teclas tocadas y un marco sobre cada trozo.
+  function buildMiniMap(spec, segs) {
+    const L = layout(spec.from, spec.to);
+    const h = 64, top = 6, fill = {};
+    [['L', spec.lh], ['R', spec.rh]].forEach(([side, hd]) => {
+      if (!hd) return;
+      const press = new Set((hd.press || Object.values(hd.fingers)).map(n => parse(n).midi));
+      Object.values(hd.fingers).forEach(n => { const m = parse(n).midi; fill[m] = press.has(m) ? HAND[side].keyBlack : HAND[side].keySoft; });
+    });
+    let s = `<svg class="minimap" viewBox="-4 0 ${L.width + 8} ${h + top + 8}" role="img" aria-label="Posición de cada mano en el teclado" xmlns="http://www.w3.org/2000/svg">`;
+    L.keys.filter(k => !k.black).forEach(k => { s += `<rect x="${k.x + 0.5}" y="${top}" width="${W - 1}" height="${h}" rx="3" fill="${fill[k.m] || '#fff'}" stroke="#8d867b"/>`; });
+    L.keys.filter(k => k.black).forEach(k => { s += `<rect x="${k.x}" y="${top}" width="${BW}" height="${h * 0.6}" rx="2" fill="${fill[k.m] || '#1c1a18'}"/>`; });
+    segs.forEach(sg => {
+      const x1 = L.by[sg.a] ? L.by[sg.a].x : 0, kb = L.by[sg.b];
+      const x2 = kb ? kb.x + W : L.width;
+      const ink = sg.hands.length === 1 ? HAND[sg.hands[0] === 'rh' ? 'R' : 'L'].ink : '#1d1a2e';
+      s += `<rect x="${Math.max(-2, x1 - 2)}" y="2" width="${Math.min(L.width + 4, x2 - x1 + 4)}" height="${h + 8}" rx="6" fill="none" stroke="${ink}" stroke-width="4"/>`;
+    });
+    return s + '</svg>';
   }
 
   // Numeración de los dedos: las dos manos (icono grande), palmas hacia las teclas.
@@ -371,7 +465,7 @@
     const hl = spec.highlight ? new Set(spec.highlight) : null;
     const pos = {};
     const id = 'ar' + (++uid);
-    let s = `<svg viewBox="0 0 ${S} ${S}" style="min-width:300px" role="img" aria-label="${esc(spec.alt || 'Círculo de quintas')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
+    let s = `<svg viewBox="0 0 ${S} ${S}" role="img" aria-label="${esc(spec.alt || 'Círculo de quintas')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
     s += `<defs><marker id="${id}" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1d1a2e"/></marker></defs>`;
     rings.forEach((ring, ri) => {
       if (ring.length !== 12) throw new Error('Cada anillo necesita 12 etiquetas');
@@ -410,7 +504,7 @@
     return s + '</svg>';
   }
 
-  const API = { parse, midi, label, parseChord, chordType, voicing, layout, buildKeyboard, buildFingers, buildProg, buildCircle, patternGrid, pretty, SHARPS, MAJ, MIN, TYPE_COLOR };
+  const API = { parse, midi, label, parseChord, chordType, voicing, layout, buildKeyboard, buildFingers, buildProg, buildCircle, patternGrid, pretty, segmentSpecs, buildMiniMap, whitesIn, SHARPS, MAJ, MIN, TYPE_COLOR };
 
   // ================================================================= navegador
   if (typeof document === 'undefined') {
@@ -513,12 +607,33 @@
     return wrap;
   }
 
+  // Máximo de teclas blancas que caben a ~30 px cada una en el ancho disponible de la figura.
+  const fitWhites = fig => Math.max(7, Math.floor(Math.max(240, fig.clientWidth - 34) / 30));
+
   function renderKeyboard(fig, spec) {
     spec.alt = spec.alt || fig.dataset.alt;
-    const r = buildKeyboard(spec);
-    const wrap = mount(fig, r.svg);
-    if (r.legend) wrap.insertAdjacentHTML('afterend', r.legend);
-    if (r.events && spec.play !== false) addPlayer(fig, r.events, spec.playLabel);
+    const full = buildKeyboard(spec);
+    let shown = null, nodes = [];
+    const draw = () => {
+      const segs = segmentSpecs(spec, fitWhites(fig));
+      const key = segs ? segs.map(s => s.a + '-' + s.b).join(',') : 'full';
+      if (key === shown) return;
+      shown = key;
+      nodes.forEach(n => n.remove());
+      let html = full.svg;
+      if (segs) {
+        html = (spec.lh && spec.rh && segs.length > 1 ? buildMiniMap(spec, segs) : '') +
+          segs.map(sg => (sg.title ? `<div class="seg-title ${sg.hands.length === 1 ? sg.hands[0] : ''}">${esc(sg.title)}</div>` : '') + buildKeyboard(sg.spec).svg).join('');
+      }
+      const wrap = mount(fig, html);
+      wrap.classList.toggle('split', !!segs);
+      nodes = [wrap];
+      if (full.legend) { wrap.insertAdjacentHTML('afterend', full.legend); nodes.push(wrap.nextElementSibling); }
+    };
+    draw();
+    let t = null;
+    addEventListener('resize', () => { clearTimeout(t); t = setTimeout(draw, 120); });
+    if (full.events && spec.play !== false) addPlayer(fig, full.events, spec.playLabel);
   }
 
   function renderProg(fig, spec) {
@@ -615,6 +730,13 @@
     document.querySelectorAll('[data-metro]').forEach(renderMetro);
     document.querySelectorAll('[data-temario]').forEach(renderTemario);
     document.querySelectorAll('[data-pager]').forEach(renderPager);
+
+    // Tablas: cada celda recibe el nombre de su columna, para mostrarlas como tarjetas en el móvil.
+    document.querySelectorAll('table.tbl').forEach(t => {
+      const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.trim());
+      if (!heads.length) return;
+      t.querySelectorAll('tbody tr').forEach(tr => [...tr.children].forEach((td, i) => { if (heads[i] && !td.dataset.label) td.dataset.label = heads[i]; }));
+    });
 
     // Casillas de "lo tengo": se recuerdan en este navegador, si se puede.
     document.querySelectorAll('input[type=checkbox][data-save]').forEach(cb => {

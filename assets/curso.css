@@ -138,6 +138,69 @@ figure.kbd figcaption b { color: #1d1a2e; }
 .play:active { transform: scale(.96); }
 .err { color: var(--bad); font-weight: 600; }
 
+/* Escalera de acordes (tríadas sobre cada tecla blanca) */
+.ladder-key { font: 700 .78rem 'Inter', sans-serif; color: #7a7489; text-align: center; margin: 0 0 8px; }
+.ladder { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.lcol { --c: var(--maj); display: flex; flex-direction: column; gap: 5px; text-align: center; color: #1d1a2e; }
+.lcol.min { --c: var(--min); } .lcol.dim { --c: var(--dim); } .lcol.off { opacity: .5; }
+.lname { font: 800 clamp(.95rem, 3.6vw, 1.4rem) 'Fraunces', Georgia, serif; margin-bottom: 2px; }
+.lnote { border: 2px solid var(--c); border-radius: 9px; padding: 7px 0; font-weight: 700; background: color-mix(in srgb, var(--c) 18%, #fff); }
+.lnote.root { background: var(--c); font-weight: 800; }
+.lcol.off .lnote { border-style: dashed; }
+.ldeg { font-weight: 800; font-size: .9rem; }
+
+/* Reloj de notas + explicación */
+.clock-fig { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; color: #1d1a2e; }
+.clock-fig svg { width: min(100%, 290px); height: auto; margin: 0 auto; }
+.facts { flex: 1 1 230px; }
+.facts p { margin: 0 0 4px; font-size: .95rem; color: #4b4660; }
+.facts .facts-title { font: 800 1.35rem 'Fraunces', Georgia, serif; color: #1d1a2e; margin-bottom: 10px; }
+.facts .facts-strong { font-weight: 700; color: #1d1a2e; margin-bottom: 12px; }
+
+/* Rejilla de tonalidades (acorde pivote) */
+.keygrid { display: grid; grid-template-columns: auto repeat(5, minmax(0, 1fr)); gap: 6px; color: #1d1a2e; align-items: stretch; }
+.kg-key { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; padding-right: 4px; }
+.kg-key small { font-size: .72rem; color: #7a7489; }
+.kg-key b { font: 800 1.15rem 'Fraunces', Georgia, serif; white-space: nowrap; }
+.kg-cell { border-radius: 12px; padding: 7px 2px; text-align: center; background: #f3ece0; color: #a39a8c; border: 2px solid transparent; }
+.kg-cell b { display: block; font-weight: 800; }
+.kg-cell small { display: block; font-size: .72rem; font-weight: 700; color: #4b4660; }
+.kg-cell.on.maj { background: var(--maj); color: #1d1a2e; } .kg-cell.on.min { background: var(--min); color: #1d1a2e; }
+.kg-cell.piv { border-color: #c9184a; border-style: dashed; }
+.kg-cell.low { margin-bottom: 10px; }
+.kg-note { grid-column: 1 / -1; text-align: center; font-weight: 700; font-size: .88rem; color: #c9184a; margin: 2px 0 0; }
+
+/* Forma de una canción */
+.songform { color: #1d1a2e; }
+.sf-meta { font: 700 .8rem 'Inter', sans-serif; color: #7a7489; margin: 0 0 8px; }
+.sf-row { display: flex; gap: 4px; }
+.sf { border-radius: 12px; border: 2px solid; padding: 10px 4px; text-align: center; min-width: 0; }
+.sf b { display: block; font: 800 1.3rem 'Fraunces', Georgia, serif; }
+.sf small { display: block; font-size: .72rem; color: #4b4660; overflow-wrap: anywhere; }
+.sf.intro { background: #f3ece0; border-color: #cfc4b3; } .sf.intro b { font: 800 .85rem 'Inter', sans-serif; }
+.sf.a { background: #ffd6e0; border-color: var(--maj); } .sf.b { background: #d6f1fb; border-color: var(--min); }
+.sf-bars span { font-size: .72rem; color: #7a7489; padding-top: 6px; border-top: 1.5px solid #cfc4b3; margin-top: 6px; }
+
+/* Tablas en el móvil: cada fila se convierte en una tarjeta (piano.js pone data-label a cada celda) */
+@media (max-width: 560px) {
+  .tbl-wrap { overflow: visible; }
+  .tbl, .tbl tbody, .tbl tr, .tbl td { display: block; width: 100%; }
+  .tbl { background: none; box-shadow: none; }
+  .tbl thead { display: none; }
+  .tbl tr { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin-bottom: 10px; padding: 6px 12px; box-shadow: var(--shadow); }
+  .tbl td { border: 0; border-bottom: 1px dashed var(--line); padding: 7px 0; display: grid; grid-template-columns: minmax(90px, 38%) 1fr; gap: 10px; }
+  .tbl td:last-child { border-bottom: 0; }
+  .tbl td::before { content: attr(data-label); font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+  .tbl td:first-child { font-weight: 700; }
+  .tbl td > * { justify-self: start; }
+}
+
+/* Teclado partido en pantallas estrechas */
+.kbd-scroll.split svg { margin-top: 4px; }
+.kbd-scroll .minimap { margin: 0 0 6px; }
+.seg-title { font: 800 .82rem 'Inter', sans-serif; color: #4b4660; margin: 10px 0 0; }
+.seg-title.lh { color: var(--lh); } .seg-title.rh { color: var(--rh); }
+
 /* Leyenda de manos bajo cada teclado */
 .hand-legend { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; margin-top: 10px; }
 .hl-item { display: inline-flex; align-items: center; gap: 8px; }
@@ -176,7 +239,7 @@ figure.kbd figcaption b { color: #1d1a2e; }
 .pchip.dim { --c: var(--dim); } .pchip.aug { --c: var(--aug); }
 .pchip.on { transform: translateY(-4px) scale(1.06); box-shadow: 0 8px 18px -6px var(--c); background: var(--c); }
 
-.pgrid { display: grid; grid-template-columns: 34px repeat(var(--n), minmax(26px, 1fr)); gap: 4px; margin-top: 14px; min-width: 300px; }
+.pgrid { display: grid; grid-template-columns: 30px repeat(var(--n), minmax(0, 1fr)); gap: 3px; margin-top: 14px; }
 .pg-count { text-align: center; font: 800 .85rem 'Inter', sans-serif; color: #1d1a2e; }
 .pg-count.off { color: #a39a8c; font-weight: 600; }
 .pg-name { font: 800 .72rem 'Inter', sans-serif; color: #7a7489; display: grid; place-items: center; }
@@ -214,7 +277,7 @@ figure.kbd figcaption b { color: #1d1a2e; }
 
 /* Ritmo: casillas de pulsos */
 .beats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0; }
-.beats > div { border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 12px 6px; text-align: center; }
+.beats > div { min-width: 0; overflow-wrap: anywhere; border-radius: 12px; border: 1px solid var(--line); background: var(--card); padding: 12px 6px; text-align: center; }
 .beats b { display: block; font: 800 1.5rem 'Fraunces', serif; }
 .beats small { color: var(--muted); font-size: .8rem; }
 .beats .hit { background: color-mix(in srgb, var(--maj) 18%, var(--card)); border-color: var(--maj); }
