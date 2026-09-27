@@ -7,7 +7,7 @@
  *        "rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}}}'>
  *     <p class="fig-title">…</p><figcaption>…</figcaption>
  *   </figure>
- *   - fingers: dedo (1 pulgar … 5 meñique) -> nota. Dedos sin nota = en el aire.
+ *   - fingers: dedo (1 pulgar … 5 meñique) -> nota. Se dibuja una mano realista; los dedos sin nota quedan recogidos.
  *   - press:   notas que suenan (por defecto todas las de fingers).
  *   - marks:   teclas resaltadas sin mano [{note,color,main,sub,ink,nolabel}].
  *   - names:"all" letra en cada tecla blanca · solfeo:true añade Do/Re/Mi.
@@ -37,16 +37,16 @@
 (function (root) {
   'use strict';
 
-  const W = 40, H = 230, BW = 24, BH = 142, TOP = 48, PADX = 12, LIP = 14, BAND = 40;
+  const W = 40, H = 230, BW = 24, BH = 142, PADX = 12, LIP = 14;
+  let TOP = 48;   // alto de la franja de rótulos sobre el teclado (se ajusta en cada diagrama)
   const PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
   const LAT = { C: 'Do', D: 'Re', E: 'Mi', F: 'Fa', G: 'Sol', A: 'La', B: 'Si' };
   const SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
   const BLACK = new Set([1, 3, 6, 8, 10]);
-  const SKIN = '#f1d0b2', SKIN_LINE = '#b3845f';
   const FONT = "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif";
   const HAND = {
-    R: { key: '#a9b4f5', keySoft: '#e3e7fd', keyBlack: '#4f5bd5', ink: '#3b46b8', name: 'Mano derecha' },
-    L: { key: '#fbc58e', keySoft: '#feebd8', keyBlack: '#e0771a', ink: '#b85a0a', name: 'Mano izquierda' }
+    R: { key: '#8c99f6', keySoft: '#dfe3fd', keyBlack: '#4353d6', ink: '#3b46b8', name: 'Mano derecha' },
+    L: { key: '#f8ae66', keySoft: '#feebd8', keyBlack: '#d8690c', ink: '#b85a0a', name: 'Mano izquierda' }
   };
   // Código de color por tipo de acorde (Armonía Ilustrada).
   const TYPE_COLOR = { maj: '#ff5fa2', min: '#25b7e8', dom: '#f5b700', dim: '#8b5cf6', aug: '#22c55e' };
@@ -122,144 +122,150 @@
     return { keys, by, width: wi * W, whites: wi };
   }
 
-  // Dedo: se estrecha desde el nudillo (semiancho a) hasta la yema redondeada (semiancho b),
-  // con un leve abultamiento en la articulación central. ext = cuánto entra en la palma.
-  function fingerPath(B, T, a, b, ext) {
-    const dx = T.x - B.x, dy = T.y - B.y, L = Math.hypot(dx, dy) || 1;
-    const ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
-    const bx = B.x - ux * ext, by = B.y - uy * ext;
-    const mx = bx + (T.x - bx) * 0.5, my = by + (T.y - by) * 0.5, am = (a + b) / 2 + 1.5;
-    return `M${pt(bx + nx * a, by + ny * a)}` +
-      ` Q${pt(mx + nx * am, my + ny * am)} ${pt(T.x + nx * b, T.y + ny * b)}` +
-      ` A${b} ${b} 0 0 0 ${pt(T.x - nx * b, T.y - ny * b)}` +
-      ` Q${pt(mx - nx * am, my - ny * am)} ${pt(bx - nx * a, by - ny * a)} Z`;
+  // ---------------------------------------------------------------- manos realistas
+  // Mano vista desde arriba, como en una foto: dorso con nudillos y tendones, dedos con falanges,
+  // pliegues y uñas, y sombra sobre las teclas. Los dedos que tocan llevan su número encima.
+  const HAND_SP = 36;                                   // separación entre nudillos
+  const FW2 = { 1: [19, 14.5], 2: [16, 13], 3: [16.5, 13.5], 4: [15.5, 12.5], 5: [13.5, 11] };
+  const SKIN_EDGE = '#c98466', SKIN_MID = '#efc0a3', SKIN_HI = '#f8dac6', SKIN_DARK = '#a8603f';
+
+  function axis(A, B) {
+    const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy) || 1;
+    return { ux: dx / L, uy: dy / L, nx: -dy / L, ny: dx / L, L };
+  }
+  const along = (K, T, t) => { const { ux, uy, L } = axis(K, T); return { x: K.x + ux * t * L, y: K.y + uy * t * L }; };
+  const angleDeg = (K, T) => { const { ux, uy } = axis(K, T); return Math.atan2(uy, ux) * 180 / Math.PI + 90; };
+
+  // Contorno de un dedo desde el nudillo K hasta la yema T (semiancho a en la base y b en la yema),
+  // con un leve abultamiento en cada articulación. ext = cuánto se mete en el dorso.
+  function fingerOutline(K, T, a, b, ext) {
+    const { ux, uy, nx, ny, L } = axis(K, T);
+    const P = (t, w, s) => pt(K.x + ux * t * L + s * nx * w, K.y + uy * t * L + s * ny * w);
+    const e = -ext / L, wP = a * 0.97, wD = (a + b) / 2 + 0.6;
+    return `M${P(e, a, 1)} L${P(0.1, a, 1)} Q${P(0.42, wP + 1, 1)} ${P(0.5, wP * 0.95, 1)} Q${P(0.74, wD + 0.9, 1)} ${P(1, b, 1)}` +
+      ` A${b} ${b} 0 0 0 ${P(1, b, -1)}` +
+      ` Q${P(0.74, wD + 0.9, -1)} ${P(0.5, wP * 0.95, -1)} Q${P(0.42, wP + 1, -1)} ${P(0.1, a, -1)} L${P(e, a, -1)} Z`;
   }
 
-  // Pliegue de piel atravesando el dedo a una fracción t de su longitud.
-  function crease(B, T, t, w) {
-    const dx = T.x - B.x, dy = T.y - B.y, L = Math.hypot(dx, dy) || 1;
-    const nx = -dy / L, ny = dx / L, px = B.x + dx * t, py = B.y + dy * t;
-    return `M${pt(px + nx * w, py + ny * w)} Q${pt(px + dx / L * 2.5, py + dy / L * 2.5)} ${pt(px - nx * w, py - ny * w)}`;
-  }
+  // tips: {1..5: {x, y, state: 'press' | 'rest' | 'lift'}} · kY: altura de los nudillos · bottom: borde inferior
+  function realisticHand(side, tips, kY, bottom, id, opts) {
+    opts = opts || {};
+    const c = HAND[side], dir = side === 'R' ? 1 : -1;
+    const hc = [2, 3, 4, 5].reduce((a, f) => a + tips[f].x, 0) / 4;
+    const X = rx => hc + dir * rx;
+    const wh = 1.5 * HAND_SP + 20;
+    const K = {};
+    [2, 3, 4, 5].forEach(f => { K[f] = { x: X((f - 3.5) * HAND_SP), y: kY + { 2: 4, 3: 0, 4: 5, 5: 14 }[f] }; });
+    K[1] = { x: X(-wh + 6), y: kY + 44 };
+    const g = id + side;
 
-  // Semianchos (nudillo, yema) de cada dedo.
-  const FINGER_W = { 1: [15, 11], 2: [11.5, 9.5], 3: [12, 10], 4: [11, 9.2], 5: [9.5, 8] };
+    const dorsum = `M${pt(X(-wh + 8), kY + 8)} Q${pt(X(0), kY - 16)} ${pt(X(wh - 4), kY + 16)}` +
+      ` C${pt(X(wh + 6), kY + 60)} ${pt(X(wh + 2), kY + 120)} ${pt(X(wh - 6), bottom + 30)}` +
+      ` L${pt(X(-wh + 16), bottom + 30)}` +
+      ` C${pt(X(-wh - 8), kY + 160)} ${pt(X(-wh - 20), kY + 104)} ${pt(X(-wh - 8), kY + 64)}` +
+      ` Q${pt(X(-wh - 2), kY + 26)} ${pt(X(-wh + 8), kY + 8)} Z`;
+    const order = [5, 4, 3, 2, 1];
+    const outlines = {};
+    order.forEach(f => { outlines[f] = fingerOutline(K[f], tips[f], FW2[f][0], FW2[f][1], f === 1 ? 28 : 22); });
 
-  // Silueta de una mano vista desde arriba (palma hacia las teclas) + círculos numerados en las yemas.
-  function handShape(side, tips, palm, showLabel) {
-    const c = HAND[side];
-    const { left, py, pw } = palm;
-    const s1 = side === 'R' ? 1 : -1;          // +1: pulgar a la izquierda (mano derecha)
-    const cx = left + pw / 2, h = pw / 2;
-    const X = rx => cx + s1 * rx;               // coordenadas "de mano derecha" -> reales
-    const knuckleY = { 2: py + 8, 3: py + 2, 4: py + 6, 5: py + 16 };
-    const bases = {};
-    [2, 3, 4, 5].forEach((f, i) => { bases[f] = { x: X(-h + pw * (i + 0.5) / 4), y: knuckleY[f] }; });
-    bases[1] = { x: X(-h + 14), y: py + 64 };
-
-    // Palma: arco de nudillos, borde del meñique, muñeca y eminencia del pulgar.
-    const palmD =
-      `M${pt(X(-h + 3), py + 14)}` +
-      ` Q${pt(X(0), py - 10)} ${pt(X(h - 4), py + 18)}` +
-      ` C${pt(X(h + 6), py + 52)} ${pt(X(h + 5), py + 96)} ${pt(X(h - 8), py + 138)}` +
-      ` L${pt(X(h - 16), py + 270)} L${pt(X(-h + 20), py + 270)}` +
-      ` L${pt(X(-h + 12), py + 150)}` +
-      ` C${pt(X(-h - 16), py + 112)} ${pt(X(-h - 12), py + 64)} ${pt(X(-h - 2), py + 42)}` +
-      ` Q${pt(X(-h - 1), py + 24)} ${pt(X(-h + 3), py + 14)} Z`;
-
-    const fingers = [1, 2, 3, 4, 5].map(f =>
-      fingerPath(bases[f], tips[f], FINGER_W[f][0], FINGER_W[f][1], f === 1 ? 20 : 16));
-
-    let s = '<g opacity="0.78" stroke-linejoin="round">';
-    // Contorno: todo con trazo grueso y encima el relleno, así las piezas se funden en una sola silueta.
-    s += `<path d="${palmD}" fill="${SKIN_LINE}" stroke="${SKIN_LINE}" stroke-width="3.5"/>`;
-    fingers.forEach(d => { s += `<path d="${d}" fill="${SKIN_LINE}" stroke="${SKIN_LINE}" stroke-width="3.5"/>`; });
-    s += `<path d="${palmD}" fill="${SKIN}"/>`;
-    fingers.forEach(d => { s += `<path d="${d}" fill="${SKIN}"/>`; });
-    // Volumen: luz en el dorso y pliegues de los nudillos.
-    s += `<ellipse cx="${X(h * 0.1).toFixed(1)}" cy="${py + 62}" rx="${(h * 0.62).toFixed(1)}" ry="34" fill="#fff" opacity="0.22"/>`;
-    s += `<g fill="none" stroke="${SKIN_LINE}" stroke-width="1.3" stroke-linecap="round" opacity="0.55">`;
-    [2, 3, 4, 5].forEach(f => {
-      const w = FINGER_W[f][0] * 0.55;
-      s += `<path d="${crease(bases[f], tips[f], 0.42, w)}"/><path d="${crease(bases[f], tips[f], 0.7, w * 0.9)}"/>`;
+    let defs = `<radialGradient id="${g}d" gradientUnits="userSpaceOnUse" cx="${X(-6).toFixed(1)}" cy="${kY + 50}" r="${(wh * 1.35).toFixed(1)}">` +
+      `<stop offset="0" stop-color="${SKIN_HI}"/><stop offset=".55" stop-color="${SKIN_MID}"/><stop offset="1" stop-color="${SKIN_EDGE}"/></radialGradient>` +
+      `<linearGradient id="${g}n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7d6ce"/><stop offset="1" stop-color="#e8aa9d"/></linearGradient>`;
+    order.forEach(f => {
+      const [a] = FW2[f];
+      const m = along(K[f], tips[f], 0.55), { nx, ny } = axis(K[f], tips[f]);
+      defs += `<linearGradient id="${g}f${f}" gradientUnits="userSpaceOnUse" x1="${(m.x - nx * a).toFixed(1)}" y1="${(m.y - ny * a).toFixed(1)}" x2="${(m.x + nx * a).toFixed(1)}" y2="${(m.y + ny * a).toFixed(1)}">` +
+        `<stop offset="0" stop-color="${SKIN_EDGE}"/><stop offset=".25" stop-color="${SKIN_MID}"/><stop offset=".52" stop-color="${SKIN_HI}"/><stop offset=".8" stop-color="${SKIN_MID}"/><stop offset="1" stop-color="${SKIN_EDGE}"/></linearGradient>`;
     });
-    s += `<path d="${crease(bases[1], tips[1], 0.55, FINGER_W[1][0] * 0.5)}"/>`;
-    s += '</g></g>';
 
-    for (let f = 1; f <= 5; f++) {
+    let s = `<defs>${defs}</defs>`;
+    // sombra proyectada sobre el teclado
+    s += `<g transform="translate(${dir * 5},9)" fill="#2a1609" opacity="0.28" filter="url(#${id}blur)"><path d="${dorsum}"/>${order.map(f => `<path d="${outlines[f]}"/>`).join('')}</g>`;
+    // dorso, tendones y nudillos
+    s += `<path d="${dorsum}" fill="url(#${g}d)" stroke="${SKIN_EDGE}" stroke-width="1.2"/>`;
+    [2, 3, 4, 5].forEach(f => {
+      const ex = X((f - 3.5) * HAND_SP * 0.45);
+      s += `<path d="M${pt(K[f].x, K[f].y + 16)} Q${pt((K[f].x + ex) / 2, kY + 70)} ${pt(ex, bottom + 10)}" fill="none" stroke="${SKIN_EDGE}" stroke-width="5" stroke-linecap="round" opacity="0.16"/>`;
+    });
+    // dedos
+    order.forEach(f => {
+      const t = tips[f], [a, b] = FW2[f];
+      s += `<path d="${outlines[f]}" fill="url(#${g}f${f})" stroke="${SKIN_EDGE}" stroke-width="1.1"/>`;
+      // pliegues de las articulaciones
+      [[0.46, a * 0.62], [0.74, b * 0.75]].forEach(([tt, w]) => {
+        if (f === 1 && tt > 0.5) return;
+        const p = along(K[f], t, f === 1 ? 0.5 : tt);
+        s += `<g transform="translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${angleDeg(K[f], t).toFixed(1)})" fill="none" stroke="${SKIN_DARK}" stroke-linecap="round" opacity="0.4" stroke-width="1.1">` +
+          `<path d="M${-w} 0 Q0 3 ${w} 0"/><path d="M${(-w * 0.75).toFixed(1)} 4 Q0 6.5 ${(w * 0.75).toFixed(1)} 4"/></g>`;
+      });
+      // uña con lúnula y brillo
+      s += `<g transform="translate(${t.x.toFixed(1)} ${t.y.toFixed(1)}) rotate(${angleDeg(K[f], t).toFixed(1)})">` +
+        `<rect x="${(-b * 0.64).toFixed(1)}" y="${(-b * 0.72).toFixed(1)}" width="${(b * 1.28).toFixed(1)}" height="${(b * 1.75).toFixed(1)}" rx="${(b * 0.58).toFixed(1)}" fill="url(#${g}n)" stroke="#cf9488" stroke-width="0.8"/>` +
+        `<ellipse cx="0" cy="${(b * 0.82).toFixed(1)}" rx="${(b * 0.42).toFixed(1)}" ry="${(b * 0.2).toFixed(1)}" fill="#fbe6df" opacity="0.85"/>` +
+        `<ellipse cx="${(-b * 0.24).toFixed(1)}" cy="${(-b * 0.15).toFixed(1)}" rx="${(b * 0.14).toFixed(1)}" ry="${(b * 0.42).toFixed(1)}" fill="#fff" opacity="0.6"/></g>`;
+    });
+    // brillo de los nudillos (encima de la base de los dedos)
+    [2, 3, 4, 5].forEach(f => {
+      s += `<ellipse cx="${K[f].x.toFixed(1)}" cy="${(K[f].y + 4).toFixed(1)}" rx="${(FW2[f][0] * 0.75).toFixed(1)}" ry="${(FW2[f][0] * 0.5).toFixed(1)}" fill="#fff" opacity="0.3"/>`;
+    });
+    // números de los dedos
+    order.forEach(f => {
       const t = tips[f];
-      if (t.on) {
-        s += `<circle cx="${t.x}" cy="${t.y}" r="12.5" fill="${t.pressed ? c.ink : '#fff'}" stroke="${c.ink}" stroke-width="2.5"/>`;
-        s += `<text x="${t.x}" y="${t.y + 5}" text-anchor="middle" font-size="15" font-weight="700" fill="${t.pressed ? '#fff' : c.ink}">${f}</text>`;
-      } else {
-        s += `<circle cx="${t.x}" cy="${t.y}" r="10" fill="#fff" fill-opacity="0.85" stroke="${c.ink}" stroke-width="1.5" stroke-dasharray="3 2"/>`;
-        s += `<text x="${t.x}" y="${t.y + 4}" text-anchor="middle" font-size="12" fill="${c.ink}" opacity="0.85">${f}</text>`;
-      }
-    }
-    if (showLabel) {
-      s += `<text x="${cx}" y="${py + 74}" text-anchor="middle" font-size="14" font-weight="700" fill="${c.ink}">${c.name}</text>`;
-    }
+      if (t.state === 'lift') return;
+      const p = along(K[f], t, f === 1 ? 0.52 : 0.5);
+      const on = t.state === 'press';
+      s += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="11.5" fill="${on ? c.ink : '#fff'}" stroke="${on ? '#fff' : c.ink}" stroke-width="2"/>`;
+      s += `<text x="${p.x.toFixed(1)}" y="${(p.y + 5).toFixed(1)}" text-anchor="middle" font-size="14" font-weight="800" fill="${on ? '#fff' : c.ink}">${f}</text>`;
+    });
+    // nombre de la mano sobre el dorso
+    const txt = c.name, tw = txt.length * 7.2 + 20;
+    const [lo, hi] = opts.clamp || [-Infinity, Infinity];
+    const lx = Math.min(hi - tw / 2, Math.max(lo + tw / 2, X(4)));
+    const ly = Math.min(bottom - 20, kY + 88);
+    s += `<rect x="${(lx - tw / 2).toFixed(1)}" y="${ly - 16}" width="${tw.toFixed(1)}" height="23" rx="11.5" fill="#fff" fill-opacity="0.92" stroke="${c.ink}" stroke-width="1.5"/>`;
+    s += `<text x="${lx.toFixed(1)}" y="${ly}" text-anchor="middle" font-size="12.5" font-weight="800" fill="${c.ink}">${txt}</text>`;
     return s;
   }
 
-  // Dedos vistos desde arriba, entrando desde el borde del teclado como en una foto: solo los dedos que
-  // tocan, con uña y un número del color de la mano. Sin palma: así no tapa ni confunde.
-  function fingersOnKeys(side, h, press, L, gid, bottom) {
-    const c = HAND[side];
-    const list = Object.keys(h.fingers).map(Number).sort((a, b) => a - b).map(f => {
-      const k = L.by[parse(h.fingers[f]).midi];
-      if (!k) throw new Error('La nota ' + h.fingers[f] + ' está fuera del teclado dibujado');
-      const thumb = f === 1;
-      const w = thumb ? 34 : f === 5 ? 27 : 30;
-      // yema justo por debajo de las negras (teclas blancas) o dentro de la negra
-      let y = k.black ? TOP + BH - 58 : TOP + BH + 14;
-      if (thumb) y += k.black ? 16 : 30;
-      if (f === 5 && !k.black) y += 12;
-      return { f, k, w, y, x: k.cx, pressed: press.has(k.m) };
-    });
-    if (!list.length) throw new Error('Mano sin dedos asignados');
-    const center = list.reduce((a, d) => a + d.x, 0) / list.length;
-    let s = '', over = '';
-    list.forEach(d => {
-      const { x, y, w } = d;
-      // los dedos convergen ligeramente hacia la muñeca; el pulgar sale más de lado
-      let bx = x - (x - center) * 0.22;
-      if (d.f === 1) bx += (side === 'R' ? -1 : 1) * 16;
-      const r = w / 2, bw = r * 1.1;
-      const body = `M${pt(x - r, y + r)} A${r} ${r} 0 0 1 ${pt(x + r, y + r)} L${pt(bx + bw, bottom)} L${pt(bx - bw, bottom)} Z`;
-      const g = `<g opacity="${d.pressed ? 1 : 0.55}">`;
-      s += g;
-      s += `<ellipse cx="${x}" cy="${y + 10}" rx="${r * 1.25}" ry="${r * 0.9}" fill="#000" opacity="0.13"/>`;
-      s += `<path d="${body}" fill="url(#${gid})" stroke="#c48a68" stroke-width="1.3"/>`;
-      // uña con brillo
-      s += `<rect x="${pt(x - r * 0.62, y + 3).split(' ')[0]}" y="${y + 3}" width="${(r * 1.24).toFixed(1)}" height="${(r * 1.25).toFixed(1)}" rx="${(r * 0.6).toFixed(1)}" fill="#f4c3b8" stroke="#d99f93" stroke-width="1"/>`;
-      s += `<ellipse cx="${x - r * 0.18}" cy="${y + 3 + r * 0.45}" rx="${r * 0.22}" ry="${r * 0.3}" fill="#fff" opacity="0.55"/>`;
-      // pliegue de la primera falange
-      const cy = y + w * 1.75, cx0 = x + (bx - x) * ((cy - y) / (bottom - y));
-      s += `<path d="M${pt(cx0 - r * 0.55, cy)} Q${pt(cx0, cy + 4)} ${pt(cx0 + r * 0.55, cy)}" fill="none" stroke="#c48a68" stroke-width="1.2" opacity="0.7"/>`;
-      s += '</g>';
-      // número del dedo
-      const ny = y + r * 1.25 + 20;
-      const nx = x + (bx - x) * ((ny - y) / (bottom - y));
-      over += `<circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="12.5" fill="${d.pressed ? c.ink : '#fff'}" stroke="${c.ink}" stroke-width="2.5"/>`;
-      over += `<text x="${nx.toFixed(1)}" y="${(ny + 5).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="800" fill="${d.pressed ? '#fff' : c.ink}">${d.f}</text>`;
-    });
-    // etiqueta de la mano, en la franja inferior
-    const txt = side === 'R' ? 'Mano derecha' : 'Mano izquierda';
-    const tw = txt.length * 7.4 + 20;
-    const lx = Math.min(L.width - tw / 2 - 2, Math.max(tw / 2 + 2, center));
-    over += `<rect x="${(lx - tw / 2).toFixed(1)}" y="${bottom - 30}" width="${tw.toFixed(1)}" height="24" rx="12" fill="#fff" stroke="${c.ink}" stroke-width="1.5"/>`;
-    over += `<text x="${lx.toFixed(1)}" y="${bottom - 13}" text-anchor="middle" font-size="12.5" font-weight="800" fill="${c.ink}">${txt}</text>`;
-    return { under: s, over };
+  // Coloca una mano sobre el teclado a partir de "fingers" (dedo -> nota).
+  function handOnKeys(side, h, press, L) {
+    const dir = side === 'R' ? 1 : -1;
+    const tips = {};
+    for (let f = 1; f <= 5; f++) {
+      const n = h.fingers[f];
+      if (!n) continue;
+      const k = L.by[parse(n).midi];
+      if (!k) throw new Error('La nota ' + n + ' está fuera del teclado dibujado');
+      let y = k.black ? TOP + BH - 40 : TOP + BH + 56;
+      if (f === 1) y += k.black ? 16 : 32;
+      if (f === 5 && !k.black) y += 8;
+      tips[f] = { x: k.cx, y, state: press.has(k.m) ? 'press' : 'rest' };
+    }
+    const assigned = Object.keys(tips).map(Number);
+    if (!assigned.length) throw new Error('Mano sin dedos asignados');
+    const long = assigned.filter(f => f > 1);
+    const kY = long.length ? Math.max(...long.map(f => tips[f].y)) + 86 : tips[1].y + 34;
+    for (let f = 1; f <= 5; f++) {
+      if (tips[f]) continue;
+      const lo = assigned.filter(a => a < f).pop();
+      const hi = assigned.find(a => a > f);
+      let x;
+      if (lo != null && hi != null) x = tips[lo].x + (tips[hi].x - tips[lo].x) * (f - lo) / (hi - lo);
+      else if (lo != null) x = tips[lo].x + dir * (f - lo) * HAND_SP * 1.12;
+      else x = tips[hi].x + dir * (f - hi) * HAND_SP * 1.12;
+      // dedo recogido: no toca, queda más corto
+      tips[f] = { x, y: f === 1 ? kY + 8 : kY - 54, state: 'lift' };
+    }
+    return { tips, kY };
   }
 
   // Devuelve { svg, events, sounding } sin tocar el DOM.
   function buildKeyboard(spec) {
     const L = layout(spec.from, spec.to);
     const sides = [['L', spec.lh], ['R', spec.rh]].filter(([, h]) => h);
-    const totalH = TOP + H + LIP + (sides.length ? BAND : 6);
     const fills = {};
     const top = [];
+    const onKey = [];      // etiquetas sobre las teclas que tocan las manos
     const sounding = [];
 
     (spec.marks || []).forEach(mk => {
@@ -270,6 +276,7 @@
       const lb = label(mk.note);
       top.push({ cx: k.cx, main: mk.main || lb.main, sub: mk.sub != null ? mk.sub : (spec.solfeo ? lb.lat : ''), color: mk.ink || mk.color || '#c9184a' });
     });
+    TOP = top.length ? 48 : 14;
 
     const hands = sides.map(([side, h]) => {
       if (!h.fingers) throw new Error('Falta "fingers" en la mano ' + side);
@@ -281,22 +288,23 @@
         if (!k) throw new Error('La nota ' + n + ' está fuera del teclado dibujado');
         const on = press.has(k.m);
         fills[k.m] = on ? (k.black ? c.keyBlack : c.key) : c.keySoft;
-        const lb = label(n);
-        top.push({ cx: k.cx, main: lb.main, sub: spec.solfeo ? lb.lat : '', color: c.ink, faded: !on });
+        onKey.push({ k, text: label(n).main, color: c.ink, on });
       });
       press.forEach(m => sounding.push(m));
-      return { side, h, press };
+      return Object.assign({ side }, handOnKeys(side, h, press, L));
     });
+    const totalH = Math.max(TOP + H + LIP + 6, ...hands.map(hd => hd.kY + 132));
 
     const id = 'k' + (++uid);
     let s = `<svg viewBox="0 0 ${L.width + PADX * 2} ${totalH}" style="min-width:${Math.round(L.whites * 24)}px" role="img" aria-label="${esc(spec.alt || 'Diagrama de teclado')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
     s += `<defs>
       <linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".82" stop-color="#fbfaf7"/><stop offset="1" stop-color="#e9e5de"/></linearGradient>
       <linearGradient id="${id}b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b2926"/><stop offset=".5" stop-color="#15130f"/><stop offset="1" stop-color="#050505"/></linearGradient>
-      <linearGradient id="${id}s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e2a987"/><stop offset=".3" stop-color="#f5cfb6"/><stop offset=".6" stop-color="#f7d8c4"/><stop offset="1" stop-color="#dfa281"/></linearGradient>
+      <filter id="${id}blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
       <clipPath id="${id}c"><rect x="-${PADX}" y="0" width="${L.width + PADX * 2}" height="${totalH}"/></clipPath>
     </defs>`;
     s += `<g transform="translate(${PADX},0)" clip-path="url(#${id}c)">`;
+    s += `<rect x="-${PADX}" y="${TOP + H + LIP - 4}" width="${L.width + PADX * 2}" height="${totalH}" fill="#e4ddd2"/>`;
     s += `<rect x="-6" y="${TOP - 8}" width="${L.width + 12}" height="12" rx="3" fill="#2f2b27"/>`;
     // teclas blancas con volumen: cara superior + canto frontal
     L.keys.filter(k => !k.black).forEach(k => {
@@ -320,15 +328,17 @@
       });
     }
     top.forEach(t => {
-      const op = t.faded ? 0.5 : 1;
-      s += `<text x="${t.cx}" y="${t.sub ? 20 : 30}" text-anchor="middle" font-size="16" font-weight="800" fill="${t.color}" opacity="${op}">${esc(t.main)}</text>`;
-      if (t.sub) s += `<text x="${t.cx}" y="37" text-anchor="middle" font-size="11" fill="#8a8178" opacity="${op}">${esc(t.sub)}</text>`;
+      s += `<text x="${t.cx}" y="${t.sub ? 20 : 30}" text-anchor="middle" font-size="16" font-weight="800" fill="${t.color}">${esc(t.main)}</text>`;
+      if (t.sub) s += `<text x="${t.cx}" y="37" text-anchor="middle" font-size="11" fill="#8a8178">${esc(t.sub)}</text>`;
     });
-    if (hands.length) {
-      const parts = hands.map(({ side, h, press }) => fingersOnKeys(side, h, press, L, id + 's', totalH + 2));
-      parts.forEach(p => { s += p.under; });
-      parts.forEach(p => { s += p.over; });
-    }
+    // nombre de cada nota que se toca, escrito sobre su tecla (con ♯ o ♭ según la nota)
+    onKey.forEach(({ k, text, color, on }) => {
+      const w = k.black ? BW - 3 : 32, hgt = k.black ? 22 : 25, fs = k.black ? (text.length > 1 ? 11.5 : 13) : 16;
+      const y = k.black ? TOP + 12 : TOP + BH + 8;
+      s += `<g opacity="${on ? 1 : 0.6}"><rect x="${(k.cx - w / 2).toFixed(1)}" y="${y}" width="${w}" height="${hgt}" rx="${k.black ? 5 : 8}" fill="#fff" stroke="${color}" stroke-width="1.6"/>`;
+      s += `<text x="${k.cx}" y="${y + hgt / 2 + fs * 0.36}" text-anchor="middle" font-size="${fs}" font-weight="800" fill="${color}">${esc(text)}</text></g>`;
+    });
+    hands.forEach(hd => { s += realisticHand(hd.side, hd.tips, hd.kY, totalH, id, { clamp: [0, L.width] }); });
     s += '</g></svg>';
 
     const step = spec.tempo || 0.45;
@@ -345,15 +355,19 @@
     return { svg: s, events, sounding };
   }
 
+  // Numeración de los dedos: las dos manos abiertas, vistas desde arriba.
   function buildFingers() {
-    const Wd = 600, Hd = 300, py = 150;
-    const rel = { 1: [-102, -30], 2: [-50, -105], 3: [-12, -128], 4: [26, -114], 5: [62, -78] };
+    const Wd = 600, Hd = 330, kY = 176;
+    const id = 'f' + (++uid);
     let s = `<svg viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="Numeración de los dedos de ambas manos" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
-    [['L', 170], ['R', 430]].forEach(([side, pcx]) => {
+    s += `<defs><filter id="${id}blur" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter></defs>`;
+    const rise = { 2: 96, 3: 110, 4: 100, 5: 78 };
+    [['L', 165], ['R', 435]].forEach(([side, hc]) => {
       const dir = side === 'R' ? 1 : -1;
       const tips = {};
-      for (let f = 1; f <= 5; f++) tips[f] = { x: pcx + dir * rel[f][0], y: py + rel[f][1], on: true, pressed: true };
-      s += handShape(side, tips, { left: pcx - 65, py, pw: 130 }, true);
+      [2, 3, 4, 5].forEach(f => { tips[f] = { x: hc + dir * (f - 3.5) * HAND_SP * 1.3, y: kY - rise[f], state: 'press' }; });
+      tips[1] = { x: hc - dir * 118, y: kY + 14, state: 'press' };
+      s += realisticHand(side, tips, kY, Hd, id, { clamp: [0, Wd] });
     });
     return s + '</svg>';
   }
