@@ -419,8 +419,42 @@
   }
 
   // Audio: timbre sencillo tipo piano eléctrico, sin muestras externas.
-  let ctx = null;
-  const audio = () => (ctx = ctx || new (window.AudioContext || window.webkitAudioContext)());
+  let ctx = null, silent = null, active = 0;
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && 'ontouchend' in document);
+
+  // WAV de silencio (0,25 s). En iPhone, reproducirlo en bucle con <audio> pone la página en modo
+  // «reproducción»: así el interruptor de silencio del teléfono no apaga el sonido web.
+  function silentWav() {
+    const n = 2000, buf = new Uint8Array(44 + n), dv = new DataView(buf.buffer);
+    const w = (o, s) => [...s].forEach((ch, i) => { buf[o + i] = ch.charCodeAt(0); });
+    w(0, 'RIFF'); dv.setUint32(4, 36 + n, true); w(8, 'WAVE'); w(12, 'fmt ');
+    dv.setUint32(16, 16, true); dv.setUint16(20, 1, true); dv.setUint16(22, 1, true);
+    dv.setUint32(24, 8000, true); dv.setUint32(28, 8000, true); dv.setUint16(32, 1, true); dv.setUint16(34, 8, true);
+    w(36, 'data'); dv.setUint32(40, n, true); buf.fill(128, 44);
+    let bin = '';
+    buf.forEach(b => { bin += String.fromCharCode(b); });
+    return 'data:audio/wav;base64,' + btoa(bin);
+  }
+
+  // Debe llamarse dentro del gesto del usuario (clic o toque): Safari solo desbloquea el audio ahí.
+  function audio() {
+    if (!ctx) {
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) { /* no disponible */ }
+      ctx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (isIOS) {
+      if (!silent) { silent = new Audio(silentWav()); silent.loop = true; silent.setAttribute('playsinline', ''); }
+      if (silent.paused) silent.play().catch(() => { /* sin permiso: sigue con Web Audio */ });
+    }
+    if (ctx.state !== 'running') ctx.resume().catch(() => { /* se reintenta en el próximo toque */ });
+    active++;
+    return ctx;
+  }
+  // Cuando no suena nada, se para el silencio en bucle (evita el reproductor en la pantalla de bloqueo).
+  function release() {
+    active = Math.max(0, active - 1);
+    if (!active && silent) silent.pause();
+  }
   function tone(out, m, t, dur, vol) {
     const f = 440 * Math.pow(2, (m - 69) / 12);
     const g = ctx.createGain();
@@ -458,7 +492,7 @@
     const idle = '<span aria-hidden="true">▶</span> ' + esc(text || 'Escuchar');
     b.innerHTML = idle;
     let cur = null, endTimer = null;
-    const reset = () => { cur = null; b.innerHTML = idle; clearTimeout(endTimer); if (onEnd) onEnd(); };
+    const reset = () => { cur = null; b.innerHTML = idle; clearTimeout(endTimer); release(); if (onEnd) onEnd(); };
     b.addEventListener('click', () => {
       if (cur) { cur.stop(); return reset(); }
       cur = play(events, onEvent);
@@ -525,7 +559,7 @@
         next += 60 / bpm;
       }
     }
-    function stop() { clearInterval(timer); timer = null; go.textContent = '▶'; dots.forEach(d => d.classList.remove('on')); }
+    function stop() { clearInterval(timer); timer = null; go.textContent = '▶'; dots.forEach(d => d.classList.remove('on')); release(); }
     go.addEventListener('click', () => {
       if (timer) return stop();
       audio(); beat = 0; next = ctx.currentTime + 0.05;
