@@ -39,7 +39,7 @@
           { n: 17, file: '17-dominantes-secundarios', title: 'Dominantes secundarios', desc: 'E7 → Am, A7 → Dm y el precioso F → Fm → C', ready: true },
           { n: 18, file: '18-circulo-de-quintas', title: 'El círculo de quintas', desc: 'Tu mapa para cambiar de tonalidad: acordes pivote, relativos y paralelos', ready: true },
           { n: 19, file: '19-colores-especiales', title: 'Colores especiales', desc: 'G7 → G+ → C, disminuidos simétricos y sustituto tritonal', ready: true },
-          { n: 20, file: '20-tu-primera-cancion', title: 'Tu primera canción', desc: 'Forma A/B, progresión, melodía y grabación', ready: false }
+          { n: 20, file: '20-tu-primera-cancion', title: 'Tu primera canción', desc: 'Forma A/B, progresión, melodía y grabación', ready: true }
         ] }
     ]
   };
