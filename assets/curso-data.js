@@ -17,7 +17,7 @@
         lessons: [
           { n: 5, file: '05-inversiones', title: 'Inversiones: moverse sin saltar', desc: 'C–F–G y C–G–Am–F con conducción de voces: la mano apenas se mueve', ready: true },
           { n: 6, file: '06-patrones-de-acompanamiento', title: 'Patrones de acompañamiento', desc: 'Bloques, corcheas, balada, arpegio y síncopa pop', ready: true },
-          { n: 7, file: '07-hojas-de-acordes', title: 'Leer una hoja de acordes', desc: 'Compases, repeticiones, C/E (bajo distinto), sus2, sus4 y add9', ready: false },
+          { n: 7, file: '07-hojas-de-acordes', title: 'Leer una hoja de acordes', desc: 'Compases, repeticiones, C/E (bajo distinto), sus2, sus4 y add9', ready: true },
           { n: 8, file: '08-tonalidades-y-numeros', title: 'Tonalidades y números', desc: 'I–V–vi–IV en cualquier tono: transportar una canción en segundos', ready: false }
         ] },
       { n: 3, title: 'Blues', sub: 'Los 12 compases que dieron origen al rock y al pop', c1: '#b8860b', c2: '#f5b700',

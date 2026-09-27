@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 7 · Leer una hoja de acordes</title>
+<meta name="description" content="Compases, repeticiones, acordes con barra como C/E, sus2, sus4 y add9: aprende a leer cualquier hoja de acordes, también las de internet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+<style>
+  .lyric { margin: 16px 0; padding: 18px 20px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow);
+    font: 500 1rem/1.35 ui-monospace, 'Cascadia Mono', 'Consolas', 'Menlo', monospace; overflow-x: auto; white-space: pre; color: var(--ink); }
+  .lyric .ch { color: var(--accent-ink); font-weight: 800; }
+  .lyric .tag { color: var(--muted); font-weight: 700; }
+  .sheet .two { justify-content: space-between; }
+  .sheet .rep { font: 800 1.2rem 'Inter', sans-serif; color: var(--accent-ink); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#anatomia">Anatomía</a>
+      <a href="#simbolos">Símbolos</a>
+      <a href="#barra">C/E</a>
+      <a href="#sus">sus y add9</a>
+      <a href="#internet">Internet</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 2 · Lección 7</span>
+    <h1>Leer una <em>hoja de acordes</em></h1>
+    <p class="lead">Una hoja de acordes es el mapa de una canción: te dice qué acorde tocar y durante cuánto tiempo. Hoy aprendes a leer todos sus símbolos, desde las repeticiones hasta acordes como <span class="chord maj">C/E</span> o <span class="chord maj">Csus4</span>, para poder tocar casi cualquier canción que encuentres.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 5–7 días</span>
+      <span class="chip">🎹 Antes: lecciones 5 y 6</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">🗺️</span><span>Entender la <strong>estructura</strong> de una hoja: secciones, compases y repeticiones.</span></li>
+      <li><span class="ic">➗</span><span>Tocar <strong>acordes con barra</strong> (C/E, G/B, Am/G) y crear líneas de bajo que caminan.</span></li>
+      <li><span class="ic">✨</span><span>Conocer los colores <strong>sus2, sus4 y add9</strong> y saber cómo resuelven.</span></li>
+      <li><span class="ic">🌐</span><span>Seguir una hoja de <strong>internet</strong> con los acordes escritos encima de la letra.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. ANATOMÍA ============ -->
+  <section class="block" id="anatomia">
+    <h2><span class="step-no">1</span>Anatomía de una hoja de acordes</h2>
+    <p>Esta es una hoja de acordes típica de una canción pop. Cada casilla es un <strong>compás</strong> de 4 pulsos, y las líneas verticales son las <strong>barras de compás</strong>, que separan un compás del siguiente. Los rótulos en gris dicen en qué parte de la canción estás.</p>
+
+    <div class="sheet" role="table" aria-label="Hoja de acordes de ejemplo con intro, estrofa y estribillo">
+      <div class="lbl">Intro</div>
+      <div>C</div><div>G</div><div>Am</div><div>F</div>
+      <div class="lbl">Estrofa · x2</div>
+      <div>C</div><div>G</div><div>Am</div><div>F</div>
+      <div>C</div><div>G</div><div class="two"><span>F</span><span>G</span></div><div>C</div>
+      <div class="lbl">Estribillo</div>
+      <div>F</div><div>G</div><div>C</div><div>Am</div>
+      <div>F</div><div>G</div><div>C</div><div>C</div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px">🏷️ Secciones</h4><p style="margin:0;color:var(--ink-2)"><strong>Intro</strong> (entrada instrumental), <strong>estrofa</strong> (la parte que cuenta la historia; la música se repite, la letra cambia) y <strong>estribillo</strong> (la parte que se repite igual y todo el mundo canta).</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">▭ Compases</h4><p style="margin:0;color:var(--ink-2)">Cada casilla dura <strong>4 pulsos</strong>. Si pone un solo acorde, lo tocas en el 1 y lo mantienes (o repites con tu patrón) hasta la casilla siguiente.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">x2</h4><p style="margin:0;color:var(--ink-2)">«x2» junto al rótulo significa que <strong>toda esa sección se toca dos veces</strong> seguidas antes de pasar a la siguiente.</p></div>
+    </div>
+
+    <p style="margin-top:16px">Escucha la estrofa. Fíjate en el compás 7: tiene <strong>dos acordes</strong>, así que cada uno dura <strong>2 pulsos</strong>.</p>
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2","beats":2},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2","beats":2},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"}],
+      "bpm":84,"pattern":"X.C.C.C."}'>
+      <p class="fig-title">La estrofa de la hoja, compás a compás</p>
+      <figcaption>Ocho compases con el patrón de negras. En el penúltimo, <b>F</b> ocupa los pulsos 1 y 2 y <b>G</b>, el 3 y el 4. El cambio a mitad de compás es lo que más cuesta al principio: prepara el G mientras cuentas «2».</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 2. SÍMBOLOS ============ -->
+  <section class="block" id="simbolos">
+    <h2><span class="step-no">2</span>Los símbolos que vas a encontrar</h2>
+
+    <h3>Dos acordes en un compás</h3>
+    <p>Si en una casilla hay dos acordes, el compás se reparte a partes iguales: <strong>2 pulsos cada uno</strong>.</p>
+    <div class="sheet" style="grid-template-columns:1fr;max-width:260px"><div class="two"><span>F</span><span>G</span></div></div>
+    <div class="beats" aria-label="F en los pulsos 1 y 2, G en los pulsos 3 y 4">
+      <div class="hit"><b>1</b><small>F</small></div>
+      <div class="hold"><b>2</b><small>mantén F</small></div>
+      <div class="hit"><b>3</b><small>G</small></div>
+      <div class="hold"><b>4</b><small>mantén G</small></div>
+    </div>
+
+    <h3>La barra inclinada «/»: un pulso más</h3>
+    <p>A veces el reparto no es a partes iguales. Entonces cada pulso se escribe con un símbolo: un acorde o una barra inclinada <strong>/</strong>, que significa «sigue el mismo acorde un pulso más».</p>
+    <div class="sheet" style="grid-template-columns:1fr;max-width:260px"><div class="two"><span>C</span><span>/</span><span>/</span><span>G</span></div></div>
+    <div class="beats" aria-label="C en los pulsos 1, 2 y 3; G en el pulso 4">
+      <div class="hit"><b>1</b><small>C</small></div>
+      <div class="hold"><b>2</b><small>/ sigue C</small></div>
+      <div class="hold"><b>3</b><small>/ sigue C</small></div>
+      <div class="hit"><b>4</b><small>G</small></div>
+    </div>
+
+    <h3>Repeticiones y otras abreviaturas</h3>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Símbolo</th><th>Qué significa</th></tr></thead>
+        <tbody>
+          <tr><td><strong>|: … :|</strong></td><td>Signos de repetición: toca lo que hay entre ellos <strong>dos veces</strong>. Si pone «x3» o «x4» al lado, ese número de veces.</td></tr>
+          <tr><td><strong>1. · 2.</strong></td><td>Casillas de primera y segunda vez: la primera vez tocas el final marcado con «1.»; al repetir, te lo saltas y tocas el de «2.».</td></tr>
+          <tr><td><strong>%</strong></td><td>Repite el compás anterior tal cual.</td></tr>
+          <tr><td><strong>N.C.</strong></td><td><em>No chord</em>, «sin acorde»: <strong>no toques</strong>. Suele marcar una parada en la que la voz o un instrumento siguen solos. Cuenta los pulsos en silencio para volver a entrar a tiempo.</td></tr>
+          <tr><td><strong>/</strong></td><td>Un pulso más del acorde anterior (dentro de un compás).</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Así queda una intro con repetición y una parada:</p>
+    <div class="sheet" role="table" aria-label="Intro con signos de repetición y un compás sin acorde">
+      <div class="lbl">Intro · |: … :| = dos veces</div>
+      <div><span class="rep">|:</span> C</div><div>G</div><div>Am</div><div>F <span class="rep">:|</span></div>
+      <div class="lbl">Parada antes de la estrofa</div>
+      <div>C</div><div>%</div><div class="two"><span>G</span><span>/</span><span>/</span><span>/</span></div><div>N.C.</div>
+    </div>
+    <p>Se lee así: C–G–Am–F dos veces; después, C durante dos compases (el <strong>%</strong> repite el anterior), G un compás entero (las tres barras son sus pulsos 2, 3 y 4) y un compás de <strong>silencio</strong>.</p>
+  </section>
+
+  <!-- ============ 3. ACORDES CON BARRA ============ -->
+  <section class="block" id="barra">
+    <h2><span class="step-no">3</span>Acordes con barra: <span class="chord maj">C/E</span></h2>
+    <p>Hasta ahora la izquierda tocaba siempre la fundamental. Un acorde con barra te pide <strong>otra nota en el bajo</strong>. Se lee «C con bajo en E» o «C sobre E»:</p>
+    <div class="grid grid-2">
+      <div class="card"><h4 style="margin:0 0 6px">✋ Antes de la barra: mano derecha</h4><p style="margin:0;color:var(--ink-2)">El <strong>acorde</strong> que toca la derecha. En <strong>C/E</strong>, un acorde de C normal.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">🎸 Después de la barra: mano izquierda</h4><p style="margin:0;color:var(--ink-2)">La nota del <strong>bajo</strong>. En <strong>C/E</strong>, la izquierda toca E en vez de C.</p></div>
+    </div>
+
+    <figure class="kbd" data-chord="C/E" data-alt="C/E: mano izquierda con el 5 en E3 y mano derecha 1-3-5 en C4, E4 y G4"
+      data-kbd='{"from":"D3","to":"A4","lh":{"fingers":{"5":"E3"}},"rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}}}'>
+      <p class="fig-title">C/E · C con bajo en E</p>
+      <figcaption>La derecha, igual que siempre: <b>1–3–5 en C–E–G</b>. La izquierda toca <b>E</b> con el 5. E ya es una nota del acorde de C, así que es C en primera inversión «de verdad»: la nota más grave de todas es la tercera. Suena más ligero, como si el acorde flotara.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="G/B" data-alt="G/B: mano izquierda con el 5 en B2 y mano derecha 1-2-5 en B3, D4 y G4"
+      data-kbd='{"from":"A2","to":"A4","lh":{"fingers":{"5":"B2"}},"rh":{"fingers":{"1":"B3","2":"D4","5":"G4"}}}'>
+      <p class="fig-title">G/B · G con bajo en B</p>
+      <figcaption>Derecha en la posición de G que ya conoces, <b>B–D–G con 1–2–5</b>. Izquierda en <b>B</b>, justo una tecla por debajo de C. Es el acorde puente perfecto entre C y Am.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="Am7/G" data-alt="Am/G: mano izquierda con el 5 en G2 y mano derecha 1-2-5 en C4, E4 y A4"
+      data-kbd='{"from":"F2","to":"B4","lh":{"fingers":{"5":"G2"}},"rh":{"fingers":{"1":"C4","2":"E4","5":"A4"}}}'>
+      <p class="fig-title">Am/G · Am con bajo en G</p>
+      <figcaption>Derecha en <b>C–E–A (1–2–5)</b> e izquierda en <b>G</b>. Aquí el bajo <b>no es una nota de Am</b> (A–C–E): es una nota de paso que suma un color nuevo. Las cuatro notas juntas forman lo que en la lección 9 llamaremos <b>Am7</b>; por eso, en sentido estricto, es un Am7 con G en el bajo.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Nota del bajo (después de la barra)</span><span><i class="dot rh"></i>Acorde (antes de la barra)</span></div>
+    </figure>
+
+    <div class="callout">
+      <p>¿Te encuentras un acorde con barra y no te sale? Toca el acorde de la izquierda de la barra con su bajo normal: <strong>C/E → C</strong>. Sonará algo menos elegante, pero correcto. Lo verás en el kit de supervivencia de la lección 14.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. BAJO DESCENDENTE ============ -->
+  <section class="block" id="bajo">
+    <h2><span class="step-no">4</span>Para qué sirven: el bajo que camina</h2>
+    <p>La razón principal de los acordes con barra es que el bajo se mueva <strong>paso a paso</strong>, como una melodía, en lugar de saltar. Mira qué pasa si encadenas <span class="chord maj">C</span> – <span class="chord maj">G/B</span> – <span class="chord min">Am</span> – <span class="chord min">Am/G</span> – <span class="chord maj">F</span>:</p>
+
+    <figure class="kbd" data-alt="Línea de bajo descendente C, B, A, G, F en la octava grave"
+      data-kbd='{"from":"E2","to":"D3","names":"all",
+        "marks":[{"note":"C3","color":"#fbc58e","main":"C","ink":"#b85a0a"},{"note":"B2","color":"#fbc58e","main":"B","ink":"#b85a0a"},
+                 {"note":"A2","color":"#fbc58e","main":"A","ink":"#b85a0a"},{"note":"G2","color":"#fbc58e","main":"G","ink":"#b85a0a"},
+                 {"note":"F2","color":"#fbc58e","main":"F","ink":"#b85a0a"}],
+        "seq":["C3","B2","A2","G2","F2"],"tempo":0.6,"playLabel":"Escuchar la línea de bajo"}'>
+      <p class="fig-title">La escalera del bajo: C → B → A → G → F</p>
+      <figcaption>Cinco teclas blancas seguidas, bajando. La izquierda toca todas con el <b>5</b> y se desplaza una tecla cada vez. La derecha, mientras tanto, apenas se mueve (posiciones de la lección 5).</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"G/B","rh":["B3","D4","G4"],"bass":"B2"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"Am/G","rh":["C4","E4","A4"],"bass":"G2","partial":true},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F2"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"}],
+      "bpm":76,"pattern":"X.C.C.C."}'>
+      <p class="fig-title">Bajo descendente con acordes con barra</p>
+      <figcaption>Derecha: <b>C–E–G · B–D–G · C–E–A · C–E–A · C–F–A · B–D–G</b>. Izquierda: <b>C · B · A · G · F · G</b>. Al final, G prepara la vuelta a C. Este recurso aparece en muchísimas baladas: cuando lo oigas, lo reconocerás.</figcaption>
+    </figure>
+
+    <div class="callout key">
+      <p><strong>Acorde con barra = acorde / bajo.</strong> La derecha toca lo que hay antes de la barra y la izquierda, la nota de después. Se usan para que el bajo camine por grados vecinos y la canción fluya.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. SUS Y ADD9 ============ -->
+  <section class="block" id="sus">
+    <h2><span class="step-no">5</span>sus2, sus4 y add9: una sola nota cambia</h2>
+    <p>Estos acordes son variaciones de un acorde mayor o menor en las que <strong>cambia o se añade una sola nota</strong>. Parten de <span class="chord maj">C</span> = C–E–G:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Acorde</th><th>Notas</th><th>Qué cambia</th><th>Carácter</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chord maj">C</span></td><td>C · E · G</td><td>—</td><td>Estable, en reposo</td></tr>
+          <tr><td><span class="chord maj">Csus2</span></td><td>C · <strong>D</strong> · G</td><td>La E baja a D</td><td>Abierto, flotante</td></tr>
+          <tr><td><span class="chord maj">Csus4</span></td><td>C · <strong>F</strong> · G</td><td>La E sube a F</td><td>Tenso: pide volver a C</td></tr>
+          <tr><td><span class="chord maj">Cadd9</span></td><td>C · E · G · <strong>D</strong></td><td>Se añade D arriba</td><td>Brillante, muy pop</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>«Sus»</strong> viene de <em>suspendido</em>: se quita la tercera (la E), que es la nota que decide si un acorde es mayor o menor. Sin ella, el acorde queda en el aire, ni alegre ni triste. <strong>«Add9»</strong> significa «añade la novena». Si cuentas teclas blancas desde C (C = 1, D = 2… el C de arriba = 8), la siguiente D es la 9: la novena es una D, y conviene tocarla por encima del acorde.</p>
+
+    <figure class="kbd" data-chord="Csus2" data-alt="Csus2: mano izquierda con el 5 en C3 y mano derecha 1-2-5 en C4, D4 y G4"
+      data-kbd='{"from":"B2","to":"A4","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","2":"D4","5":"G4"}}}'>
+      <p class="fig-title">Csus2 · C–D–G</p>
+      <figcaption>La E baja a <b>D</b>, así que el dedo 2 toca D. Digitación <b>1–2–5</b>. Izquierda en C.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="Csus4" data-alt="Csus4: mano izquierda con el 5 en C3 y mano derecha 1-4-5 en C4, F4 y G4"
+      data-kbd='{"from":"B2","to":"A4","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","4":"F4","5":"G4"}}}'>
+      <p class="fig-title">Csus4 · C–F–G</p>
+      <figcaption>La E sube a <b>F</b>. Como F y G están pegadas, la digitación cómoda es <b>1–4–5</b>. Para resolver a C, levanta el 4 y toca E con el 3: la F «cae» a E.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="Cadd9" data-alt="Cadd9: mano izquierda con el 5 en C3 y mano derecha 1-2-5 en E4, G4 y D5"
+      data-kbd='{"from":"B2","to":"E5","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"E4","2":"G4","5":"D5"}}}'>
+      <p class="fig-title">Cadd9 · C (izquierda) + E–G–D (derecha)</p>
+      <figcaption>Una forma que suena de maravilla: la izquierda pone la <b>C</b> y la derecha toca <b>E–G–D</b> con <b>1–2–5</b>. La C no hace falta repetirla arriba porque ya la tiene el bajo. Entre las dos manos están las cuatro notas: C, E, G y D.</figcaption>
+    </figure>
+
+    <h3>Cómo resuelven</h3>
+    <p>El sus4 casi siempre <strong>resuelve</strong> (vuelve al reposo) en el acorde normal: <strong>Csus4 → C</strong>, la F cae a E. Con el sus2 pasa algo parecido (la D sube a E), aunque es más suave y puede quedarse. El add9, en cambio, es un color que no necesita ir a ningún sitio.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"Csus4","rh":["C4","F4","G4"],"bass":"C3","beats":2},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3","beats":2},
+        {"name":"Csus2","rh":["C4","D4","G4"],"bass":"C3","beats":2},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3","beats":2},
+        {"name":"Cadd9","rh":["E4","G4","D5"],"bass":"C3"}],
+      "bpm":76,"pattern":"X.C.C.C."}'>
+      <p class="fig-title">Tensión y reposo: sus4 → C, sus2 → C y el brillo del add9</p>
+      <figcaption>Escucha cómo <b>Csus4</b> te deja «esperando» y <b>C</b> te devuelve a casa. Lo mismo funciona con cualquier acorde mayor: <b>Gsus4</b> (G–C–D) → <b>G</b> (G–B–D), <b>Fsus4</b> (F–B♭–C) → <b>F</b> (F–A–C).</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 6. INTERNET ============ -->
+  <section class="block" id="internet">
+    <h2><span class="step-no">6</span>Las hojas de internet: acordes sobre la letra</h2>
+    <p>En las webs de acordes casi nunca verás casillas de compás. Lo normal es la <strong>letra</strong> con los acordes escritos <strong>encima</strong>. La regla es sencilla: <strong>el acorde cambia en la sílaba que tiene justo debajo</strong>, y sigue sonando hasta que aparece el siguiente.</p>
+    <p>Un ejemplo con una letra inventada:</p>
+
+<div class="lyric" role="img" aria-label="Letra inventada con acordes C, G, Am y F escritos encima de las sílabas donde cambian"><span class="tag">[Verse 1]</span>
+<span class="ch">C</span>                            <span class="ch">G</span>
+Cruzo la plaza con el sol de frente,
+<span class="ch">Am</span>                            <span class="ch">F</span>
+llevo tu nombre escrito en la mano.
+<span class="ch">C</span>                        <span class="ch">G</span>
+Nadie se entera, pasa la gente,
+        <span class="ch">F</span>      <span class="ch">G</span>        <span class="ch">C</span>
+y yo me quedo aquí, esperándote.</div>
+
+    <p>Cómo leerlo:</p>
+    <div class="grid grid-2">
+      <div class="card"><h4 style="margin:0 0 6px">1 · Cambia donde está escrito</h4><p style="margin:0;color:var(--ink-2)">El <strong>C</strong> suena desde «<strong>Cru</strong>zo» y el <strong>G</strong> entra en «de <strong>fren</strong>te». Canta (o tararea) la letra y cambia de acorde justo en esa sílaba.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">2 · El acorde se queda</h4><p style="margin:0;color:var(--ink-2)">Entre dos acordes no hay silencio: el anterior sigue sonando (con tu patrón) hasta que llega el siguiente, aunque pasen varias palabras.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">3 · Pásalo a compases</h4><p style="margin:0;color:var(--ink-2)">Si escuchas el original y cuentas, este fragmento sería: | C | G | Am | F | C | G | F G | C |. Casi siempre, cada cambio cae en el <strong>pulso 1</strong> de un compás.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">4 · Escucha el original</h4><p style="margin:0;color:var(--ink-2)">La hoja no dice el ritmo ni cuánto dura cada acorde. Escucha la canción con la hoja delante antes de tocar: el oído completa lo que el papel no dice.</p></div>
+    </div>
+
+    <h3>Vocabulario en inglés</h3>
+    <p>Muchas webs usan los rótulos en inglés:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>En la web</th><th>Significa</th></tr></thead>
+        <tbody>
+          <tr><td>Intro</td><td>Entrada instrumental</td></tr>
+          <tr><td>Verse</td><td>Estrofa</td></tr>
+          <tr><td>Pre-Chorus</td><td>Preestribillo (el tramo que lleva al estribillo)</td></tr>
+          <tr><td>Chorus</td><td>Estribillo</td></tr>
+          <tr><td>Bridge</td><td>Puente (una parte distinta, normalmente hacia el final)</td></tr>
+          <tr><td>Outro</td><td>Final</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout warn">
+      <p><strong>Ojo con el «Capo».</strong> Muchas hojas están hechas para guitarra. Si pone «Capo 2», el guitarrista toca las formas escritas pero suena <strong>2 semitonos más agudo</strong>. Si tocas los acordes tal cual, sonarás en otra tonalidad que el disco. Para sonar igual, sube cada acorde 2 semitonos (C → D, G → A, Am → Bm…). En la lección 8 aprenderás a hacerlo en segundos.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">7</span>Rutina diaria</h2>
+    <p>Unos 18 minutos. Toca siempre con el metrónomo y cuenta en voz alta en los compases con dos acordes.</p>
+
+    <div data-metro data-bpm="72"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>La hoja de la sección 1</h4>
+        <p>Toca la hoja completa: intro, estrofa dos veces y estribillo, con el patrón de negras. Sin parar entre secciones. En el compás «F G», cambia en el pulso 3.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>C / / G y la parada</h4>
+        <p>Toca | C / / G | cuatro veces seguidas, y luego la «parada» de la sección 2 (C, %, G / / /, N.C.). En el N.C., levanta las manos y cuenta los 4 pulsos en voz alta.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>El bajo que camina</h4>
+        <p>C – G/B – Am – Am/G – F – G. Primero solo la izquierda (C, B, A, G, F, G) con el 5. Después, manos juntas, un acorde por compás a 66 ppm.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Suspensiones</h4>
+        <p>Dos pulsos de Csus4 y dos de C, cuatro veces. Después Gsus4 → G (derecha: G–C–D con 1–4–5 → G–B–D con 1–3–5). Nota cómo la tensión se resuelve.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>Tu primera hoja de internet</h4>
+        <p>Busca una canción que conozcas y que solo tenga acordes que ya sabes. Léela con el original sonando y márcate con un lápiz dónde cae cada cambio. Después, tócala tú solo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 8 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l7-a"> Sigo una hoja con secciones, x2 y signos de repetición sin perderme.</label></li>
+      <li><label><input type="checkbox" data-save="l7-b"> Toco los compases con dos acordes (2 + 2) y con barras inclinadas (C / / G) a tiempo.</label></li>
+      <li><label><input type="checkbox" data-save="l7-c"> Sé qué toca cada mano en C/E, G/B y Am/G, y toco el bajo descendente C–B–A–G–F.</label></li>
+      <li><label><input type="checkbox" data-save="l7-d"> Explico qué nota cambia en sus2, sus4 y add9, y resuelvo Csus4 → C.</label></li>
+      <li><label><input type="checkbox" data-save="l7-e"> Toco una canción real siguiendo los acordes escritos encima de la letra.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <nav class="pager" data-pager="7" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>
