@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 15 · Cerca y lejos: las funciones</title>
+<meta name="description" content="Tónica (C, Em, Am), subdominante (Dm, F) y dominante (G7, B°): tensión y reposo para componer con intención.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#comunes">Notas comunes</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#tension">Tensión</a>
+      <a href="#componer">Componer</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 5 · Lección 15</span>
+    <h1>Cerca y lejos: <em>las funciones</em></h1>
+    <p class="lead">Una progresión es una pequeña historia: sales de casa, te alejas, algo se tensa y vuelves. Hoy vas a aprender a medir lo «cerca» o «lejos» que está cada acorde de <span class="chord maj">C</span> y a usar esa distancia para componer con intención, no al azar.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 5–7 días</span>
+      <span class="chip">✍️ Papel y lápiz a mano</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">🔍</span><span>Saber cuántas <strong>notas comparte</strong> cualquier acorde con C, y qué significa eso para el oído.</span></li>
+      <li><span class="ic">🏠</span><span>Clasificar los acordes de C en tres familias: <strong>tónica, subdominante y dominante</strong>.</span></li>
+      <li><span class="ic">⚡</span><span>Distinguir la tensión <strong>interna</strong> de un acorde de la tensión que le da el <strong>contexto</strong>.</span></li>
+      <li><span class="ic">✍️</span><span>Escribir tus propias progresiones con la regla <strong>reposo → preparación → tensión → reposo</strong>.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. HISTORIA ============ -->
+  <section class="block" id="historia">
+    <h2><span class="step-no">1</span>Una progresión cuenta una historia</h2>
+    <p>Hasta ahora has tocado progresiones que ya existían. Para inventar las tuyas necesitas saber <strong>qué hace cada acorde</strong> dentro de la canción. La idea de este módulo es sencilla: en una tonalidad hay un acorde que suena a <strong>casa</strong> (en la tonalidad de C, el propio <span class="chord maj">C</span>) y todos los demás están más <strong>cerca</strong> o más <strong>lejos</strong> de él.</p>
+    <p>Cuando un acorde está cerca, el oído se queda tranquilo: es <strong>reposo</strong>. Cuando está lejos, notas <strong>tensión</strong>, unas ganas de que la música siga y vuelva a casa. Una buena progresión alterna las dos cosas, como un buen relato alterna calma y conflicto.</p>
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px">🏠 Reposo</h4><p style="margin:0;color:var(--ink-2)">Estás en casa. La música podría terminar aquí y no echarías nada en falta.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">🚶 Preparación</h4><p style="margin:0;color:var(--ink-2)">Sales de casa. Algo cambia, pero todavía no hay prisa por volver.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">⚡ Tensión</h4><p style="margin:0;color:var(--ink-2)">El acorde «pide» resolver. Si paras aquí, la frase se queda en el aire.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. NOTAS COMUNES ============ -->
+  <section class="block" id="comunes">
+    <h2><span class="step-no">2</span>Medir la distancia: notas en común</h2>
+    <p>¿Cómo se mide lo cerca que está un acorde de <span class="chord maj">C</span>? La forma más práctica es <strong>contar las notas que comparte</strong> con él. <span class="chord maj">C</span> tiene C, E y G. Cuantas más de esas notas conserve el otro acorde, más se parecerá a casa.</p>
+    <p>En los diagramas siguientes verás tres colores: en <strong>rojo</strong>, las notas <em>comunes</em> (se quedan); en <strong>gris</strong>, las notas de C que <em>salen</em>; y con el color del nuevo acorde, las que <em>entran</em> (celeste si es menor, rosa si es mayor).</p>
+
+    <div class="grid grid-2">
+      <figure class="kbd" data-alt="C y Am comparten C y E; G se cambia por A"
+        data-kbd='{"from":"B3","to":"D5",
+          "marks":[{"note":"C4","color":"#c9184a","main":"C","sub":"común","ink":"#c9184a"},
+                   {"note":"E4","color":"#c9184a","main":"E","sub":"común","ink":"#c9184a"},
+                   {"note":"G4","color":"#e7dfd1","main":"G","sub":"sale","ink":"#7a7489"},
+                   {"note":"A4","color":"#25b7e8","main":"A","sub":"entra","ink":"#0e7fa8"}],
+          "seq":[["C4","E4","G4"],["C4","E4","A4"],["C4","E4","G4"],["C4","E4","A4"]],"tempo":0.9,"playLabel":"Escuchar C → Am"}'>
+        <p class="fig-title">C → Am · dos notas en común</p>
+        <figcaption><b>Am</b> (A C E) conserva <b>C y E</b>. Solo cambia una nota: G sube un tono hasta A. Por eso suenan tan parecidos: <b>Am está muy cerca de casa</b>.</figcaption>
+      </figure>
+
+      <figure class="kbd" data-alt="C y Em comparten E y G; C se cambia por B"
+        data-kbd='{"from":"A3","to":"B4",
+          "marks":[{"note":"B3","color":"#25b7e8","main":"B","sub":"entra","ink":"#0e7fa8"},
+                   {"note":"C4","color":"#e7dfd1","main":"C","sub":"sale","ink":"#7a7489"},
+                   {"note":"E4","color":"#c9184a","main":"E","sub":"común","ink":"#c9184a"},
+                   {"note":"G4","color":"#c9184a","main":"G","sub":"común","ink":"#c9184a"}],
+          "seq":[["C4","E4","G4"],["B3","E4","G4"],["C4","E4","G4"],["B3","E4","G4"]],"tempo":0.9,"playLabel":"Escuchar C → Em"}'>
+        <p class="fig-title">C → Em · dos notas en común</p>
+        <figcaption><b>Em</b> (E G B) conserva <b>E y G</b>. Solo cambia una nota: C baja un semitono hasta B. También está <b>muy cerca</b>.</figcaption>
+      </figure>
+    </div>
+
+    <div class="grid grid-2">
+      <figure class="kbd" data-alt="C y F comparten solo C; E y G se cambian por F y A"
+        data-kbd='{"from":"B3","to":"C5",
+          "marks":[{"note":"C4","color":"#c9184a","main":"C","sub":"común","ink":"#c9184a"},
+                   {"note":"E4","color":"#e7dfd1","main":"E","sub":"sale","ink":"#7a7489"},
+                   {"note":"F4","color":"#ff5fa2","main":"F","sub":"entra","ink":"#c9186e"},
+                   {"note":"G4","color":"#e7dfd1","main":"G","sub":"sale","ink":"#7a7489"},
+                   {"note":"A4","color":"#ff5fa2","main":"A","sub":"entra","ink":"#c9186e"}],
+          "seq":[["C4","E4","G4"],["C4","F4","A4"],["C4","E4","G4"],["C4","F4","A4"]],"tempo":0.9,"playLabel":"Escuchar C → F"}'>
+        <p class="fig-title">C → F · una nota en común</p>
+        <figcaption><b>F</b> (F A C) solo conserva <b>C</b>. Cambian dos notas: E sube a F y G sube a A. Ya te has alejado un poco.</figcaption>
+      </figure>
+
+      <figure class="kbd" data-alt="C y Dm no comparten ninguna nota"
+        data-kbd='{"from":"B3","to":"C5",
+          "marks":[{"note":"C4","color":"#e7dfd1","main":"C","sub":"sale","ink":"#7a7489"},
+                   {"note":"D4","color":"#25b7e8","main":"D","sub":"entra","ink":"#0e7fa8"},
+                   {"note":"E4","color":"#e7dfd1","main":"E","sub":"sale","ink":"#7a7489"},
+                   {"note":"F4","color":"#25b7e8","main":"F","sub":"entra","ink":"#0e7fa8"},
+                   {"note":"G4","color":"#e7dfd1","main":"G","sub":"sale","ink":"#7a7489"},
+                   {"note":"A4","color":"#25b7e8","main":"A","sub":"entra","ink":"#0e7fa8"}],
+          "seq":[["C4","E4","G4"],["D4","F4","A4"],["C4","E4","G4"],["D4","F4","A4"]],"tempo":0.9,"playLabel":"Escuchar C → Dm"}'>
+        <p class="fig-title">C → Dm · ninguna nota en común</p>
+        <figcaption><b>Dm</b> (D F A) no comparte <b>ninguna</b> nota con C: cambian las tres. El oído nota claramente que ha salido de casa.</figcaption>
+      </figure>
+    </div>
+
+    <p>Haz lo mismo con todos los acordes de la tonalidad de C (los que viste en la lección 8) y obtienes esta tabla:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Acorde</th><th>Notas</th><th>Comunes con C</th><th>Distancia</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chord maj">C</span></td><td>C E G</td><td>las 3</td><td>casa</td></tr>
+          <tr><td><span class="chord min">Am</span></td><td>A C E</td><td>C, E (2)</td><td>muy cerca</td></tr>
+          <tr><td><span class="chord min">Em</span></td><td>E G B</td><td>E, G (2)</td><td>muy cerca</td></tr>
+          <tr><td><span class="chord maj">F</span></td><td>F A C</td><td>C (1)</td><td>algo lejos</td></tr>
+          <tr><td><span class="chord maj">G</span> / <span class="chord dom">G7</span></td><td>G B D (F)</td><td>G (1)</td><td>algo lejos</td></tr>
+          <tr><td><span class="chord min">Dm</span></td><td>D F A</td><td>ninguna</td><td>lejos</td></tr>
+          <tr><td><span class="chord dim">B°</span></td><td>B D F</td><td>ninguna</td><td>lejos</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p>Contar notas comunes es un buen primer termómetro, pero no lo explica todo. <span class="chord maj">F</span> y <span class="chord maj">G</span> comparten las dos una sola nota con C y, sin embargo, suenan muy distintos: G «empuja» hacia casa mucho más que F. La razón está en <em>qué</em> notas tienen, y eso es lo que vas a ver ahora.</p>
+    </div>
+  </section>
+
+  <!-- ============ 3. FUNCIONES ============ -->
+  <section class="block" id="funciones">
+    <h2><span class="step-no">3</span>Tres familias: tónica, subdominante y dominante</h2>
+    <p>La <strong>función</strong> de un acorde es el papel que cumple en la historia. En música pop basta con tres papeles, y cada acorde de C pertenece a una familia según las notas que contiene:</p>
+    <ul>
+      <li><strong>Tónica (reposo):</strong> <span class="chord maj">C</span>, <span class="chord min">Am</span> y <span class="chord min">Em</span>. Se parecen a C (comparten dos notas con él) y <strong>no tienen F</strong>.</li>
+      <li><strong>Subdominante (preparación):</strong> <span class="chord min">Dm</span> y <span class="chord maj">F</span>. Las dos <strong>tienen F</strong>, pero no B. El F roza al E del acorde de casa (están a un semitono) y eso nos saca de ella con suavidad.</li>
+      <li><strong>Dominante (tensión):</strong> <span class="chord dom">G7</span> y <span class="chord dim">B°</span>. Tienen <strong>B y F a la vez</strong>. Esa pareja es la que pide volver a casa.</li>
+    </ul>
+
+    <figure class="kbd">
+      <p class="fig-title">Las tres familias de C</p>
+      <svg viewBox="0 0 640 330" role="img" aria-label="Tres grupos de acordes: tónica con C, Am y Em; subdominante con F y Dm; dominante con G7 y B°. Flechas de tónica a subdominante, de subdominante a dominante y de dominante de vuelta a tónica." xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
+        <defs>
+          <marker id="l15-arr" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#1d1a2e"/></marker>
+        </defs>
+        <rect x="15" y="20" width="160" height="232" rx="18" fill="#f7f2ea" stroke="#e7dfd1" stroke-width="1.5"/>
+        <rect x="240" y="20" width="160" height="232" rx="18" fill="#f7f2ea" stroke="#e7dfd1" stroke-width="1.5"/>
+        <rect x="465" y="20" width="160" height="232" rx="18" fill="#f7f2ea" stroke="#e7dfd1" stroke-width="1.5"/>
+        <text x="95" y="46" text-anchor="middle" font-size="14" font-weight="800" fill="#1d1a2e" letter-spacing="1">TÓNICA</text>
+        <text x="95" y="64" text-anchor="middle" font-size="12" fill="#7a7489">reposo</text>
+        <text x="320" y="46" text-anchor="middle" font-size="14" font-weight="800" fill="#1d1a2e" letter-spacing="1">SUBDOMINANTE</text>
+        <text x="320" y="64" text-anchor="middle" font-size="12" fill="#7a7489">preparación</text>
+        <text x="545" y="46" text-anchor="middle" font-size="14" font-weight="800" fill="#1d1a2e" letter-spacing="1">DOMINANTE</text>
+        <text x="545" y="64" text-anchor="middle" font-size="12" fill="#7a7489">tensión</text>
+        <circle cx="95" cy="112" r="30" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="95" y="118" text-anchor="middle" font-size="18" font-weight="800" fill="#1d1a2e">C</text>
+        <circle cx="60" cy="188" r="28" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="60" y="194" text-anchor="middle" font-size="17" font-weight="800" fill="#1d1a2e">Am</text>
+        <circle cx="130" cy="188" r="28" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="130" y="194" text-anchor="middle" font-size="17" font-weight="800" fill="#1d1a2e">Em</text>
+        <circle cx="320" cy="112" r="30" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="320" y="118" text-anchor="middle" font-size="18" font-weight="800" fill="#1d1a2e">F</text>
+        <circle cx="320" cy="188" r="28" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="320" y="194" text-anchor="middle" font-size="17" font-weight="800" fill="#1d1a2e">Dm</text>
+        <circle cx="545" cy="112" r="30" fill="#f5b700" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="545" y="118" text-anchor="middle" font-size="18" font-weight="800" fill="#1d1a2e">G7</text>
+        <circle cx="545" cy="188" r="28" fill="#8b5cf6" stroke="#1d1a2e" stroke-width="2"/>
+        <text x="545" y="194" text-anchor="middle" font-size="17" font-weight="800" fill="#1d1a2e">B°</text>
+        <text x="95" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#4b4660">sin F</text>
+        <text x="320" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#4b4660">con F</text>
+        <text x="545" y="240" text-anchor="middle" font-size="12" font-weight="700" fill="#4b4660">con B y F</text>
+        <path d="M182 150 L233 150" fill="none" stroke="#1d1a2e" stroke-width="2.4" marker-end="url(#l15-arr)"/>
+        <text x="208" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#4b4660">sale</text>
+        <path d="M407 150 L458 150" fill="none" stroke="#1d1a2e" stroke-width="2.4" marker-end="url(#l15-arr)"/>
+        <text x="433" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#4b4660">tensa</text>
+        <path d="M545 258 Q320 336 95 258" fill="none" stroke="#1d1a2e" stroke-width="2.4" marker-end="url(#l15-arr)"/>
+        <text x="320" y="286" text-anchor="middle" font-size="12" font-weight="800" fill="#1d1a2e">resuelve</text>
+      </svg>
+      <figcaption>Los colores son los de todo el curso: <b>rosa</b> mayor, <b>celeste</b> menor, <b>amarillo</b> dominante y <b>violeta</b> disminuido. El camino típico va de izquierda a derecha y vuelve a casa por abajo. También puedes saltarte la subdominante e ir directamente de la tónica a la dominante.</figcaption>
+    </figure>
+
+    <h3>El secreto de la dominante: el tritono</h3>
+    <p>B y F están a <strong>6 semitonos</strong>: justo la mitad de una octava. A esa distancia se la llama <strong>tritono</strong> (son tres tonos) y es el intervalo más inestable de la escala. Además, cada una de sus notas está a un semitono de una nota de C: <strong>B sube a C</strong> y <strong>F baja a E</strong>. A la nota B se la llama <strong>sensible</strong>, porque «siente» la atracción de la C que tiene justo encima.</p>
+
+    <div class="grid grid-2">
+      <figure class="kbd" data-chord="G7" data-alt="G7 con la mano derecha: B D F G con los dedos 1 2 3 5"
+        data-kbd='{"from":"A3","to":"A4","rh":{"fingers":{"1":"B3","2":"D4","3":"F4","5":"G4"}},
+          "seq":[["B3","D4","F4","G4"],["C4","E4","G4"]],"tempo":1,"playLabel":"G7 → C"}'>
+        <p class="fig-title">G7 · la posición cercana</p>
+        <figcaption>La posición que ya conoces de la lección 9: <b>B–D–F–G</b> con <b>1–2–3–5</b>. El pulgar (B) y el dedo 3 (F) forman el tritono. Al resolver, el 1 sube a C y el 3 baja a E.</figcaption>
+      </figure>
+      <figure class="kbd" data-chord="B°" data-alt="B disminuido con la mano derecha: B D F con los dedos 1 3 5"
+        data-kbd='{"from":"A3","to":"A4","rh":{"fingers":{"1":"B3","3":"D4","5":"F4"}},
+          "seq":[["B3","D4","F4"],["C4","E4","G4"]],"tempo":1,"playLabel":"B° → C"}'>
+        <p class="fig-title">B° · el mismo tritono</p>
+        <figcaption><b>B° = B–D–F</b> con <b>1–3–5</b>. Es un <b>disminuido</b>: dos terceras menores seguidas (3 + 3 semitonos). Es un G7 sin la G, por eso hace el mismo trabajo.</figcaption>
+      </figure>
+    </div>
+
+    <div class="callout key">
+      <p><strong>La idea central:</strong> la función depende de dos notas clave. <strong>Sin F</strong> → tónica (reposo). <strong>Con F</strong> → subdominante (preparación). <strong>Con B y F juntas</strong> → dominante (tensión). Una historia armónica típica es <strong>T → S → D → T</strong>.</p>
+    </div>
+    <div class="callout">
+      <p>Dos matices para ser exactos. <span class="chord maj">G</span> sin séptima (G B D) también es dominante, porque tiene la sensible B, aunque empuja menos que G7. Y <span class="chord min">Em</span> es la tónica más ambigua: contiene B, así que tiene «un pie» en la dominante. Por eso a veces suena a reposo y a veces a camino.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. TENSIÓN ============ -->
+  <section class="block" id="tension">
+    <h2><span class="step-no">4</span>Dos tipos de tensión: interna y de contexto</h2>
+    <p>Hay acordes que suenan tensos <strong>por sí solos</strong>, aunque los toques sin nada alrededor: <span class="chord dom">G7</span> y <span class="chord dim">B°</span> llevan dentro el tritono, que choca. Es una <strong>tensión interna</strong>.</p>
+    <p>Otros acordes son perfectamente estables por sí mismos, pero suenan extraños <strong>por el lugar donde aparecen</strong>. Es la <strong>tensión de contexto</strong>. El ejemplo extremo en C es <span class="chord maj">F♯</span>: un acorde mayor normal y corriente, pero que no comparte ni una nota con C y usa tres teclas negras que la tonalidad de C no tiene.</p>
+
+    <figure class="kbd" data-chord="F#" data-alt="Acorde de F sostenido mayor: mano izquierda F sostenido 3, mano derecha F sostenido, A sostenido y C sostenido"
+      data-kbd='{"from":"E3","to":"D5","lh":{"fingers":{"5":"F#3"}},"rh":{"fingers":{"1":"F#4","3":"A#4","5":"C#5"}},
+        "seq":[["C3","C4","E4","G4"],["F#3","F#4","A#4","C#5"],["C3","C4","E4","G4"]],"tempo":1.1,"playLabel":"Escuchar C → F♯ → C"}'>
+      <p class="fig-title">F♯ mayor · lejísimos de C</p>
+      <figcaption><b>MI:</b> 5 en F♯. <b>MD:</b> 1–3–5 en <b>F♯–A♯–C♯</b>, tres teclas negras. Solo, suena tan limpio como C. Después de C, en cambio, suena a «otro mundo»: la tensión no está en el acorde, está en la <b>distancia</b>.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Bajo</span><span><i class="dot rh"></i>Acorde</span></div>
+    </figure>
+
+    <p>Hay un mapa que muestra muy bien esa distancia: el <strong>círculo de quintas</strong>, que estudiarás a fondo en la lección 18. De momento basta con mirarlo: los acordes de C están todos juntos, arriba, y F♯ está en el extremo opuesto.</p>
+
+    <figure class="kbd" data-alt="Círculo de quintas con los acordes de C resaltados arriba y F sostenido en el lado opuesto"
+      data-circle='{"highlight":["C","G","F","Am","Em","Dm","F#"],"arrows":[["G","C"],["F","C","dashed"]],"center":"C"}'>
+      <p class="fig-title">Cerca y lejos en el mapa</p>
+      <figcaption>Los acordes de la familia de C (<b>C, F, G, Am, Dm y Em</b>) ocupan una misma zona del círculo. <b>F♯</b>, abajo, es el punto más lejano. La flecha continua es la vuelta a casa desde la dominante; la discontinua, la vuelta más suave desde F (la cadencia del «amén»).</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 5. COMPONER ============ -->
+  <section class="block" id="componer">
+    <h2><span class="step-no">5</span>Componer alternando funciones</h2>
+    <p>Ahora ya puedes leer una progresión como una historia. Debajo de cada acorde verás su grado y su función: <strong>T</strong> (tónica), <strong>S</strong> (subdominante) y <strong>D</strong> (dominante).</p>
+
+    <figure class="kbd" data-prog='{"chords":["C","Em","F","Dm","G7","C"],"nums":["I · T","iii · T","IV · S","ii · S","V7 · D","I · T"],"bpm":76}'>
+      <p class="fig-title">Salir despacio</p>
+      <figcaption>Dos acordes de reposo, dos de preparación, uno de tensión y vuelta a casa. Fíjate en cómo <b>Em</b> ya empieza a moverse (C baja a B) sin salir del todo de la familia de la tónica.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":["Am","Dm","F","G7","C"],"nums":["vi · T","ii · S","IV · S","V7 · D","I · T"],"bpm":76}'>
+      <p class="fig-title">Empezar en la tónica menor</p>
+      <figcaption><b>Am</b> también es tónica, pero más melancólica que C. Empezar por ella y terminar en C da una sensación de «de la sombra a la luz».</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":["C","Am","C","B°","C"],"nums":["I · T","vi · T","I · T","vii° · D","I · T"],"bpm":76}'>
+      <p class="fig-title">Un pequeño suspiro</p>
+      <figcaption>Casi todo es reposo y la tensión llega en un único acorde, <b>B°</b>, que resuelve al instante: B sube a C y F baja a E. Es la historia más corta posible.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>Estas «reglas» describen lo que el oído espera, no lo que está prohibido. Ir de la dominante a la subdominante (G → F), por ejemplo, es muy típico del rock y del blues. Conocer la regla te permite romperla a propósito.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. CADENCIAS ============ -->
+  <section class="block" id="cadencias">
+    <h2><span class="step-no">6</span>Cadencias: cómo cerrar una frase</h2>
+    <p>Una <strong>cadencia</strong> es la fórmula de acordes con la que termina una frase, como el punto final de una oración. Las más convincentes acaban con <strong>dominante → tónica</strong>.</p>
+
+    <figure class="kbd" data-prog='{"chords":["G7","C"],"nums":["D","T"],"bpm":70}'>
+      <p class="fig-title">La cadencia básica: D → T</p>
+      <figcaption><b>G7 → C</b>: el tritono se deshace y todo encaja. Es el final más usado de la música occidental.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":["F","G7","C"],"nums":["S","D","T"],"bpm":70}'>
+      <p class="fig-title">La historia completa: S → D → T</p>
+      <figcaption><b>F → G7 → C</b>: preparación, tensión y reposo. Suena a final «de verdad».</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":["F","B°","G7","C"],"nums":["S","D","D","T"],"bpm":70}'>
+      <p class="fig-title">Alargar la tensión: S → D → D → T</p>
+      <figcaption><b>F → B° → G7 → C</b>: dos acordes dominantes seguidos estiran la espera antes del reposo. B° y G7 comparten B, D y F, así que el paso entre ellos es casi imperceptible: solo se añade la G.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>Existe también un cierre más suave, <strong>S → T</strong> (<span class="chord maj">F</span> → <span class="chord maj">C</span>), que se conoce como cadencia plagal o «del amén». No tiene tritono, así que cierra sin dramatismo.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">7</span>Rutina diaria</h2>
+    <p>Unos 19 minutos. Toca todo con la mano izquierda en la fundamental y la derecha en posición cercana. Hoy importa más <strong>escuchar</strong> que correr.</p>
+
+    <div data-metro data-bpm="70"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>El termómetro de notas comunes</h4>
+        <p>Toca C y, a continuación, cada acorde de la tonalidad: Am, Em, F, G, Dm y B°. Antes de cambiar, di en voz alta cuántas notas se quedan. Comprueba tu respuesta con la tabla.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Familias con los ojos cerrados</h4>
+        <p>Toca C, después un acorde al azar de la tonalidad, déjalo sonar y pregúntate: ¿reposo, preparación o tensión? Si puedes, que otra persona elija el acorde por ti.</p>
+      </div>
+      <div class="card">
+        <span class="time">5 min</span>
+        <h4>Las tres historias</h4>
+        <p>Toca las tres progresiones de la sección 5 a 70 ppm, un acorde por compás. En cada acorde di en voz baja su función: «te, te, ese, ese, de, te».</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Cadencias en bucle</h4>
+        <p>Repite F → G7 → C y F → B° → G7 → C cuatro veces cada una. Mira cómo el pulgar sube de B a C y el dedo que toca F baja a E.</p>
+      </div>
+      <div class="card">
+        <span class="time">5 min</span>
+        <h4>Tus cuatro progresiones</h4>
+        <p>Escribe en un papel <strong>4 progresiones propias</strong> de 4 a 6 acordes con la regla <strong>reposo → preparación → tensión → reposo</strong>, usando solo C, Am, Em, Dm, F, G7 y B°. Por ejemplo: Em → Dm → G7 → C. Tócalas y quédate con la que más te guste: la usarás en la lección 20.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 16 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l15-a"> Sé cuántas notas comparte con C cada acorde de la tonalidad.</label></li>
+      <li><label><input type="checkbox" data-save="l15-b"> Clasifico C, Am, Em, Dm, F, G7 y B° en tónica, subdominante o dominante sin mirar.</label></li>
+      <li><label><input type="checkbox" data-save="l15-c"> Sé qué es el tritono B–F y hacia dónde resuelve cada nota.</label></li>
+      <li><label><input type="checkbox" data-save="l15-d"> Distingo la tensión interna (G7, B°) de la tensión de contexto (F♯ en C).</label></li>
+      <li><label><input type="checkbox" data-save="l15-e"> He escrito y tocado 4 progresiones propias que terminan en una cadencia.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <section class="block" id="fuente">
+    <h3>Fuente</h3>
+    <p style="color:var(--ink-2);font-size:.95rem">Las ideas de esta lección (acordes «cerca» y «lejos», el código de colores y las familias de funciones) están inspiradas en <em>Armonía Ilustrada</em>, de Brian J. Callipari. Las explicaciones y los ejemplos son propios de este curso.</p>
+  </section>
+
+  <nav class="pager" data-pager="15" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>

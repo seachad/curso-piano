@@ -34,7 +34,7 @@
         ] },
       { n: 5, title: 'Componer', sub: 'Conectar acordes con intención · basado en «Armonía Ilustrada»', c1: '#6d3fd6', c2: '#ff5fa2',
         lessons: [
-          { n: 15, file: '15-funciones-cerca-lejos', title: 'Cerca y lejos: las funciones', desc: 'Tónica (C, Em, Am), subdominante (Dm, F) y dominante (G7, B°): tensión y reposo', ready: false },
+          { n: 15, file: '15-funciones-cerca-lejos', title: 'Cerca y lejos: las funciones', desc: 'Tónica (C, Em, Am), subdominante (Dm, F) y dominante (G7, B°): tensión y reposo', ready: true },
           { n: 16, file: '16-notas-comunes', title: 'El pegamento: notas comunes', desc: 'Melodías con las notas del acorde y la pirámide C → Cm → A♭', ready: false },
           { n: 17, file: '17-dominantes-secundarios', title: 'Dominantes secundarios', desc: 'E7 → Am, A7 → Dm y el precioso F → Fm → C', ready: false },
           { n: 18, file: '18-circulo-de-quintas', title: 'El círculo de quintas', desc: 'Tu mapa para cambiar de tonalidad: acordes pivote, relativos y paralelos', ready: false },
