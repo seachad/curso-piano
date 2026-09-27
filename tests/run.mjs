@@ -57,6 +57,8 @@ check('patrones de progresión', () => {
   eq(r.events[4].chord, 1);
   const sw = P.buildProg({ chords: ['C'], pattern: 'BCBCBCBC', bpm: 60, swing: true });
   ok(Math.abs(sw.events[1].t - 2 / 3) < 1e-9, 'el swing retrasa la corchea a 2/3 del pulso');
+  const bg = P.buildProg({ chords: [{ name: 'C7', lh: [['C3', 'G3'], ['C3', 'A3']] }], pattern: 'LLM.....', bpm: 60 });
+  eq(bg.events.map(e => e.notes.length), [2, 2, 6]);
 });
 check('índice del curso', () => {
   const ns = CURSO.lessons.map(l => l.n);
@@ -73,7 +75,8 @@ check('cada lección publicada existe y cada fichero está en el índice', () =>
   CURSO.lessons.forEach(l => {
     const exists = lessonFiles.includes(l.file + '.html');
     if (l.ready && !exists) throw new Error(`Lección ${l.n} marcada como lista pero falta lecciones/${l.file}.html`);
-    if (!l.ready && exists) throw new Error(`lecciones/${l.file}.html existe pero la lección ${l.n} no está marcada ready`);
+    // DRAFT=1 permite probar lecciones en preparación que aún no están marcadas como listas.
+    if (!l.ready && exists && !process.env.DRAFT) throw new Error(`lecciones/${l.file}.html existe pero la lección ${l.n} no está marcada ready`);
   });
   lessonFiles.forEach(f => ok(CURSO.lessons.some(l => l.file + '.html' === f), `${f} no está en assets/curso-data.js`));
 });

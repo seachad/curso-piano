@@ -21,7 +21,8 @@
  *   - chords: nombres ("C", "Am", "G7", "C/E"…) u objetos {name, rh:[notas], bass:"C3", lh:[notas], beats, pattern}.
  *     Si no das rh/bass se genera una posición cerrada cerca del C central.
  *   - pattern: una letra por corchea: X bajo+acorde · B bajo · O bajo una octava arriba · C acorde
- *     · 1-4 nota n del acorde (de grave a agudo) · L siguiente nota de "lh" · . silencio/mantener.
+ *     · 1-4 nota n del acorde (de grave a agudo) · L siguiente elemento de "lh" (nota o [notas])
+ *     · M como L pero sumando el acorde de la derecha · . silencio/mantener.
  *
  * 3) Círculo de quintas
  *   <figure class="kbd" data-circle='{"highlight":["C","G","F","Am"],"arrows":[["G","C"]],"center":"C"}'>
@@ -332,7 +333,7 @@
       o.info = info;
       o.rhM = (o.rh ? o.rh.map(midi) : v.rh).slice().sort((a, b) => a - b);
       o.bassM = o.bass ? midi(o.bass) : v.bass;
-      o.lhM = o.lh ? o.lh.map(midi) : null;
+      o.lhM = o.lh ? o.lh.map(n => (Array.isArray(n) ? n.map(midi) : midi(n))) : null;
       o.beats = o.beats || spec.beats || 4;
       const slots = o.beats * 2;
       const pat = o.pattern || spec.pattern || ('X' + '.'.repeat(slots - 1));
@@ -354,7 +355,11 @@
           else if (ch === 'O') notes = [o.bassM + 12];
           else if (ch === 'C') notes = o.rhM;
           else if (/[1-4]/.test(ch)) notes = [o.rhM[Math.min(+ch - 1, o.rhM.length - 1)]];
-          else if (ch === 'L') { if (!o.lhM) throw new Error('Patrón con L pero sin "lh" en ' + o.name); notes = [o.lhM[li++ % o.lhM.length]]; }
+          else if (ch === 'L' || ch === 'M') {
+            if (!o.lhM) throw new Error('Patrón con ' + ch + ' pero sin "lh" en ' + o.name);
+            notes = [].concat(o.lhM[li++ % o.lhM.length]);
+            if (ch === 'M') notes = notes.concat(o.rhM);
+          }
           else if (ch !== '.' && ch !== '-') throw new Error('Letra de patrón desconocida: ' + ch);
           if (notes) hits.push({ k, notes });
         });
@@ -386,11 +391,12 @@
     const counts = [];
     for (let i = 0; i < pat.length; i++) counts.push(i % 2 ? 'y' : String(i / 2 + 1));
     const rh = ch => (/[XC1-4]/.test(ch) ? (/[1-4]/.test(ch) ? ch : '●') : '');
-    const lh = ch => (/[XBOL]/.test(ch) ? (ch === 'O' ? '↑' : '●') : '');
+    const rhM = ch => (ch === 'M' ? '●' : rh(ch));
+    const lh = ch => (/[XBOLM]/.test(ch) ? (ch === 'O' ? '↑' : '●') : '');
     const row = (name, cls, f) => `<div class="pg-name ${cls}">${name}</div>` + [...pat].map(ch => { const v = f(ch); return `<div class="pg-cell ${v ? 'on ' + cls : ''}">${v}</div>`; }).join('');
     return `<div class="pgrid" style="--n:${pat.length}">` +
       '<div class="pg-name"></div>' + counts.map(c => `<div class="pg-count${c === 'y' ? ' off' : ''}">${c}</div>`).join('') +
-      row('MD', 'rh', rh) + row('MI', 'lh', lh) + '</div>' +
+      row('MD', 'rh', rhM) + row('MI', 'lh', lh) + '</div>' +
       (swing ? '<p class="pg-note">Swing: la “y” se retrasa, largo-corto, como un galope.</p>' : '');
   }
 
@@ -429,9 +435,11 @@
       const dx = B.x - A.x, dy = B.y - A.y, L = Math.hypot(dx, dy);
       const ax = A.x + dx / L * (A.r + 3), ay = A.y + dy / L * (A.r + 3);
       const bx = B.x - dx / L * (B.r + 5), by = B.y - dy / L * (B.r + 5);
-      // curva ligeramente hacia el centro
+      // entre vecinos del mismo anillo la curva va hacia fuera; entre anillos, hacia el centro
       const mx = (ax + bx) / 2, my = (ay + by) / 2;
-      const qx = mx + (C0 - mx) * 0.18, qy = my + (C0 - my) * 0.18;
+      const sameRing = Math.abs(Math.hypot(A.x - C0, A.y - C0) - Math.hypot(B.x - C0, B.y - C0)) < 1;
+      const k = sameRing ? -0.16 : 0.18;
+      const qx = mx + (C0 - mx) * k, qy = my + (C0 - my) * k;
       const dash = style === 'dashed' ? ' stroke-dasharray="6 5"' : '';
       const both = style === 'both' ? ` marker-start="url(#${id})"` : '';
       s += `<path d="M${pt(ax, ay)} Q${pt(qx, qy)} ${pt(bx, by)}" fill="none" stroke="#1d1a2e" stroke-width="2.4"${dash} marker-end="url(#${id})"${both}/>`;
