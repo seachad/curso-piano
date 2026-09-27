@@ -68,7 +68,14 @@ check('índice del curso', () => {
 
 // ------------------------------------------------------------ 2. Páginas
 const lessonDir = path.join(ROOT, 'lecciones');
-const lessonFiles = fs.existsSync(lessonDir) ? fs.readdirSync(lessonDir).filter(f => f.endsWith('.html')) : [];
+// STAGED=1 limita las lecciones a las que están en el índice de git (lo que va en el commit),
+// para poder publicar una lección mientras otras siguen en borrador.
+let lessonFiles = fs.existsSync(lessonDir) ? fs.readdirSync(lessonDir).filter(f => f.endsWith('.html')) : [];
+if (process.env.STAGED) {
+  const { execSync } = await import('node:child_process');
+  const tracked = execSync('git ls-files --cached lecciones', { cwd: ROOT, encoding: 'utf8' }).split('\n').map(s => path.basename(s.trim()));
+  lessonFiles = lessonFiles.filter(f => tracked.includes(f));
+}
 const pages = ['index.html', ...lessonFiles.map(f => 'lecciones/' + f)];
 
 check('cada lección publicada existe y cada fichero está en el índice', () => {
