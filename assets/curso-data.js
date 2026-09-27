@@ -15,7 +15,7 @@
         ] },
       { n: 2, title: 'Acompañamiento pop', sub: 'Sonar como en el disco, con poco esfuerzo', c1: '#4f5bd5', c2: '#25b7e8',
         lessons: [
-          { n: 5, file: '05-inversiones', title: 'Inversiones: moverse sin saltar', desc: 'C–F–G y C–G–Am–F con conducción de voces: la mano apenas se mueve', ready: false },
+          { n: 5, file: '05-inversiones', title: 'Inversiones: moverse sin saltar', desc: 'C–F–G y C–G–Am–F con conducción de voces: la mano apenas se mueve', ready: true },
           { n: 6, file: '06-patrones-de-acompanamiento', title: 'Patrones de acompañamiento', desc: 'Bloques, corcheas, balada, arpegio y síncopa pop', ready: false },
           { n: 7, file: '07-hojas-de-acordes', title: 'Leer una hoja de acordes', desc: 'Compases, repeticiones, C/E (bajo distinto), sus2, sus4 y add9', ready: false },
           { n: 8, file: '08-tonalidades-y-numeros', title: 'Tonalidades y números', desc: 'I–V–vi–IV en cualquier tono: transportar una canción en segundos', ready: false }
