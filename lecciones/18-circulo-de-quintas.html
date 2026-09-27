@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 18 · El círculo de quintas</title>
+<meta name="description" content="Tu mapa para cambiar de tonalidad: acordes pivote, relativos y paralelos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#construir">Construir</a>
+      <a href="#vecinos">Vecinos</a>
+      <a href="#pivote">Pivote</a>
+      <a href="#ii-v-i">ii–V–I</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 5 · Lección 18</span>
+    <h1>El círculo <em>de quintas</em></h1>
+    <p class="lead">Las 12 tonalidades colocadas como las horas de un reloj. Con este mapa sabrás qué tonalidades son vecinas, qué acordes forman una familia y cómo pasar de una tonalidad a otra sin que se note la costura.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 5–7 días</span>
+      <span class="chip">🧭 Mapa de tonalidades</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">🕛</span><span>Dibujar el círculo de memoria <strong>subiendo quintas</strong> desde C.</span></li>
+      <li><span class="ic">🏘️</span><span>Saber qué tonalidades son <strong>vecinas</strong> y cuáles son la relativa y la paralela.</span></li>
+      <li><span class="ic">🔑</span><span>Usar un <strong>acorde pivote</strong> para cambiar de tonalidad con suavidad.</span></li>
+      <li><span class="ic">🔁</span><span>Tocar el <strong>ii–V–I</strong> en C, G y F sin pensarlo.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. CONSTRUIR ============ -->
+  <section class="block" id="construir">
+    <h2><span class="step-no">1</span>Construir el círculo: sube quintas</h2>
+    <p>Una <strong>quinta</strong> es la distancia de 7 semitonos: de <strong>C</strong> a <strong>G</strong>. Es el mismo salto que hay entre la fundamental y la quinta de un acorde mayor, así que ya lo tienes en los dedos (1 y 5 de <span class="chord maj">C</span>).</p>
+
+    <figure class="kbd" data-alt="Teclado de C a G con los siete semitonos numerados"
+      data-kbd='{"from":"B3","to":"A4",
+        "marks":[{"note":"C4","color":"#ffd6e0","main":"C","ink":"#c9184a"},
+                 {"note":"C#4","color":"#ece4ff","main":"1","ink":"#6d3fd6"},{"note":"D4","color":"#ece4ff","main":"2","ink":"#6d3fd6"},
+                 {"note":"D#4","color":"#ece4ff","main":"3","ink":"#6d3fd6"},{"note":"E4","color":"#ece4ff","main":"4","ink":"#6d3fd6"},
+                 {"note":"F4","color":"#ece4ff","main":"5","ink":"#6d3fd6"},{"note":"F#4","color":"#ece4ff","main":"6","ink":"#6d3fd6"},
+                 {"note":"G4","color":"#ffd6e0","main":"G","sub":"7","ink":"#c9184a"}],
+        "seq":["C4","G4",["C4","G4"]],"tempo":0.6,"playLabel":"Escuchar la quinta C–G"}'>
+      <p class="fig-title">Una quinta = 7 semitonos</p>
+      <figcaption>Cuenta cada tecla, blanca o negra, a partir de C: la séptima es <b>G</b>. Desde G, otros 7 semitonos te llevan a <b>D</b>; desde D, a <b>A</b>… Repite el salto doce veces y vuelves a C.</figcaption>
+    </figure>
+
+    <p>Si escribes las notas que salen, subiendo siempre una quinta, obtienes esta vuelta completa:</p>
+    <p style="font:800 1.15rem 'Fraunces',serif;letter-spacing:.02em">C → G → D → A → E → B → F♯ → D♭ → A♭ → E♭ → B♭ → F → (C)</p>
+    <p>Pasan las 12 notas una sola vez. Al llegar abajo usamos nombres con ♭ (D♭, A♭, E♭, B♭) porque son los que verás en las canciones. F♯ y G♭ son la misma tecla: ahí el círculo «da la vuelta».</p>
+
+    <figure class="kbd" data-alt="Círculo de quintas con las doce tonalidades mayores"
+      data-circle='{"rings":[["C","G","D","A","E","B","F#","Db","Ab","Eb","Bb","F"]],"center":"C"}'>
+      <p class="fig-title">Las 12 tonalidades mayores</p>
+      <figcaption>Colócalas como las horas de un reloj: <b>C</b> a las 12, <b>G</b> a la una, <b>D</b> a las dos… y <b>F</b> a las once. Todas son acordes mayores, por eso van en rosa, el color de los mayores en todo el curso.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 2. DOS SENTIDOS ============ -->
+  <section class="block" id="sentidos">
+    <h2><span class="step-no">2</span>Dos sentidos: quintas y cuartas</h2>
+    <p>En <strong>sentido horario</strong> (C → G → D) subes quintas. En <strong>sentido antihorario</strong> (C → F → B♭) subes <strong>cuartas</strong>, es decir, 5 semitonos. Es lo mismo que bajar una quinta: de C, 5 semitonos arriba o 7 abajo, llegas a un F.</p>
+
+    <figure class="kbd" data-alt="Círculo de quintas con flechas en sentido horario y antihorario desde C"
+      data-circle='{"rings":[["C","G","D","A","E","B","F#","Db","Ab","Eb","Bb","F"]],
+        "highlight":["C","G","D","A","F","Bb","Eb"],
+        "arrows":[["C","G"],["G","D"],["D","A"],["C","F","dashed"],["F","Bb","dashed"],["Bb","Eb","dashed"]]}'>
+      <p class="fig-title">Horario y antihorario</p>
+      <figcaption><b>Flechas continuas:</b> sube una quinta en cada paso y la tonalidad gana un <b>sostenido</b>. <b>Flechas discontinuas:</b> sube una cuarta en cada paso y la tonalidad gana un <b>bemol</b>.</figcaption>
+    </figure>
+
+    <p>Las <strong>alteraciones</strong> (los ♯ o ♭ de una tonalidad) aparecen en orden, una a una:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Horario</th><th>Sostenidos</th><th>Antihorario</th><th>Bemoles</th></tr></thead>
+        <tbody>
+          <tr><td><b>C</b></td><td>ninguno</td><td><b>C</b></td><td>ninguno</td></tr>
+          <tr><td><b>G</b></td><td>F♯</td><td><b>F</b></td><td>B♭</td></tr>
+          <tr><td><b>D</b></td><td>F♯ C♯</td><td><b>B♭</b></td><td>B♭ E♭</td></tr>
+          <tr><td><b>A</b></td><td>F♯ C♯ G♯</td><td><b>E♭</b></td><td>B♭ E♭ A♭</td></tr>
+          <tr><td><b>E</b></td><td>F♯ C♯ G♯ D♯</td><td><b>A♭</b></td><td>B♭ E♭ A♭ D♭</td></tr>
+          <tr><td><b>B</b></td><td>F♯ C♯ G♯ D♯ A♯</td><td><b>D♭</b></td><td>B♭ E♭ A♭ D♭ G♭</td></tr>
+          <tr><td><b>F♯</b></td><td>F♯ C♯ G♯ D♯ A♯ E♯</td><td><b>G♭</b></td><td>B♭ E♭ A♭ D♭ G♭ C♭</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p>Truco: fíjate en que la lista de sostenidos (F♯ C♯ G♯ D♯ A♯ E♯) también avanza por quintas, y la de bemoles (B♭ E♭ A♭ D♭ G♭ C♭), por cuartas. El círculo está dentro del círculo.</p>
+    </div>
+  </section>
+
+  <!-- ============ 3. VECINOS, RELATIVA Y PARALELA ============ -->
+  <section class="block" id="vecinos">
+    <h2><span class="step-no">3</span>Vecinos, relativa y paralela</h2>
+    <p>Dos tonalidades <strong>vecinas</strong> en el círculo comparten <strong>6 de sus 7 notas</strong>. Solo cambia una, y además solo un semitono. Por eso pasar a una tonalidad vecina (lo que se llama <strong>modular</strong>) suena suave, casi sin darte cuenta.</p>
+
+    <div class="grid grid-2">
+      <figure class="kbd" data-alt="Escala de G mayor: seis notas iguales que en C y F sostenido nuevo"
+        data-kbd='{"from":"F3","to":"A4",
+          "marks":[{"note":"G3","color":"#ffd6e0","ink":"#c9184a"},{"note":"A3","color":"#ffd6e0","ink":"#c9184a"},
+                   {"note":"B3","color":"#ffd6e0","ink":"#c9184a"},{"note":"C4","color":"#ffd6e0","ink":"#c9184a"},
+                   {"note":"D4","color":"#ffd6e0","ink":"#c9184a"},{"note":"E4","color":"#ffd6e0","ink":"#c9184a"},
+                   {"note":"F#4","color":"#f5b700","main":"F♯","ink":"#8a6400"},{"note":"G4","color":"#ffd6e0","ink":"#c9184a"}],
+          "seq":["G3","A3","B3","C4","D4","E4","F#4","G4"],"tempo":0.36,"playLabel":"Escala de G"}'>
+        <p class="fig-title">Un paso horario: G</p>
+        <figcaption>La escala de <b>G</b> es la de C con un solo cambio: <b>F sube a F♯</b> (en amarillo).</figcaption>
+      </figure>
+      <figure class="kbd" data-alt="Escala de F mayor: seis notas iguales que en C y B bemol nuevo"
+        data-kbd='{"from":"E3","to":"G4",
+          "marks":[{"note":"F3","color":"#ffd6e0","ink":"#c9184a"},{"note":"G3","color":"#ffd6e0","ink":"#c9184a"},
+                   {"note":"A3","color":"#ffd6e0","ink":"#c9184a"},{"note":"Bb3","color":"#f5b700","main":"B♭","ink":"#8a6400"},
+                   {"note":"C4","color":"#ffd6e0","ink":"#c9184a"},{"note":"D4","color":"#ffd6e0","ink":"#c9184a"},
+                   {"note":"E4","color":"#ffd6e0","ink":"#c9184a"},{"note":"F4","color":"#ffd6e0","ink":"#c9184a"}],
+          "seq":["F3","G3","A3","Bb3","C4","D4","E4","F4"],"tempo":0.36,"playLabel":"Escala de F"}'>
+        <p class="fig-title">Un paso antihorario: F</p>
+        <figcaption>La escala de <b>F</b> es la de C con un solo cambio: <b>B baja a B♭</b>.</figcaption>
+      </figure>
+    </div>
+
+    <h3>La relativa: mismas notas, otra casa</h3>
+    <p>En el anillo interior está la <strong>relativa menor</strong> de cada tonalidad: el acorde vi (lo viste en la lección 8). <span class="chord maj">C</span> y <span class="chord min">Am</span> usan exactamente las mismas siete notas; lo único que cambia es cuál sientes como «casa». Pasar de una a otra es el viaje más corto posible: no cambia ninguna nota.</p>
+
+    <h3>La paralela: misma casa, otras notas</h3>
+    <p>La <strong>paralela</strong> comparte la fundamental: <span class="chord maj">C</span> y <span class="chord min">Cm</span>. Suena muy cerca porque la casa es la misma, pero en el círculo está lejos: la escala de C menor tiene tres bemoles (E♭, A♭ y B♭), igual que E♭ mayor. Por eso <span class="chord min">Cm</span> está en el anillo interior, debajo de <span class="chord maj">E♭</span>, a tres pasos de C.</p>
+
+    <figure class="kbd" data-alt="Círculo de quintas con C, su relativa Am y su paralela Cm resaltadas"
+      data-circle='{"highlight":["C","Am","Cm"],"arrows":[["C","Am","both"],["C","Cm","dashed"]]}'>
+      <p class="fig-title">C, su relativa y su paralela</p>
+      <figcaption><b>C ↔ Am</b> (flecha doble): mismas notas, se cambia de una a otra sin esfuerzo. <b>C → Cm</b> (discontinua): misma fundamental, pero tres pasos de distancia en el mapa. Es un cambio de color fuerte, como la subdominante menor de la lección 17.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="Cm" data-alt="Acorde de C menor: meñique izquierdo en C3 y mano derecha en C, E bemol y G"
+      data-kbd='{"from":"B2","to":"A4","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","3":"Eb4","5":"G4"}}}'>
+      <p class="fig-title"><span style="text-transform:none">Cm</span> · la paralela de C</p>
+      <figcaption>MI: 5 en C. MD: <b>1–3–5 en C–E♭–G</b>. Toca C y después Cm: solo baja el dedo 3, pero el paisaje cambia por completo.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Bajo</span><span><i class="dot rh"></i>Acorde</span></div>
+    </figure>
+
+    <div class="callout key">
+      <p><strong>Cerca en el círculo = pocas notas distintas.</strong> Un paso cambia una nota; la relativa no cambia ninguna; la paralela cambia tres. Cuanto más lejos viajes, más se notará el cambio de tonalidad.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. FAMILIA ============ -->
+  <section class="block" id="familia">
+    <h2><span class="step-no">4</span>Los acordes de una tonalidad viven juntos</h2>
+    <p>Añadamos un tercer anillo con los acordes <strong>disminuidos</strong> (el vii° de cada tonalidad). Si ahora marcas los siete acordes de C (<span class="chord maj">C</span> <span class="chord min">Dm</span> <span class="chord min">Em</span> <span class="chord maj">F</span> <span class="chord maj">G</span> <span class="chord min">Am</span> <span class="chord dim">B°</span>), aparece una sorpresa: están todos juntos, en una porción del círculo.</p>
+
+    <figure class="kbd" data-alt="Círculo con tres anillos: mayores, menores y disminuidos, con los siete acordes de C resaltados"
+      data-circle='{"rings":[["C","G","D","A","E","B","F#","Db","Ab","Eb","Bb","F"],
+                             ["Am","Em","Bm","F#m","C#m","G#m","Ebm","Bbm","Fm","Cm","Gm","Dm"],
+                             ["B°","F#°","C#°","G#°","D#°","A#°","E#°","C°","G°","D°","A°","E°"]],
+        "highlight":["C","F","G","Am","Dm","Em","B°"],"center":"C"}'>
+      <p class="fig-title">La familia de C</p>
+      <figcaption>Los mayores <b>F, C y G</b> (IV, I y V) están seguidos en el anillo exterior; debajo, sus relativos <b>Dm, Am y Em</b> (ii, vi y iii), y en el anillo interior, <b>B°</b> (vii°). Es una «porción de pizza» de tres casillas de ancho.</figcaption>
+    </figure>
+
+    <p>Gira la porción una casilla en sentido horario y tienes la familia de G. Otra casilla más y tienes la de D. Así funciona el <strong>transporte</strong> que ya hiciste en la lección 8: no hay que recalcular nada, solo girar.</p>
+
+    <figure class="kbd" data-alt="Círculo con los acordes de G mayor resaltados"
+      data-circle='{"rings":[["C","G","D","A","E","B","F#","Db","Ab","Eb","Bb","F"],
+                             ["Am","Em","Bm","F#m","C#m","G#m","Ebm","Bbm","Fm","Cm","Gm","Dm"],
+                             ["B°","F#°","C#°","G#°","D#°","A#°","E#°","C°","G°","D°","A°","E°"]],
+        "highlight":["G","C","D","Em","Am","Bm","F#°"],"center":"G"}'>
+      <p class="fig-title">La familia de G: la misma porción, girada</p>
+      <figcaption><b>C, G y D</b> arriba; <b>Am, Em y Bm</b> en medio; <b>F♯°</b> dentro. Compárala con la de C: comparten <b>C, G, Am y Em</b>. Cuatro acordes en común: por eso son tonalidades vecinas.</figcaption>
+    </figure>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tonalidad</th><th>I</th><th>ii</th><th>iii</th><th>IV</th><th>V</th><th>vi</th></tr></thead>
+        <tbody>
+          <tr><td><b>B♭</b></td><td>B♭</td><td>Cm</td><td>Dm</td><td>E♭</td><td>F</td><td>Gm</td></tr>
+          <tr><td><b>F</b></td><td>F</td><td>Gm</td><td>Am</td><td>B♭</td><td>C</td><td>Dm</td></tr>
+          <tr><td><b>C</b></td><td>C</td><td>Dm</td><td>Em</td><td>F</td><td>G</td><td>Am</td></tr>
+          <tr><td><b>G</b></td><td>G</td><td>Am</td><td>Bm</td><td>C</td><td>D</td><td>Em</td></tr>
+          <tr><td><b>D</b></td><td>D</td><td>Em</td><td>F♯m</td><td>G</td><td>A</td><td>Bm</td></tr>
+          <tr><td><b>A</b></td><td>A</td><td>Bm</td><td>C♯m</td><td>D</td><td>E</td><td>F♯m</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Las filas están ordenadas como en el círculo. Mira las columnas IV, I y V: cada fila es la anterior desplazada un puesto. Para transportar, busca tu tonalidad en el círculo y lee la porción que la rodea.</p>
+  </section>
+
+  <!-- ============ 5. ACORDE PIVOTE ============ -->
+  <section class="block" id="pivote">
+    <h2><span class="step-no">5</span>El acorde pivote: una puerta entre dos casas</h2>
+    <p>Como las porciones de tonalidades vecinas se solapan, hay acordes que pertenecen a varias a la vez. Un acorde <strong>pivote</strong> es uno de esos acordes compartidos: el oído lo escucha en una tonalidad y, sin cambiar ni una nota, lo reinterpreta en la siguiente.</p>
+
+    <figure class="kbd">
+      <p class="fig-title">C y <span style="text-transform:none">Am</span> en tres tonalidades</p>
+      <div class="kbd-scroll">
+        <svg viewBox="0 0 640 470" style="min-width:420px" role="img" aria-label="Tres filas, una por tonalidad (F, C y G). Cada fila marca sus seis acordes principales. La columna de C y Am está activa en las tres: C es V en F, I en C y IV en G; Am es iii en F, vi en C y ii en G." xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, sans-serif">
+          <!-- ventanas de cada tonalidad -->
+          <rect x="108" y="20" width="294" height="122" rx="18" fill="#fff" stroke="#1d1a2e" stroke-width="1.5"/>
+          <rect x="203" y="160" width="294" height="122" rx="18" fill="#fff" stroke="#1d1a2e" stroke-width="1.5"/>
+          <rect x="298" y="300" width="294" height="122" rx="18" fill="#fff" stroke="#1d1a2e" stroke-width="1.5"/>
+          <!-- columna pivote -->
+          <rect x="298" y="8" width="84" height="424" rx="16" fill="#ff5fa2" fill-opacity="0.13" stroke="#ff5fa2" stroke-width="2" stroke-dasharray="6 5"/>
+          <!-- rótulos de fila -->
+          <text x="14" y="70" font-size="12" fill="#7a7489">Tonalidad</text>
+          <text x="14" y="94" font-size="22" font-weight="800" fill="#1d1a2e" font-family="Fraunces, Georgia, serif">de F</text>
+          <text x="14" y="210" font-size="12" fill="#7a7489">Tonalidad</text>
+          <text x="14" y="234" font-size="22" font-weight="800" fill="#1d1a2e" font-family="Fraunces, Georgia, serif">de C</text>
+          <text x="14" y="350" font-size="12" fill="#7a7489">Tonalidad</text>
+          <text x="14" y="374" font-size="22" font-weight="800" fill="#1d1a2e" font-family="Fraunces, Georgia, serif">de G</text>
+
+          <!-- fila F: activos B♭ F C / Gm Dm Am -->
+          <g font-weight="800" text-anchor="middle" font-size="15">
+            <circle cx="150" cy="50" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="150" y="55" fill="#1d1a2e">B♭</text>
+            <circle cx="245" cy="50" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="245" y="55" fill="#1d1a2e">F</text>
+            <circle cx="340" cy="50" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="340" y="55" fill="#1d1a2e">C</text>
+            <circle cx="435" cy="50" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="435" y="55" fill="#a39a8c">G</text>
+            <circle cx="530" cy="50" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="530" y="55" fill="#a39a8c">D</text>
+            <circle cx="150" cy="112" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="150" y="117" fill="#1d1a2e">Gm</text>
+            <circle cx="245" cy="112" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="245" y="117" fill="#1d1a2e">Dm</text>
+            <circle cx="340" cy="112" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="340" y="117" fill="#1d1a2e">Am</text>
+            <circle cx="435" cy="112" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="435" y="117" fill="#a39a8c">Em</text>
+            <circle cx="530" cy="112" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="530" y="117" fill="#a39a8c">Bm</text>
+          </g>
+          <g font-size="13" font-weight="700" fill="#4b4660">
+            <text x="178" y="55">IV</text><text x="273" y="55">I</text><text x="368" y="55">V</text>
+            <text x="178" y="117">ii</text><text x="273" y="117">vi</text><text x="368" y="117">iii</text>
+          </g>
+
+          <!-- fila C: activos F C G / Dm Am Em -->
+          <g font-weight="800" text-anchor="middle" font-size="15">
+            <circle cx="150" cy="190" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="150" y="195" fill="#a39a8c">B♭</text>
+            <circle cx="245" cy="190" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="245" y="195" fill="#1d1a2e">F</text>
+            <circle cx="340" cy="190" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="340" y="195" fill="#1d1a2e">C</text>
+            <circle cx="435" cy="190" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="435" y="195" fill="#1d1a2e">G</text>
+            <circle cx="530" cy="190" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="530" y="195" fill="#a39a8c">D</text>
+            <circle cx="150" cy="252" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="150" y="257" fill="#a39a8c">Gm</text>
+            <circle cx="245" cy="252" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="245" y="257" fill="#1d1a2e">Dm</text>
+            <circle cx="340" cy="252" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="340" y="257" fill="#1d1a2e">Am</text>
+            <circle cx="435" cy="252" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="435" y="257" fill="#1d1a2e">Em</text>
+            <circle cx="530" cy="252" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="530" y="257" fill="#a39a8c">Bm</text>
+          </g>
+          <g font-size="13" font-weight="700" fill="#4b4660">
+            <text x="273" y="195">IV</text><text x="368" y="195">I</text><text x="463" y="195">V</text>
+            <text x="273" y="257">ii</text><text x="368" y="257">vi</text><text x="463" y="257">iii</text>
+          </g>
+
+          <!-- fila G: activos C G D / Am Em Bm -->
+          <g font-weight="800" text-anchor="middle" font-size="15">
+            <circle cx="150" cy="330" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="150" y="335" fill="#a39a8c">B♭</text>
+            <circle cx="245" cy="330" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="245" y="335" fill="#a39a8c">F</text>
+            <circle cx="340" cy="330" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="340" y="335" fill="#1d1a2e">C</text>
+            <circle cx="435" cy="330" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="435" y="335" fill="#1d1a2e">G</text>
+            <circle cx="530" cy="330" r="24" fill="#ff5fa2" stroke="#1d1a2e" stroke-width="2"/><text x="530" y="335" fill="#1d1a2e">D</text>
+            <circle cx="150" cy="392" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="150" y="397" fill="#a39a8c">Gm</text>
+            <circle cx="245" cy="392" r="24" fill="#f3ece0" stroke="#d9cfbf"/><text x="245" y="397" fill="#a39a8c">Dm</text>
+            <circle cx="340" cy="392" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="340" y="397" fill="#1d1a2e">Am</text>
+            <circle cx="435" cy="392" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="435" y="397" fill="#1d1a2e">Em</text>
+            <circle cx="530" cy="392" r="24" fill="#25b7e8" stroke="#1d1a2e" stroke-width="2"/><text x="530" y="397" fill="#1d1a2e">Bm</text>
+          </g>
+          <g font-size="13" font-weight="700" fill="#4b4660">
+            <text x="368" y="335">IV</text><text x="463" y="335">I</text><text x="558" y="335">V</text>
+            <text x="368" y="397">ii</text><text x="463" y="397">vi</text><text x="558" y="397">iii</text>
+          </g>
+
+          <text x="340" y="458" text-anchor="middle" font-size="13" font-weight="700" fill="#c9184a">C y Am están en las tres tonalidades: son pivotes</text>
+        </svg>
+      </div>
+      <figcaption>Cada fila es una tonalidad y su «ventana» marca sus seis acordes principales (IV, I y V arriba; ii, vi y iii abajo). La ventana se desplaza una columna en cada fila, igual que la porción en el círculo. En la columna rosa, <b>C</b> es <b>V</b> en F, <b>I</b> en C y <b>IV</b> en G. Y <b>Am</b> es <b>iii</b> en F, <b>vi</b> en C y <b>ii</b> en G.</figcaption>
+    </figure>
+
+    <div class="callout key">
+      <p>Un acorde pivote no cambia de notas: <strong>cambia de papel</strong>. Lo que decide el papel es lo que viene después. Si tras <span class="chord min">Am</span> suena <span class="chord dom">D7</span>, tu oído entiende que Am era el ii de G.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. MODULAR ============ -->
+  <section class="block" id="modular">
+    <h2><span class="step-no">6</span>Modular por pivote: de C a G</h2>
+    <p>La receta tiene tres pasos: <strong>1)</strong> asienta la tonalidad de partida; <strong>2)</strong> toca un acorde común a las dos; <strong>3)</strong> toca el dominante de la nueva tonalidad (su V7) y resuelve. El V7 es el que «firma» el cambio, porque contiene la nota que no existía antes.</p>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"F","rh":["C4","F4","A4"],"bass":"F3"},
+        {"name":"Am","rh":["C4","E4","A4"],"bass":"A2"},
+        {"name":"D7","rh":["C4","D4","F#4","A4"],"bass":"D3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"}],
+        "nums":["I en C","IV en C","vi en C = ii en G","V7 de G","I en G"],"bpm":72,"pattern":"X...C..."}'>
+      <p class="fig-title">C → F → <span style="text-transform:none">Am</span> → D7 → G</p>
+      <figcaption><b>C</b> y <b>F</b> dejan claro que estás en C. <b>Am</b> es el puente: pertenece a las dos. <b>D7</b> trae el <b>F♯</b>, la nota nueva de G, y aterriza en <b>G</b>. La mano derecha apenas se mueve: el pulgar se queda en C4 hasta el último acorde.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="D7" data-alt="D7 en posición cercana: MI en D3 y MD en C, D, F sostenido y A"
+      data-kbd='{"from":"C3","to":"B4","lh":{"fingers":{"5":"D3"}},"rh":{"fingers":{"1":"C4","2":"D4","3":"F#4","5":"A4"}}}'>
+      <p class="fig-title">D7 · la firma de G</p>
+      <figcaption>MI: 5 en <b>D</b>. MD: <b>1–2–3–5</b> en <b>C–D–F♯–A</b>. Es D7 con la séptima (C) abajo, justo donde estaba el pulgar en Am. El dedo 3 va a la tecla negra F♯: esa es la nota que anuncia la nueva tonalidad.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Bajo</span><span><i class="dot rh"></i>Acorde</span></div>
+    </figure>
+
+    <div class="callout">
+      <p>¿Y volver? Mismo truco al revés: en G, <span class="chord maj">C</span> es el IV, pero también es el I de C. Toca <span class="chord maj">G</span> → <span class="chord maj">C</span> → <span class="chord dom">G7</span> → <span class="chord maj">C</span> y ya estás en casa. El G7 trae de vuelta el F natural.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. ii–V–I ============ -->
+  <section class="block" id="ii-v-i">
+    <h2><span class="step-no">7</span>El ii–V–I: tres pasos antihorarios</h2>
+    <p>La cadencia <strong>ii–V–I</strong> (en C: <span class="chord min">Dm</span> → <span class="chord dom">G7</span> → <span class="chord maj">C</span>) es la más usada del pop, el jazz y la bossa. En el círculo es muy fácil de ver: cada acorde está <strong>una casilla antihoraria</strong> después del anterior. D → G → C: la fundamental baja una quinta en cada paso, que es el movimiento más fuerte que existe entre dos acordes.</p>
+
+    <figure class="kbd" data-alt="Círculo de quintas con flechas de Dm a G y de G a C"
+      data-circle='{"highlight":["Dm","G","C"],"arrows":[["Dm","G"],["G","C"]],"center":"ii–V–I"}'>
+      <p class="fig-title"><span style="text-transform:none">ii</span>–V–I en el mapa</p>
+      <figcaption>De <b>Dm</b> (relativo de F) a <b>G</b> y de G a <b>C</b>: dos pasos hacia la izquierda. Si mueves el dibujo una casilla, obtienes el ii–V–I de otra tonalidad: <b>Am → D7 → G</b> (una casilla horaria) o <b>Gm → C7 → F</b> (una antihoraria).</figcaption>
+    </figure>
+
+    <figure class="kbd" data-prog='{"chords":[
+        {"name":"Dm","rh":["D4","F4","A4"],"bass":"D3"},
+        {"name":"G7","rh":["B3","D4","F4","G4"],"bass":"G2"},
+        {"name":"C","rh":["C4","E4","G4"],"bass":"C3"},
+        {"name":"Am","rh":["A3","C4","E4"],"bass":"A2"},
+        {"name":"D7","rh":["A3","C4","D4","F#4"],"bass":"D3"},
+        {"name":"G","rh":["B3","D4","G4"],"bass":"G2"},
+        {"name":"Gm","rh":["G3","Bb3","D4"],"bass":"G2"},
+        {"name":"C7","rh":["G3","Bb3","C4","E4"],"bass":"C3"},
+        {"name":"F","rh":["A3","C4","F4"],"bass":"F2"}],
+        "nums":["ii","V7","I","ii","V7","I","ii","V7","I"],"bpm":76,"pattern":"X...C.C."}'>
+      <p class="fig-title"><span style="text-transform:none">ii</span>–V–I en C, G y F</p>
+      <figcaption>Tres tonalidades, el mismo viaje. En cada una la mano derecha se desliza con la <b>nota común</b>: en Dm → G7 se quedan D y F; en Am → D7 se quedan A y C; en Gm → C7 se quedan G y B♭. Solo se mueve lo imprescindible.</figcaption>
+    </figure>
+
+    <p>Esta cadena de quintas descendentes se puede alargar hacia atrás, como hiciste con los dominantes secundarios en la lección 17: <span class="chord dom">E7</span> → <span class="chord dom">A7</span> → <span class="chord dom">D7</span> → <span class="chord dom">G7</span> → <span class="chord maj">C</span> es dar cuatro pasos antihorarios seguidos por el círculo.</p>
+  </section>
+
+  <!-- ============ 8. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">8</span>Rutina diaria</h2>
+    <p>Unos 18 minutos. Pon el metrónomo a 70 y ve subiendo de 5 en 5 cuando algo salga limpio tres veces seguidas.</p>
+
+    <div data-metro data-bpm="70"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">2 min</span>
+        <h4>Recita el reloj</h4>
+        <p>En voz alta y con el metrónomo, una tonalidad por clic: <strong>C G D A E B F♯ D♭ A♭ E♭ B♭ F</strong>. Después, al revés (C F B♭ E♭…). Por último, dibújalo en un papel sin mirar.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Fundamentales por quintas</h4>
+        <p>Con el 5 de la MI toca C, G, D, A, E… una por compás. Cuando la nota se te vaya muy arriba, baja una octava. Da la vuelta completa y regresa a C, escuchando cómo cada paso «empuja» al siguiente.</p>
+      </div>
+      <div class="card">
+        <span class="time">5 min</span>
+        <h4>ii–V–I en tres tonalidades</h4>
+        <p>Toca la progresión de la sección 7 con bajo en el 1 y acorde en 3 y 4. Luego pruébala en <strong>D</strong> (<span class="chord min">Em</span> → <span class="chord dom">A7</span> → <span class="chord maj">D</span>) con la tabla de la sección 4 como guía.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>Ida y vuelta por pivote</h4>
+        <p>C → F → Am → D7 → G, dos compases en G, y vuelta: G → C → G7 → C. Repítelo en bucle hasta que el cambio te suene natural.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>Ruta de C a D</h4>
+        <p>D está a dos pasos horarios de C. Busca en la tabla un acorde que esté en las dos tonalidades, llega a él desde C y termina con el <strong>V7 de D</strong> y D. Escríbelo y tócalo.</p>
+        <details>
+          <summary>Ver una solución</summary>
+          <figure class="kbd" data-prog='{"chords":["C","Em","A7","D"],"nums":["I en C","iii en C = ii en D","V7 de D","I en D"],"bpm":72}'>
+            <p class="fig-title">C → <span style="text-transform:none">Em</span> → A7 → D</p>
+            <figcaption><b>Em</b> es el iii de C y el ii de D: es el pivote. <b>A7</b> trae el C♯ que confirma D. Otra ruta, en dos etapas: C → Am → D7 → G → Em → A7 → D.</figcaption>
+          </figure>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 19 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l18-a"> Escribo el círculo de quintas de memoria en los dos sentidos.</label></li>
+      <li><label><input type="checkbox" data-save="l18-b"> Sé decir cuántos ♯ o ♭ tiene una tonalidad contando pasos desde C.</label></li>
+      <li><label><input type="checkbox" data-save="l18-c"> Distingo la relativa (C / Am) de la paralela (C / Cm) y sé dónde está cada una en el mapa.</label></li>
+      <li><label><input type="checkbox" data-save="l18-d"> Modulo de C a G con un acorde pivote y el D7, sin parar el pulso.</label></li>
+      <li><label><input type="checkbox" data-save="l18-e"> Toco el ii–V–I en C, G y F con nota común en la mano derecha.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <section class="block" id="fuente">
+    <div class="card">
+      <h4 style="margin:0 0 6px">📚 Fuente</h4>
+      <p style="margin:0;color:var(--ink-2)">Las ideas de esta lección (el círculo como mapa de distancias, los acordes que comparten tonalidad y el cambio de papel del acorde pivote) están inspiradas en <em>Armonía Ilustrada</em>, de Brian J. Callipari, y explicadas aquí con nuestras palabras y ejemplos.</p>
+    </div>
+  </section>
+
+  <nav class="pager" data-pager="18" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>
