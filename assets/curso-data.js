@@ -9,7 +9,7 @@
       { n: 1, title: 'Fundamentos', sub: 'El teclado, las manos y los primeros acordes', c1: '#ef476f', c2: '#f78c6b',
         lessons: [
           { n: 1, file: '01-teclado-y-primer-acorde', title: 'El teclado y tu primer acorde', desc: 'Letras, grupos de teclas negras, postura, dedos, posición de C y el acorde de C', ready: true },
-          { n: 2, file: '02-triadas-mayores', title: 'Tríadas mayores: C, F y G', desc: 'La fórmula 4 + 3 semitonos para construir cualquier acorde mayor y la progresión I–IV–V', ready: false },
+          { n: 2, file: '02-triadas-mayores', title: 'Tríadas mayores: C, F y G', desc: 'La fórmula 4 + 3 semitonos para construir cualquier acorde mayor y la progresión I–IV–V', ready: true },
           { n: 3, file: '03-triadas-menores', title: 'Tríadas menores y los 4 acordes del pop', desc: 'La fórmula 3 + 4, Am, Dm y Em, y la progresión C–G–Am–F', ready: false },
           { n: 4, file: '04-pulso-y-mano-izquierda', title: 'Pulso y mano izquierda', desc: 'Compás de 4/4, negras y corcheas, bajo y acorde coordinados', ready: false }
         ] },

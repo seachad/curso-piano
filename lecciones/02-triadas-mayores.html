@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 2 · Tríadas mayores: C, F y G</title>
+<meta name="description" content="La fórmula 4 + 3 semitonos para construir cualquier acorde mayor, los acordes de C, F y G y la progresión I–IV–V.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#tonos">Tonos</a>
+      <a href="#formula">Fórmula</a>
+      <a href="#acordes">C, F y G</a>
+      <a href="#cualquiera">Cualquier mayor</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 1 · Lección 2</span>
+    <h1>Tríadas mayores: <em>C, F y G</em></h1>
+    <p class="lead">Con una sola regla, «4 + 3», vas a poder construir cualquier acorde mayor sin memorizar nada. Y con tres de ellos, <span class="chord maj">C</span>, <span class="chord maj">F</span> y <span class="chord maj">G</span>, ya puedes acompañar cientos de canciones.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 5–7 días</span>
+      <span class="chip">🎹 Acordes: C · F · G · D · E · A</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">📏</span><span>Medir distancias en el teclado con <strong>semitonos y tonos</strong>.</span></li>
+      <li><span class="ic">🧪</span><span>Aplicar la <strong>fórmula del acorde mayor</strong> (4 + 3) a cualquier nota.</span></li>
+      <li><span class="ic">🎹</span><span>Tocar <strong>C, F y G</strong> con las dos manos y cambiar entre ellos sin parar.</span></li>
+      <li><span class="ic">🔢</span><span>Entender qué significan <strong>I, IV y V</strong>, los números que usan los músicos.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. SEMITONO Y TONO ============ -->
+  <section class="block" id="tonos">
+    <h2><span class="step-no">1</span>Repaso: semitono y tono</h2>
+    <p>En la lección 1 viste que un <strong>semitono</strong> es la distancia más pequeña del piano: de una tecla a la <em>siguiente inmediata</em>, sin saltarte ninguna, sea blanca o negra. Un <strong>tono</strong> son dos semitonos. Estas dos medidas son la regla con la que vamos a construir todos los acordes.</p>
+
+    <figure class="kbd" data-alt="Tres ejemplos de semitono: C a C sostenido, E a F y B a C"
+      data-kbd='{"from":"C4","to":"D5","names":"all",
+        "marks":[{"note":"C4","color":"#ffd6e0","ink":"#c9184a"},{"note":"C#4","color":"#ff5fa2","main":"C♯","ink":"#c9184a"},
+                 {"note":"E4","color":"#ffd6e0","ink":"#c9184a"},{"note":"F4","color":"#ffd6e0","ink":"#c9184a"},
+                 {"note":"B4","color":"#ffd6e0","ink":"#c9184a"},{"note":"C5","color":"#ffd6e0","ink":"#c9184a"}],
+        "seq":["C4","C#4",[],"E4","F4",[],"B4","C5"],"tempo":0.45,"playLabel":"Escuchar tres semitonos"}'>
+      <p class="fig-title">Semitono = tecla de al lado</p>
+      <figcaption>Tres semitonos: <b>C → C♯</b> (de blanca a negra), <b>E → F</b> y <b>B → C</b>. Fíjate en los dos últimos: son dos blancas seguidas <b>sin negra en medio</b>, así que también están a un solo semitono.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-alt="Tres ejemplos de tono: C a D, E a F sostenido y A a B"
+      data-kbd='{"from":"C4","to":"D5","names":"all",
+        "marks":[{"note":"C4","color":"#ece4ff","ink":"#6d3fd6"},{"note":"D4","color":"#ece4ff","ink":"#6d3fd6"},
+                 {"note":"E4","color":"#ece4ff","ink":"#6d3fd6"},{"note":"F#4","color":"#8b5cf6","main":"F♯","ink":"#6d3fd6"},
+                 {"note":"A4","color":"#ece4ff","ink":"#6d3fd6"},{"note":"B4","color":"#ece4ff","ink":"#6d3fd6"}],
+        "seq":["C4","D4",[],"E4","F#4",[],"A4","B4"],"tempo":0.45,"playLabel":"Escuchar tres tonos"}'>
+      <p class="fig-title">Tono = saltar una tecla</p>
+      <figcaption>Tres tonos: <b>C → D</b> (te saltas C♯), <b>E → F♯</b> (te saltas F) y <b>A → B</b> (te saltas A♯). Un tono es siempre <b>dos pasos de tecla</b>, aunque a la vista unos parezcan más largos que otros.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>Cuenta siempre <strong>todas</strong> las teclas, blancas y negras. El error típico es contar solo las blancas: de E a F parece «una tecla», igual que de C a D, pero una distancia es de 1 semitono y la otra de 2.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2. FÓRMULA ============ -->
+  <section class="block" id="formula">
+    <h2><span class="step-no">2</span>La fórmula del acorde mayor: 4 + 3</h2>
+    <p>Un acorde de tres notas se llama <strong>tríada</strong>. Sus tres notas tienen nombre propio:</p>
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px">① Fundamental</h4><p style="margin:0;color:var(--ink-2)">La nota que da nombre al acorde. En <span class="chord maj">C</span> es C. También la llamamos <strong>raíz</strong>.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">② Tercera</h4><p style="margin:0;color:var(--ink-2)">La nota del medio. Es la que decide si el acorde suena <strong>mayor</strong> (alegre) o menor (triste).</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">③ Quinta</h4><p style="margin:0;color:var(--ink-2)">La nota de arriba. Da cuerpo y estabilidad al acorde.</p></div>
+    </div>
+
+    <p style="margin-top:18px">Para pasar de una a otra no hace falta memorizar: basta con <strong>contar semitonos</strong>. Mira cómo se construye <span class="chord maj">C</span>:</p>
+
+    <figure class="kbd" data-alt="Fórmula del acorde mayor contada sobre C: cuatro semitonos de C a E y tres de E a G"
+      data-kbd='{"from":"B3","to":"B4","names":"all",
+        "marks":[{"note":"C4","color":"#ff5fa2","main":"C","sub":"raíz","ink":"#c9184a"},
+                 {"note":"C#4","color":"#ffd6e0","main":"1","ink":"#c9184a"},
+                 {"note":"D4","color":"#ffd6e0","main":"2","ink":"#c9184a"},
+                 {"note":"D#4","color":"#ffd6e0","main":"3","ink":"#c9184a"},
+                 {"note":"E4","color":"#ff5fa2","main":"E","sub":"+4","ink":"#c9184a"},
+                 {"note":"F4","color":"#ece4ff","main":"1","ink":"#6d3fd6"},
+                 {"note":"F#4","color":"#ece4ff","main":"2","ink":"#6d3fd6"},
+                 {"note":"G4","color":"#ff5fa2","main":"G","sub":"+3","ink":"#c9184a"}],
+        "seq":["C4","C#4","D4","D#4","E4","F4","F#4","G4",[],["C4","E4","G4"]],"tempo":0.38,"playLabel":"Escuchar el recuento y el acorde"}'>
+      <p class="fig-title">Contar semitonos: C + 4 + 3</p>
+      <figcaption>Desde <b>C</b> avanzas <b>4 semitonos</b> (C♯, D, D♯, E) y llegas a la tercera, <b>E</b>. Desde E avanzas <b>3 semitonos</b> más (F, F♯, G) y llegas a la quinta, <b>G</b>. Resultado: <b>C–E–G</b>, el acorde que ya conoces. Los números rosas cuentan el primer tramo y los violetas el segundo.</figcaption>
+    </figure>
+
+    <div class="callout key">
+      <p><strong>Acorde mayor = fundamental + 4 semitonos + 3 semitonos.</strong> Esta fórmula funciona igual empezando en cualquier tecla, blanca o negra. Con ella puedes construir los 12 acordes mayores sin memorizarlos.</p>
+    </div>
+  </section>
+
+  <!-- ============ 3. C, F y G ============ -->
+  <section class="block" id="acordes">
+    <h2><span class="step-no">3</span>Tus tres primeros acordes: <span class="chord maj">C</span> <span class="chord maj">F</span> <span class="chord maj">G</span></h2>
+    <p>Los tres se tocan igual: <strong>mano derecha 1–3–5</strong> sobre las tres notas del acorde (tocas una tecla, saltas una, tocas una, saltas una y tocas una) y <strong>mano izquierda con el meñique (5)</strong> en la fundamental, una octava más abajo. Es la misma plantilla de la lección 1: bajo a la izquierda y acorde a la derecha.</p>
+
+    <figure class="kbd" data-chord="C" data-alt="Acorde de C: meñique izquierdo en C3 y mano derecha 1-3-5 en C E G"
+      data-kbd='{"from":"B2","to":"A4","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}}}'>
+      <p class="fig-title">C mayor · C–E–G</p>
+      <figcaption><b>Mano izquierda:</b> 5 en C. <b>Mano derecha:</b> 1 en C, 3 en E y 5 en G. Las tres notas del acorde son blancas.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Bajo</span><span><i class="dot rh"></i>Acorde</span></div>
+    </figure>
+
+    <figure class="kbd" data-chord="F" data-alt="Acorde de F: meñique izquierdo en F3 y mano derecha 1-3-5 en F A C"
+      data-kbd='{"from":"D3","to":"E5","lh":{"fingers":{"5":"F3"}},"rh":{"fingers":{"1":"F4","3":"A4","5":"C5"}}}'>
+      <p class="fig-title">F mayor · F–A–C</p>
+      <figcaption>Compruébalo con la fórmula: de <b>F</b> subes 4 semitonos (F♯, G, G♯, A) hasta <b>A</b> y 3 más (A♯, B, C) hasta <b>C</b>. <b>Mano izquierda:</b> 5 en F. <b>Mano derecha:</b> 1 en F, 3 en A y 5 en C. La forma es idéntica a la de C, solo que tres teclas blancas más a la derecha.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="G" data-alt="Acorde de G: meñique izquierdo en G3 y mano derecha 1-3-5 en G B D"
+      data-kbd='{"from":"E3","to":"F5","lh":{"fingers":{"5":"G3"}},"rh":{"fingers":{"1":"G4","3":"B4","5":"D5"}}}'>
+      <p class="fig-title">G mayor · G–B–D</p>
+      <figcaption>De <b>G</b> a <b>B</b> hay 4 semitonos (G♯, A, A♯, B) y de B a <b>D</b>, 3 (C, C♯, D). <b>Mano izquierda:</b> 5 en G. <b>Mano derecha:</b> 1 en G, 3 en B y 5 en D. Desde F solo tienes que deslizar la mano <b>una tecla</b> a la derecha.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>C, F y G tienen las tres notas en teclas blancas. Por eso la mano mantiene exactamente la misma forma: <strong>solo cambia de sitio</strong>. Piensa en la mano como en un sello que estampas en distintas teclas.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. GRADOS ============ -->
+  <section class="block" id="grados">
+    <h2><span class="step-no">4</span>Los números: I, IV y V</h2>
+    <p>Si numeras las teclas blancas empezando en C, cada nota recibe un número: C es la 1, D la 2, E la 3, F la 4 y G la 5. A ese número lo llamamos <strong>grado</strong>, y los músicos lo escriben en números romanos. El acorde que se construye sobre cada nota hereda su número.</p>
+
+    <figure class="kbd" data-alt="Teclas blancas de C a C numeradas del I al VII, con I, IV y V resaltados"
+      data-kbd='{"from":"B3","to":"D5",
+        "marks":[{"note":"C4","color":"#ff5fa2","main":"C","sub":"I","ink":"#c9184a"},
+                 {"note":"D4","color":"#f3ece0","main":"D","sub":"II","ink":"#8a8178"},
+                 {"note":"E4","color":"#f3ece0","main":"E","sub":"III","ink":"#8a8178"},
+                 {"note":"F4","color":"#ff5fa2","main":"F","sub":"IV","ink":"#c9184a"},
+                 {"note":"G4","color":"#ff5fa2","main":"G","sub":"V","ink":"#c9184a"},
+                 {"note":"A4","color":"#f3ece0","main":"A","sub":"VI","ink":"#8a8178"},
+                 {"note":"B4","color":"#f3ece0","main":"B","sub":"VII","ink":"#8a8178"},
+                 {"note":"C5","color":"#ffd6e0","main":"C","sub":"I","ink":"#c9184a"}],
+        "seq":["C4","F4","G4","C5"],"tempo":0.6,"playLabel":"Escuchar I, IV, V y I"}'>
+      <p class="fig-title">Grados en C</p>
+      <figcaption>En la «familia» de C, el acorde de C es el <b>I</b>, el de F es el <b>IV</b> y el de G es el <b>V</b>. El I es la casa (reposo), el IV se aleja un poco y el V pide volver a casa. Al llegar a la octava, el C vuelve a ser I.</figcaption>
+    </figure>
+
+    <p>La gran ventaja de los números es que <strong>describen la canción, no las teclas</strong>. «I–IV–V–I» significa lo mismo en cualquier tonalidad: si cambias de casa, cambian las letras, pero no la historia.</p>
+
+    <figure class="kbd" data-prog='{"chords":[{"name":"C","rh":["C4","E4","G4"],"bass":"C3"},{"name":"F","rh":["F4","A4","C5"],"bass":"F3"},{"name":"G","rh":["G4","B4","D5"],"bass":"G3"},{"name":"C","rh":["C4","E4","G4"],"bass":"C3"}],"nums":["I","IV","V","I"],"bpm":70}'>
+      <p class="fig-title">Progresión C–F–G–C · I–IV–V–I</p>
+      <figcaption>Una <b>progresión</b> es una secuencia de acordes. Esta es la más antigua y útil del pop, el rock y el blues: un compás (4 pulsos) por acorde. Escúchala y fíjate en la sensación de «llegada» cuando el G vuelve a C.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ 5. CUALQUIER MAYOR ============ -->
+  <section class="block" id="cualquiera">
+    <h2><span class="step-no">5</span>Construye cualquier acorde mayor</h2>
+    <p>Ahora aplica la fórmula a notas nuevas. En <span class="chord maj">D</span>, <span class="chord maj">E</span> y <span class="chord maj">A</span> pasa algo interesante: la tercera cae en una <strong>tecla negra</strong>. La digitación no cambia (1–3–5), pero el dedo 3 se adelanta un poco hacia el fondo de la tecla.</p>
+
+    <figure class="kbd" data-chord="D" data-alt="Acorde de D: meñique izquierdo en D3 y mano derecha 1-3-5 en D, F sostenido y A"
+      data-kbd='{"from":"B2","to":"C5","lh":{"fingers":{"5":"D3"}},"rh":{"fingers":{"1":"D4","3":"F#4","5":"A4"}}}'>
+      <p class="fig-title">D mayor · D–F♯–A</p>
+      <figcaption>De <b>D</b> subes 4 semitonos (D♯, E, F, F♯) y llegas a <b>F♯</b>, no a F. Después 3 más (G, G♯, A) hasta <b>A</b>. <b>Mano izquierda:</b> 5 en D. <b>Mano derecha:</b> 1 en D, 3 en F♯ (negra) y 5 en A.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="E" data-alt="Acorde de E: meñique izquierdo en E3 y mano derecha 1-3-5 en E, G sostenido y B"
+      data-kbd='{"from":"C3","to":"D5","lh":{"fingers":{"5":"E3"}},"rh":{"fingers":{"1":"E4","3":"G#4","5":"B4"}}}'>
+      <p class="fig-title">E mayor · E–G♯–B</p>
+      <figcaption>De <b>E</b>: F, F♯, G, <b>G♯</b> (4 semitonos) y luego A, A♯, <b>B</b> (3). <b>Mano izquierda:</b> 5 en E. <b>Mano derecha:</b> 1 en E, 3 en G♯ (negra) y 5 en B.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="A" data-alt="Acorde de A: meñique izquierdo en A3 y mano derecha 1-3-5 en A, C sostenido y E"
+      data-kbd='{"from":"F3","to":"G5","lh":{"fingers":{"5":"A3"}},"rh":{"fingers":{"1":"A4","3":"C#5","5":"E5"}}}'>
+      <p class="fig-title">A mayor · A–C♯–E</p>
+      <figcaption>De <b>A</b>: A♯, B, C, <b>C♯</b> (4 semitonos) y luego D, D♯, <b>E</b> (3). <b>Mano izquierda:</b> 5 en A. <b>Mano derecha:</b> 1 en A, 3 en C♯ (negra) y 5 en E.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p>Con <span class="chord maj">D</span>, <span class="chord maj">G</span> y <span class="chord maj">A</span> puedes tocar el mismo I–IV–V–I que antes, pero con <strong>D como casa</strong>: D es el I, G el IV y A el V. Escúchalo abajo: la historia es la misma, solo más aguda.</p>
+    </div>
+
+    <figure class="kbd" data-prog='{"chords":[{"name":"D","rh":["D4","F#4","A4"],"bass":"D3"},{"name":"G","rh":["G4","B4","D5"],"bass":"G3"},{"name":"A","rh":["A4","C#5","E5"],"bass":"A3"},{"name":"D","rh":["D4","F#4","A4"],"bass":"D3"}],"nums":["I","IV","V","I"],"bpm":70}'>
+      <p class="fig-title">Progresión D–G–A–D · I–IV–V–I</p>
+      <figcaption>Los mismos números que C–F–G–C, trasladados a D. Esto se llama <b>transportar</b> y lo verás con calma en la lección 8.</figcaption>
+    </figure>
+
+    <h3>Los 12 acordes mayores</h3>
+    <p>Aquí tienes todos, construidos con la fórmula. La columna «Forma» te dice qué teclas son blancas (⬜) y cuáles negras (⬛), de grave a agudo: es lo que más ayuda a recordarlos.</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Acorde</th><th>Fundamental</th><th>Tercera (+4)</th><th>Quinta (+3)</th><th>Forma</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chord maj">C</span></td><td>C</td><td>E</td><td>G</td><td>⬜ ⬜ ⬜</td></tr>
+          <tr><td><span class="chord maj">D♭</span></td><td>D♭</td><td>F</td><td>A♭</td><td>⬛ ⬜ ⬛</td></tr>
+          <tr><td><span class="chord maj">D</span></td><td>D</td><td>F♯</td><td>A</td><td>⬜ ⬛ ⬜</td></tr>
+          <tr><td><span class="chord maj">E♭</span></td><td>E♭</td><td>G</td><td>B♭</td><td>⬛ ⬜ ⬛</td></tr>
+          <tr><td><span class="chord maj">E</span></td><td>E</td><td>G♯</td><td>B</td><td>⬜ ⬛ ⬜</td></tr>
+          <tr><td><span class="chord maj">F</span></td><td>F</td><td>A</td><td>C</td><td>⬜ ⬜ ⬜</td></tr>
+          <tr><td><span class="chord maj">F♯</span></td><td>F♯</td><td>A♯</td><td>C♯</td><td>⬛ ⬛ ⬛</td></tr>
+          <tr><td><span class="chord maj">G</span></td><td>G</td><td>B</td><td>D</td><td>⬜ ⬜ ⬜</td></tr>
+          <tr><td><span class="chord maj">A♭</span></td><td>A♭</td><td>C</td><td>E♭</td><td>⬛ ⬜ ⬛</td></tr>
+          <tr><td><span class="chord maj">A</span></td><td>A</td><td>C♯</td><td>E</td><td>⬜ ⬛ ⬜</td></tr>
+          <tr><td><span class="chord maj">B♭</span></td><td>B♭</td><td>D</td><td>F</td><td>⬛ ⬜ ⬜</td></tr>
+          <tr><td><span class="chord maj">B</span></td><td>B</td><td>D♯</td><td>F♯</td><td>⬜ ⬛ ⬛</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="color:var(--muted);font-size:.92rem">¿Por qué A♯ en el acorde de F♯ y no B♭? Porque cada acorde usa tres letras alternas (F–A–C, con sus alteraciones). La tecla es la misma; solo cambia el nombre.</p>
+  </section>
+
+  <!-- ============ 6. CAMBIOS ============ -->
+  <section class="block" id="cambios">
+    <h2><span class="step-no">6</span>Cambiar de acorde sin parar</h2>
+    <p>El reto de verdad no es tocar un acorde, sino <strong>pasar al siguiente a tiempo</strong>. El truco de los pianistas es <strong>preparar la forma en el aire</strong>: mientras viajas, la mano ya va con los dedos 1–3–5 abiertos a la distancia justa, y cae sobre las teclas nuevas de una sola vez.</p>
+
+    <div class="beats" aria-label="Un compás: acorde en el 1, mantener en 2 y 3, y viajar al siguiente acorde en el 4">
+      <div class="hit"><b>1</b><small>¡toca!</small></div>
+      <div class="hold"><b>2</b><small>mantén</small></div>
+      <div class="hold"><b>3</b><small>mantén</small></div>
+      <div><b>4</b><small>suelta y viaja ✈</small></div>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px">👀 Mira antes</h4><p style="margin:0;color:var(--ink-2)">Durante el pulso 3, mira ya la tecla donde caerá tu pulgar en el acorde siguiente.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">✋ Forma congelada</h4><p style="margin:0;color:var(--ink-2)">En el pulso 4 levanta la mano sin cerrarla: la forma 1–3–5 viaja intacta, como un sello.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">🎯 Cae en el 1</h4><p style="margin:0;color:var(--ink-2)">Llegar a tiempo importa más que llegar perfecto. Si fallas una nota, sigue: el pulso manda.</p></div>
+    </div>
+
+    <div class="callout warn">
+      <p>No te pares a «buscar» el acorde con el metrónomo en marcha. Si no llegas, <strong>baja el tempo</strong> hasta que llegues siempre. Un cambio lento pero puntual vale más que uno rápido con parones.</p>
+    </div>
+  </section>
+
+  <!-- ============ 7. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">7</span>Rutina diaria</h2>
+    <p>Unos 18 minutos. Empieza siempre por el metrónomo a 60 ppm (pulsos por minuto) y súbelo de 5 en 5 solo cuando todo salga limpio tres veces seguidas.</p>
+
+    <div data-metro data-bpm="60"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">2 min</span>
+        <h4>Semitonos y tonos a ciegas</h4>
+        <p>Pon el dedo 2 en cualquier tecla y di en voz alta qué nota está a <strong>un semitono</strong> hacia arriba, y cuál a <strong>un tono</strong>. Tócalas para comprobarlo. Repite empezando en E y en B, que son las trampas.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Constructor de acordes</h4>
+        <p>Con la fórmula 4 + 3, construye <strong>D, E y A</strong> contando semitonos en voz alta. Después prueba con <strong>B♭ y E♭</strong> y compara tu resultado con la tabla.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>C, F y G sueltos</h4>
+        <p>Cada acorde, con bajo, 4 veces: toca, levanta la mano 5 cm y vuelve a caer con la forma hecha. Busca que las cuatro notas suenen <strong>exactamente a la vez</strong>.</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>C–F–G–C con metrónomo</h4>
+        <p>Un acorde por compás a 60 ppm: tocas en el 1 y viajas en el 4. Repite la vuelta 4 veces sin parar. Cuando salga limpia, sube a 70.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Ojos cerrados</h4>
+        <p>Toca C–F–G–C sin mirar las manos. Guíate por las teclas negras: el pulgar de F cae justo a la izquierda del grupo de tres negras y el de G, dentro de ese grupo, entre la primera y la segunda.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>El mismo viaje en D</h4>
+        <p>Toca D–G–A–D (I–IV–V–I en D) a 60 ppm. Vigila las teclas negras: F♯ en D y C♯ en A.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 3 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l2-a"> Sé decir qué hay a un semitono y a un tono de cualquier tecla, incluidas E y B.</label></li>
+      <li><label><input type="checkbox" data-save="l2-b"> Construyo un acorde mayor con la fórmula 4 + 3 empezando en cualquier nota.</label></li>
+      <li><label><input type="checkbox" data-save="l2-c"> Toco C, F y G con bajo (5) y acorde (1–3–5), con las cuatro notas a la vez.</label></li>
+      <li><label><input type="checkbox" data-save="l2-d"> Sé qué acordes son I, IV y V en C.</label></li>
+      <li><label><input type="checkbox" data-save="l2-e"> Toco C–F–G–C cuatro vueltas seguidas a 60 ppm sin parar el pulso.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <nav class="pager" data-pager="2" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>
