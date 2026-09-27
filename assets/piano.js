@@ -18,8 +18,9 @@
  * 2) Progresión de acordes
  *   <figure class="kbd" data-prog='{"chords":["C","G","Am","F"],"nums":["I","V","vi","IV"],"bpm":80,
  *        "pattern":"X.C.C.C.","swing":false,"grid":true,"loop":2}'>
- *   - chords: nombres ("C", "Am", "G7", "C/E"…) u objetos {name, rh:[notas], bass:"C3", lh:[notas], beats, pattern}.
- *     Si no das rh/bass se genera una posición cerrada cerca del C central.
+ *   - chords: nombres ("C", "Am", "G7", "C/E"…) u objetos {name, rh:[notas], bass:"C3", lh:[notas], beats, pattern, partial}.
+ *     Si no das rh/bass se genera una posición cerrada cerca del C central. Los tests exigen que rh + bass
+ *     sean exactamente las notas del acorde; partial:true lo desactiva (p. ej. Am/G o un C7 sin quinta).
  *   - pattern: una letra por corchea: X bajo+acorde · B bajo · O bajo una octava arriba · C acorde
  *     · 1-4 nota n del acorde (de grave a agudo) · L siguiente elemento de "lh" (nota o [notas])
  *     · M como L pero sumando el acorde de la derecha · . silencio/mantener.
@@ -36,7 +37,7 @@
 (function (root) {
   'use strict';
 
-  const W = 40, H = 190, BW = 24, BH = 118, TOP = 48, PADX = 12, HANDH = 150;
+  const W = 40, H = 230, BW = 24, BH = 142, TOP = 48, PADX = 12, LIP = 14, BAND = 40;
   const PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
   const LAT = { C: 'Do', D: 'Re', E: 'Mi', F: 'Fa', G: 'Sol', A: 'La', B: 'Si' };
   const SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -201,42 +202,62 @@
     return s;
   }
 
-  function handOnKeys(side, h, press, L) {
-    const dir = side === 'R' ? 1 : -1;
-    const tips = {};
-    for (let f = 1; f <= 5; f++) {
-      const n = h.fingers[f];
-      if (!n) continue;
-      const k = L.by[parse(n).midi];
-      if (!k) throw new Error('La nota ' + n + ' está fuera del teclado dibujado');
-      let y = k.black ? TOP + BH - 22 : TOP + H - 42;
-      if (f === 1 && !k.black) y += 12; // el pulgar queda algo más cerca del borde
-      tips[f] = { x: k.cx, y, on: true, pressed: press.has(k.m) };
-    }
-    const assigned = Object.keys(tips).map(Number);
-    if (!assigned.length) throw new Error('Mano sin dedos asignados');
-    for (let f = 1; f <= 5; f++) {
-      if (tips[f]) continue;
-      const lo = assigned.filter(a => a < f).pop();
-      const hi = assigned.find(a => a > f);
-      let x;
-      if (lo != null && hi != null) x = tips[lo].x + (tips[hi].x - tips[lo].x) * (f - lo) / (hi - lo);
-      else if (lo != null) x = tips[lo].x + dir * (f - lo) * W * 0.95;
-      else x = tips[hi].x + dir * (f - hi) * W * 0.95;
-      tips[f] = { x, y: TOP + H - 12, on: false };
-    }
-    const xs = [2, 3, 4, 5].map(f => tips[f].x);
-    const minX = Math.min(...xs), maxX = Math.max(...xs);
-    const pw = Math.max(112, Math.min(165, (maxX - minX) * 0.85 + 30));
-    const pcx = (minX + maxX) / 2;
-    return handShape(side, tips, { left: pcx - pw / 2, py: TOP + H + 32, pw }, true);
+  // Dedos vistos desde arriba, entrando desde el borde del teclado como en una foto: solo los dedos que
+  // tocan, con uña y un número del color de la mano. Sin palma: así no tapa ni confunde.
+  function fingersOnKeys(side, h, press, L, gid, bottom) {
+    const c = HAND[side];
+    const list = Object.keys(h.fingers).map(Number).sort((a, b) => a - b).map(f => {
+      const k = L.by[parse(h.fingers[f]).midi];
+      if (!k) throw new Error('La nota ' + h.fingers[f] + ' está fuera del teclado dibujado');
+      const thumb = f === 1;
+      const w = thumb ? 34 : f === 5 ? 27 : 30;
+      // yema justo por debajo de las negras (teclas blancas) o dentro de la negra
+      let y = k.black ? TOP + BH - 58 : TOP + BH + 14;
+      if (thumb) y += k.black ? 16 : 30;
+      if (f === 5 && !k.black) y += 12;
+      return { f, k, w, y, x: k.cx, pressed: press.has(k.m) };
+    });
+    if (!list.length) throw new Error('Mano sin dedos asignados');
+    const center = list.reduce((a, d) => a + d.x, 0) / list.length;
+    let s = '', over = '';
+    list.forEach(d => {
+      const { x, y, w } = d;
+      // los dedos convergen ligeramente hacia la muñeca; el pulgar sale más de lado
+      let bx = x - (x - center) * 0.22;
+      if (d.f === 1) bx += (side === 'R' ? -1 : 1) * 16;
+      const r = w / 2, bw = r * 1.1;
+      const body = `M${pt(x - r, y + r)} A${r} ${r} 0 0 1 ${pt(x + r, y + r)} L${pt(bx + bw, bottom)} L${pt(bx - bw, bottom)} Z`;
+      const g = `<g opacity="${d.pressed ? 1 : 0.55}">`;
+      s += g;
+      s += `<ellipse cx="${x}" cy="${y + 10}" rx="${r * 1.25}" ry="${r * 0.9}" fill="#000" opacity="0.13"/>`;
+      s += `<path d="${body}" fill="url(#${gid})" stroke="#c48a68" stroke-width="1.3"/>`;
+      // uña con brillo
+      s += `<rect x="${pt(x - r * 0.62, y + 3).split(' ')[0]}" y="${y + 3}" width="${(r * 1.24).toFixed(1)}" height="${(r * 1.25).toFixed(1)}" rx="${(r * 0.6).toFixed(1)}" fill="#f4c3b8" stroke="#d99f93" stroke-width="1"/>`;
+      s += `<ellipse cx="${x - r * 0.18}" cy="${y + 3 + r * 0.45}" rx="${r * 0.22}" ry="${r * 0.3}" fill="#fff" opacity="0.55"/>`;
+      // pliegue de la primera falange
+      const cy = y + w * 1.75, cx0 = x + (bx - x) * ((cy - y) / (bottom - y));
+      s += `<path d="M${pt(cx0 - r * 0.55, cy)} Q${pt(cx0, cy + 4)} ${pt(cx0 + r * 0.55, cy)}" fill="none" stroke="#c48a68" stroke-width="1.2" opacity="0.7"/>`;
+      s += '</g>';
+      // número del dedo
+      const ny = y + r * 1.25 + 20;
+      const nx = x + (bx - x) * ((ny - y) / (bottom - y));
+      over += `<circle cx="${nx.toFixed(1)}" cy="${ny.toFixed(1)}" r="12.5" fill="${d.pressed ? c.ink : '#fff'}" stroke="${c.ink}" stroke-width="2.5"/>`;
+      over += `<text x="${nx.toFixed(1)}" y="${(ny + 5).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="800" fill="${d.pressed ? '#fff' : c.ink}">${d.f}</text>`;
+    });
+    // etiqueta de la mano, en la franja inferior
+    const txt = side === 'R' ? 'Mano derecha' : 'Mano izquierda';
+    const tw = txt.length * 7.4 + 20;
+    const lx = Math.min(L.width - tw / 2 - 2, Math.max(tw / 2 + 2, center));
+    over += `<rect x="${(lx - tw / 2).toFixed(1)}" y="${bottom - 30}" width="${tw.toFixed(1)}" height="24" rx="12" fill="#fff" stroke="${c.ink}" stroke-width="1.5"/>`;
+    over += `<text x="${lx.toFixed(1)}" y="${bottom - 13}" text-anchor="middle" font-size="12.5" font-weight="800" fill="${c.ink}">${txt}</text>`;
+    return { under: s, over };
   }
 
   // Devuelve { svg, events, sounding } sin tocar el DOM.
   function buildKeyboard(spec) {
     const L = layout(spec.from, spec.to);
     const sides = [['L', spec.lh], ['R', spec.rh]].filter(([, h]) => h);
-    const totalH = TOP + H + (sides.length ? HANDH : 10);
+    const totalH = TOP + H + LIP + (sides.length ? BAND : 6);
     const fills = {};
     const top = [];
     const sounding = [];
@@ -267,23 +288,35 @@
       return { side, h, press };
     });
 
-    let s = `<svg viewBox="0 0 ${L.width + PADX * 2} ${totalH}" style="min-width:${Math.round(L.whites * 21)}px" role="img" aria-label="${esc(spec.alt || 'Diagrama de teclado')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
-    s += `<g transform="translate(${PADX},0)">`;
-    s += `<rect x="-4" y="${TOP - 6}" width="${L.width + 8}" height="10" rx="3" fill="#3a3530"/>`;
+    const id = 'k' + (++uid);
+    let s = `<svg viewBox="0 0 ${L.width + PADX * 2} ${totalH}" style="min-width:${Math.round(L.whites * 24)}px" role="img" aria-label="${esc(spec.alt || 'Diagrama de teclado')}" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
+    s += `<defs>
+      <linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".82" stop-color="#fbfaf7"/><stop offset="1" stop-color="#e9e5de"/></linearGradient>
+      <linearGradient id="${id}b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b2926"/><stop offset=".5" stop-color="#15130f"/><stop offset="1" stop-color="#050505"/></linearGradient>
+      <linearGradient id="${id}s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e2a987"/><stop offset=".3" stop-color="#f5cfb6"/><stop offset=".6" stop-color="#f7d8c4"/><stop offset="1" stop-color="#dfa281"/></linearGradient>
+      <clipPath id="${id}c"><rect x="-${PADX}" y="0" width="${L.width + PADX * 2}" height="${totalH}"/></clipPath>
+    </defs>`;
+    s += `<g transform="translate(${PADX},0)" clip-path="url(#${id}c)">`;
+    s += `<rect x="-6" y="${TOP - 8}" width="${L.width + 12}" height="12" rx="3" fill="#2f2b27"/>`;
+    // teclas blancas con volumen: cara superior + canto frontal
     L.keys.filter(k => !k.black).forEach(k => {
-      s += `<rect x="${k.x}" y="${TOP}" width="${W}" height="${H}" rx="5" fill="${fills[k.m] || '#fff'}" stroke="#2a2622" stroke-width="1.2"/>`;
+      const f = fills[k.m];
+      s += `<rect x="${k.x + 0.6}" y="${TOP}" width="${W - 1.2}" height="${H + LIP - 2}" rx="4" fill="#cfc9bf"/>`;
+      s += `<rect x="${k.x + 0.6}" y="${TOP}" width="${W - 1.2}" height="${H}" rx="4" fill="${f || `url(#${id}w)`}" stroke="#8d867b" stroke-width="1"/>`;
     });
     L.keys.filter(k => k.black).forEach(k => {
       const f = fills[k.m];
-      s += `<rect x="${k.x}" y="${TOP}" width="${BW}" height="${BH}" rx="3.5" fill="${f || '#1c1a18'}" stroke="#0d0c0b" stroke-width="1"/>`;
-      if (!f) s += `<rect x="${k.x + 4}" y="${TOP + 2}" width="${BW - 8}" height="${BH - 14}" rx="2" fill="#fff" opacity="0.07"/>`;
+      s += `<rect x="${k.x - 1}" y="${TOP}" width="${BW + 2}" height="${BH + 6}" rx="3" fill="#000" opacity="0.25"/>`;
+      s += `<rect x="${k.x}" y="${TOP}" width="${BW}" height="${BH}" rx="3" fill="${f || `url(#${id}b)`}" stroke="#000" stroke-width="1"/>`;
+      s += `<rect x="${k.x + 3}" y="${TOP + BH - 16}" width="${BW - 6}" height="12" rx="2" fill="#fff" opacity="${f ? 0.25 : 0.12}"/>`;
+      if (!f) s += `<rect x="${k.x + 5}" y="${TOP + 2}" width="${BW - 10}" height="${BH - 24}" rx="2" fill="#fff" opacity="0.06"/>`;
     });
     if (spec.names === 'all') {
       L.keys.filter(k => !k.black).forEach(k => {
         const letter = Object.keys(PC).find(l => PC[l] === k.m % 12);
         const isC = letter === 'C';
-        s += `<text x="${k.cx}" y="${TOP + H - 16}" text-anchor="middle" font-size="${isC ? 16 : 14}" font-weight="${isC ? 800 : 600}" fill="${isC ? '#c9184a' : '#3a3530'}">${letter}</text>`;
-        if (spec.solfeo) s += `<text x="${k.cx}" y="${TOP + H - 36}" text-anchor="middle" font-size="10.5" fill="#8a8178">${LAT[letter]}</text>`;
+        s += `<text x="${k.cx}" y="${TOP + H - 22}" text-anchor="middle" font-size="${isC ? 17 : 15}" font-weight="${isC ? 800 : 600}" fill="${isC ? '#c9184a' : '#3a3530'}">${letter}</text>`;
+        if (spec.solfeo) s += `<text x="${k.cx}" y="${TOP + H - 44}" text-anchor="middle" font-size="11" fill="#8a8178">${LAT[letter]}</text>`;
       });
     }
     top.forEach(t => {
@@ -291,7 +324,11 @@
       s += `<text x="${t.cx}" y="${t.sub ? 20 : 30}" text-anchor="middle" font-size="16" font-weight="800" fill="${t.color}" opacity="${op}">${esc(t.main)}</text>`;
       if (t.sub) s += `<text x="${t.cx}" y="37" text-anchor="middle" font-size="11" fill="#8a8178" opacity="${op}">${esc(t.sub)}</text>`;
     });
-    hands.forEach(({ side, h, press }) => { s += handOnKeys(side, h, press, L); });
+    if (hands.length) {
+      const parts = hands.map(({ side, h, press }) => fingersOnKeys(side, h, press, L, id + 's', totalH + 2));
+      parts.forEach(p => { s += p.under; });
+      parts.forEach(p => { s += p.over; });
+    }
     s += '</g></svg>';
 
     const step = spec.tempo || 0.45;
@@ -349,26 +386,33 @@
         let li = 0;
         const hits = [];
         [...o.pat].forEach((ch, k) => {
-          let notes = null;
-          if (ch === 'X') notes = [o.bassM, ...o.rhM];
-          else if (ch === 'B') notes = [o.bassM];
-          else if (ch === 'O') notes = [o.bassM + 12];
-          else if (ch === 'C') notes = o.rhM;
-          else if (/[1-4]/.test(ch)) notes = [o.rhM[Math.min(+ch - 1, o.rhM.length - 1)]];
+          let lh = [], rh = [];
+          if (ch === 'X') { lh = [o.bassM]; rh = o.rhM; }
+          else if (ch === 'B') lh = [o.bassM];
+          else if (ch === 'O') lh = [o.bassM + 12];
+          else if (ch === 'C') rh = o.rhM;
+          else if (/[1-4]/.test(ch)) rh = [o.rhM[Math.min(+ch - 1, o.rhM.length - 1)]];
           else if (ch === 'L' || ch === 'M') {
             if (!o.lhM) throw new Error('Patrón con ' + ch + ' pero sin "lh" en ' + o.name);
-            notes = [].concat(o.lhM[li++ % o.lhM.length]);
-            if (ch === 'M') notes = notes.concat(o.rhM);
+            lh = [].concat(o.lhM[li++ % o.lhM.length]);
+            if (ch === 'M') rh = o.rhM;
           }
           else if (ch !== '.' && ch !== '-') throw new Error('Letra de patrón desconocida: ' + ch);
-          if (notes) hits.push({ k, notes });
+          if (lh.length || rh.length) hits.push({ k, lh, rh });
         });
         const end = slot0 + o.pat.length;
+        // Cada mano mantiene su nota hasta que esa misma mano vuelve a tocar (o acaba el acorde).
+        const until = (i, part) => {
+          for (let j = i + 1; j < hits.length; j++) if (hits[j][part].length) return hits[j].k;
+          return o.pat.length;
+        };
         hits.forEach((hit, i) => {
-          const nextK = i + 1 < hits.length ? hits[i + 1].k : o.pat.length;
           const t = slotTime(slot0 + hit.k);
-          const dur = Math.max(0.22, slotTime(slot0 + nextK) - t + 0.08);
-          events.push({ t, notes: hit.notes, dur, chord: ci });
+          const d = part => Math.max(0.22, slotTime(slot0 + until(i, part)) - t + 0.08);
+          const dl = d('lh'), dr = d('rh');
+          const notes = [...hit.lh, ...hit.rh];
+          const durs = [...hit.lh.map(() => dl), ...hit.rh.map(() => dr)];
+          events.push({ t, notes, dur: Math.max(...durs), durs, chord: ci });
         });
         if (!hits.length) events.push({ t: slotTime(slot0), notes: [], dur: 0, chord: ci });
         slot0 = end;
@@ -479,7 +523,7 @@
     const t0 = ctx.currentTime + 0.06;
     const timers = [];
     events.forEach(ev => {
-      ev.notes.forEach(m => tone(out, m, t0 + ev.t, ev.dur, 0.28 / Math.sqrt(ev.notes.length)));
+      ev.notes.forEach((m, i) => tone(out, m, t0 + ev.t, ev.durs ? ev.durs[i] : ev.dur, 0.28 / Math.sqrt(ev.notes.length)));
       if (onEvent) timers.push(setTimeout(() => onEvent(ev), (ev.t + 0.06) * 1000));
     });
     const total = Math.max(...events.map(e => e.t + e.dur)) || 0;

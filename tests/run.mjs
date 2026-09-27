@@ -55,6 +55,9 @@ check('patrones de progresión', () => {
   eq(r.events[0].notes, [48, 60, 64, 67]);
   eq(r.events[1].t, 1);
   eq(r.events[4].chord, 1);
+  // el bajo del 1 se mantiene todo el compás aunque la derecha vuelva a tocar
+  eq(r.events[0].durs[0] > 3.9, true, 'el bajo se sostiene:');
+  ok(r.events[0].durs[1] < 1.2, 'el acorde de la derecha dura hasta su siguiente golpe');
   const sw = P.buildProg({ chords: ['C'], pattern: 'BCBCBCBC', bpm: 60, swing: true });
   ok(Math.abs(sw.events[1].t - 2 / 3) < 1e-9, 'el swing retrasa la corchea a 2/3 del pulso');
   const bg = P.buildProg({ chords: [{ name: 'C7', lh: [['C3', 'G3'], ['C3', 'A3']] }], pattern: 'LLM.....', bpm: 60 });
@@ -173,6 +176,8 @@ for (const rel of pages) {
       const pg = tags(html, 'nav').find(t => 'data-pager' in t.attrs);
       ok(pg, 'falta <nav class="pager" data-pager="N">');
       eq(+pg.attrs['data-pager'], l.n, 'data-pager:');
+      const title = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || '';
+      ok(title.includes(`Lección ${l.n}`) && title.includes(l.title), `<title> debería ser «Lección ${l.n} · ${l.title}», es «${title}»`);
       const iData = html.indexOf('../assets/curso-data.js'), iPiano = html.indexOf('../assets/piano.js');
       ok(iData > 0 && iPiano > iData, 'hay que cargar ../assets/curso-data.js antes que ../assets/piano.js');
       ok(/<section class="block"[^>]*id="practica"/.test(html), 'falta la sección de práctica (id="practica")');

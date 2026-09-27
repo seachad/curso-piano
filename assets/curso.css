@@ -130,7 +130,8 @@ figure.kbd { margin: 22px 0; background: var(--fig-bg); border: 1px solid var(--
 .kbd-scroll svg { display: block; width: 100%; height: auto; }
 figure.kbd figcaption { margin-top: 10px; font-size: .93rem; color: #4b4660; line-height: 1.5; }
 figure.kbd figcaption b { color: #1d1a2e; }
-.fig-title { font: 700 .78rem 'Inter', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: #7a7489; margin: 0 0 8px; }
+/* Sin mayúsculas forzadas: cambiarían el significado de los cifrados (C♯m → C♯M, ii → II). */
+.fig-title { font: 700 .88rem 'Inter', sans-serif; letter-spacing: .02em; color: #7a7489; margin: 0 0 8px; }
 .play { margin-top: 10px; display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer; border-radius: 999px;
   padding: 9px 16px; font: 600 .92rem 'Inter', sans-serif; color: #fff; background: #1d1a2e; transition: transform .12s, background .2s; }
 .play:hover { background: var(--accent-ink); }
@@ -150,6 +151,8 @@ figure.kbd figcaption b { color: #1d1a2e; }
 .chord.dom { --c: var(--dom); } .chord.aug { --c: var(--aug); }
 :root[data-theme="dark"] .chord { color: var(--ink); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chord { color: var(--ink); } }
+/* Las figuras tienen siempre fondo claro: dentro de ellas la insignia usa tinta oscura en ambos temas. */
+:root figure.kbd .chord, :root .compare .chord { color: #1d1a2e; }
 
 /* Progresiones */
 .prog { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 4px 2px; }
