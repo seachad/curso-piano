@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 14 · Kit de supervivencia</title>
+<meta name="description" content="Simplifica acordes raros, elige la tonalidad para cantar cómodo, toca en tonalidades con teclas negras y sigue un repertorio guiado por dificultad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/curso.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ef476f'/%3E%3Crect x='7' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='13.5' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='20' y='7' width='5' height='18' rx='1' fill='white'/%3E%3Crect x='10.5' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3Crect x='17' y='7' width='3.5' height='11' fill='%231d1a2e'/%3E%3C/svg%3E">
+<style>
+  /* Las figuras tienen fondo claro también en modo oscuro: las insignias de acorde van con tinta oscura. */
+  :root figure.kbd .chord { color: #1d1a2e; }
+  .tbl td.arrow { color: var(--muted); font-weight: 700; text-align: center; padding-left: 0; padding-right: 0; }
+  .tbl td.orig { font-weight: 800; background: color-mix(in srgb, var(--maj) 12%, var(--card)); }
+  .lvl { display: inline-block; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .lvl.l1 { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+  .lvl.l2 { background: color-mix(in srgb, var(--min) 20%, transparent); color: #0b7fa8; }
+  .lvl.l3 { background: color-mix(in srgb, var(--dom) 24%, transparent); color: #9a6f00; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../index.html"><span class="brand-mark">♪</span> Piano de acompañamiento</a>
+    <span class="spacer"></span>
+    <nav>
+      <a href="#simplificar">Simplificar</a>
+      <a href="#tono">Tonalidad</a>
+      <a href="#negras">Teclas negras</a>
+      <a href="#repertorio">Repertorio</a>
+      <a href="#practica">Práctica</a>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Módulo 4 · Lección 14</span>
+    <h1>Kit de <em>supervivencia</em></h1>
+    <p class="lead">Las hojas de acordes reales están llenas de sorpresas: acordes con nombres larguísimos, tonalidades con cinco teclas negras y canciones que no te caben en la voz. Aquí tienes las herramientas para que nada de eso te pare y puedas tocar cualquier canción hoy mismo.</p>
+    <div class="meta">
+      <span class="chip">⏱ 15–20 min al día</span>
+      <span class="chip">📅 2 semanas</span>
+      <span class="chip">🎤 Ideal si cantas mientras tocas</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="block">
+    <h2>Lo que vas a conseguir</h2>
+    <ul class="goals">
+      <li><span class="ic">✂️</span><span>Convertir cualquier acorde «raro» en uno que <strong>ya sabes tocar</strong>, sin que suene mal.</span></li>
+      <li><span class="ic">🎤</span><span>Subir o bajar una canción para <strong>cantarla cómodo</strong>.</span></li>
+      <li><span class="ic">⬛</span><span>Tocar sin miedo en <strong>E, A, D, B♭ y E♭</strong>, las tonalidades con más teclas negras del pop.</span></li>
+      <li><span class="ic">📚</span><span>Tener un <strong>repertorio</strong> ordenado por dificultad y un plan para seguir avanzando.</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ 1. SIMPLIFICAR ============ -->
+  <section class="block" id="simplificar">
+    <h2><span class="step-no">1</span>Simplifica los acordes raros</h2>
+    <p>En una hoja de acordes verás cosas como <span class="chord maj">Cmaj7</span>, <span class="chord min">Am7</span> o <span class="chord dom">E7♯9</span>. Todo lo que va detrás de la letra (y de la «m», si la hay) son <strong>colores</strong>: notas añadidas que enriquecen el acorde pero no cambian su esencia. Si aún no los dominas, quítalos y toca la tríada básica. La canción seguirá sonando bien.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Si ves…</th><th></th><th>Toca…</th><th>Qué pierdes</th></tr></thead>
+        <tbody>
+          <tr><td><span class="chord maj">Cmaj7</span></td><td class="arrow">→</td><td><span class="chord maj">C</span></td><td>La séptima mayor (B): un toque suave y soñador.</td></tr>
+          <tr><td><span class="chord maj">C6</span></td><td class="arrow">→</td><td><span class="chord maj">C</span></td><td>La sexta (A), un color dulce y algo antiguo.</td></tr>
+          <tr><td><span class="chord maj">Fadd9</span> <span class="chord maj">Cadd9</span></td><td class="arrow">→</td><td><span class="chord maj">F</span> <span class="chord maj">C</span></td><td>La novena (G en F, D en C): brillo.</td></tr>
+          <tr><td><span class="chord maj">Csus4</span> <span class="chord maj">Csus2</span></td><td class="arrow">→</td><td><span class="chord maj">C</span></td><td>La suspensión. Si después viene C, puedes tocar C directamente.</td></tr>
+          <tr><td><span class="chord maj">C/E</span> <span class="chord maj">D/F♯</span></td><td class="arrow">→</td><td><span class="chord maj">C</span> <span class="chord maj">D</span></td><td>El bajo de paso: la MI toca la fundamental (C o D) en lugar de E o F♯.</td></tr>
+          <tr><td><span class="chord min">Am7</span> <span class="chord min">Dm7</span> <span class="chord min">F♯m7</span></td><td class="arrow">→</td><td><span class="chord min">Am</span> <span class="chord min">Dm</span> <span class="chord min">F♯m</span></td><td>La séptima menor. <strong>Conserva la «m»</strong>.</td></tr>
+          <tr><td><span class="chord dom">C9</span> <span class="chord dom">G7sus4</span></td><td class="arrow">→</td><td><span class="chord dom">C7</span> <span class="chord dom">G7</span></td><td>La novena o la suspensión. Si el 7 te cuesta, toca solo C o G.</td></tr>
+          <tr><td><span class="chord dom">E7♯9</span></td><td class="arrow">→</td><td><span class="chord dom">E7</span></td><td>La ♯9, que suena como un G y choca a propósito con el G♯: el «acorde de Hendrix».</td></tr>
+          <tr><td><span class="chord dim">Bm7♭5</span></td><td class="arrow">→</td><td><span class="chord dim">B°</span> o <span class="chord min">Dm</span></td><td>La séptima (A). <strong>No toques Bm</strong>: su F♯ choca con el F del acorde.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout key">
+      <p><strong>La regla:</strong> quédate con la <strong>letra</strong> (con su ♯ o ♭) y con la <strong>«m»</strong> si la tiene; quita todo lo demás. Dos excepciones: si pone <strong>7</strong> solo, intenta conservarlo (C7, E7, G7), porque ese acorde empuja la música; y si lleva <strong>♭5</strong> o <strong>°</strong>, el acorde es disminuido, no menor.</p>
+    </div>
+    <div class="callout warn">
+      <p>Cuidado con la trampa más común: <strong>maj</strong> no es <strong>m</strong>. <span class="chord maj">Cmaj7</span> es un acorde <strong>mayor</strong> (se simplifica a C), mientras que <span class="chord min">Cm7</span> es <strong>menor</strong> (se simplifica a Cm). A veces verás Cmaj7 escrito como CM7 o C∆7: es lo mismo.</p>
+    </div>
+
+    <h3>Así se ve: Cmaj7 y su versión simplificada</h3>
+    <div class="grid grid-2">
+      <figure class="kbd" data-chord="Cmaj7" data-alt="Cmaj7: mano izquierda en C, mano derecha C E G B con los dedos 1 2 3 5"
+        data-kbd='{"from":"B2","to":"C5","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","2":"E4","3":"G4","5":"B4"}},"playLabel":"Escuchar Cmaj7"}'>
+        <p class="fig-title">Original · Cmaj7</p>
+        <figcaption>MD <b>1–2–3–5</b> en <b>C–E–G–B</b>. El B, justo debajo del C de arriba, le da su sonido suave.</figcaption>
+      </figure>
+      <figure class="kbd" data-chord="C" data-alt="C: mano izquierda en C, mano derecha C E G con los dedos 1 3 5"
+        data-kbd='{"from":"B2","to":"C5","lh":{"fingers":{"5":"C3"}},"rh":{"fingers":{"1":"C4","3":"E4","5":"G4"}},"playLabel":"Escuchar C"}'>
+        <p class="fig-title">Simplificado · C</p>
+        <figcaption>Quitas el B y te queda el <b>C</b> de siempre, <b>1–3–5</b>. Escucha los dos: es el mismo acorde, uno con más color.</figcaption>
+      </figure>
+    </div>
+
+    <h3>El caso especial: Bm7♭5</h3>
+    <p>Este acorde aparece, por ejemplo, en canciones en A menor (es su ii). Se llama «semidisminuido» y sus notas son <strong>B–D–F–A</strong>. La tríada de abajo, B–D–F, es <span class="chord dim">B°</span>; la de arriba, D–F–A, es <span class="chord min">Dm</span>. Cualquiera de las dos funciona como versión simplificada.</p>
+    <div class="grid grid-2">
+      <figure class="kbd" data-chord="Bm7b5" data-alt="Bm7 bemol 5: mano izquierda en B, mano derecha B D F A con los dedos 1 2 3 5"
+        data-kbd='{"from":"A2","to":"C5","lh":{"fingers":{"5":"B2"}},"rh":{"fingers":{"1":"B3","2":"D4","3":"F4","5":"A4"}},"playLabel":"Escuchar Bm7♭5"}'>
+        <p class="fig-title">Original · Bm7♭5</p>
+        <figcaption>MD <b>1–2–3–5</b> en <b>B–D–F–A</b>, todo teclas blancas. MI en B.</figcaption>
+      </figure>
+      <figure class="kbd" data-chord="B°" data-alt="B disminuido: mano izquierda en B, mano derecha B D F con los dedos 1 3 5"
+        data-kbd='{"from":"A2","to":"C5","lh":{"fingers":{"5":"B2"}},"rh":{"fingers":{"1":"B3","3":"D4","5":"F4"}},"playLabel":"Escuchar B°"}'>
+        <p class="fig-title">Simplificado · B°</p>
+        <figcaption>Quitas el A y queda <b>B–D–F</b> (<b>1–3–5</b>). Fíjate en que es <b>F</b>, no F♯: por eso Bm no sirve.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ 2. MÍNIMO VIABLE ============ -->
+  <section class="block" id="minimo">
+    <h2><span class="step-no">2</span>El mínimo viable</h2>
+    <p>Cuando tengas que tocar una canción nueva <strong>ya</strong>, sin tiempo para preparar inversiones ni patrones, usa la fórmula más sencilla que existe: <strong>fundamental con la mano izquierda y tríada con la derecha</strong>, en el pulso 1 de cada compás. Es poco, pero es completo: suena el bajo, suena la armonía y marcas el ritmo.</p>
+
+    <figure class="kbd" data-chord="F" data-alt="Acorde de F: meñique izquierdo en F, mano derecha F A C con 1 3 5"
+      data-kbd='{"from":"E3","to":"D5","lh":{"fingers":{"5":"F3"}},"rh":{"fingers":{"1":"F4","3":"A4","5":"C5"}},"playLabel":"Escuchar F"}'>
+      <p class="fig-title">La plantilla · F</p>
+      <figcaption><b>MI:</b> meñique (5) en la fundamental, <b>F</b>. <b>MD:</b> tríada en estado fundamental, <b>1–3–5</b> en <b>F–A–C</b>. Con esta plantilla y la tabla de simplificación puedes leer casi cualquier hoja de acordes.</figcaption>
+      <div class="legend"><span><i class="dot lh"></i>Fundamental</span><span><i class="dot rh"></i>Tríada</span></div>
+    </figure>
+
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px">1️⃣ Primero, a tiempo</h4><p style="margin:0;color:var(--ink-2)">Un acorde sencillo en el momento justo suena mejor que el acorde perfecto con retraso.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">2️⃣ Después, más cerca</h4><p style="margin:0;color:var(--ink-2)">Cuando la canción ya te sale, cambia a inversiones cercanas (lección 5) para que la mano no salte.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">3️⃣ Por último, ritmo</h4><p style="margin:0;color:var(--ink-2)">Al final, sustituye el bloque por un patrón (lección 6) que encaje con el estilo.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 3. TONALIDAD PARA CANTAR ============ -->
+  <section class="block" id="tono">
+    <h2><span class="step-no">3</span>Cambia de tonalidad para cantar cómodo</h2>
+    <p>Si cantas y la canción te queda <strong>demasiado aguda</strong> (fuerzas en el estribillo) o <strong>demasiado grave</strong> (no se te oye en las estrofas), no cambies tu voz: cambia la tonalidad. Es <strong>transportar</strong> (lección 8): mover todos los acordes el mismo número de semitonos. El tipo de acorde no cambia: un menor sigue siendo menor y un 7 sigue siendo 7.</p>
+    <p>Casi siempre basta con moverla <strong>uno o dos semitonos</strong>. Busca la tonalidad original de la canción en la columna central y lee a izquierda (más grave) o a derecha (más aguda).</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl" aria-label="Tabla de transposición de dos semitonos abajo a dos semitonos arriba">
+        <thead><tr><th>−2 semitonos</th><th>−1</th><th>Original</th><th>+1</th><th>+2 semitonos</th></tr></thead>
+        <tbody>
+          <tr><td>B♭</td><td>B</td><td class="orig">C</td><td>D♭</td><td>D</td></tr>
+          <tr><td>B</td><td>C</td><td class="orig">D♭</td><td>D</td><td>E♭</td></tr>
+          <tr><td>C</td><td>D♭</td><td class="orig">D</td><td>E♭</td><td>E</td></tr>
+          <tr><td>D♭</td><td>D</td><td class="orig">E♭</td><td>E</td><td>F</td></tr>
+          <tr><td>D</td><td>E♭</td><td class="orig">E</td><td>F</td><td>F♯</td></tr>
+          <tr><td>E♭</td><td>E</td><td class="orig">F</td><td>F♯</td><td>G</td></tr>
+          <tr><td>E</td><td>F</td><td class="orig">F♯</td><td>G</td><td>A♭</td></tr>
+          <tr><td>F</td><td>F♯</td><td class="orig">G</td><td>A♭</td><td>A</td></tr>
+          <tr><td>F♯</td><td>G</td><td class="orig">A♭</td><td>A</td><td>B♭</td></tr>
+          <tr><td>G</td><td>A♭</td><td class="orig">A</td><td>B♭</td><td>B</td></tr>
+          <tr><td>A♭</td><td>A</td><td class="orig">B♭</td><td>B</td><td>C</td></tr>
+          <tr><td>A</td><td>B♭</td><td class="orig">B</td><td>C</td><td>D♭</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>La tabla sirve para <strong>cada acorde</strong>, no solo para la tonalidad. Si bajas 2 semitonos, todo baja 2: el <span class="chord maj">A</span> pasa a <span class="chord maj">G</span>, el <span class="chord min">F♯m</span> a <span class="chord min">Em</span> (busca F♯ en la columna central y lee −2: E; la «m» se queda), el <span class="chord maj">D</span> a <span class="chord maj">C</span> y el <span class="chord maj">E</span> a <span class="chord maj">D</span>.</p>
+
+    <figure class="kbd" data-prog='{"chords":[{"name":"A","bass":"A2"},"F#m","D","E"],"nums":["I","vi","IV","V"],"bpm":80,"pattern":"X...C.C.","playLabel":"Escuchar en A"}'>
+      <p class="fig-title">«Stand by Me» (Ben E. King) · original en A</p>
+      <figcaption>La progresión de la canción es <b>I–vi–IV–V</b> en A. Tres teclas negras: C♯ (en A y en F♯m), F♯ (en F♯m y en D) y G♯ (en E). Si te queda aguda…</figcaption>
+    </figure>
+    <figure class="kbd" data-prog='{"chords":["G","Em","C","D"],"nums":["I","vi","IV","V"],"bpm":80,"pattern":"X...C.C.","playLabel":"Escuchar en G"}'>
+      <p class="fig-title">La misma progresión, 2 semitonos más grave · en G</p>
+      <figcaption>…bájala a <b>G</b>: G–Em–C–D. Los <b>grados son idénticos</b> (I–vi–IV–V) y solo queda una tecla negra, el F♯ del D. Suena igual, pero más grave y más cómoda para muchas voces.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p><strong>Cómo saber si te conviene subir o bajar:</strong> canta la nota más aguda del estribillo. Si te cuesta, baja 1 o 2 semitonos. Después canta la nota más grave de la estrofa; si casi no te sale, sube. Si necesitas bajar y subir a la vez, la canción tiene demasiado rango para tu voz: prioriza que el estribillo sea cómodo.</p>
+    </div>
+    <div class="callout warn">
+      <p>Muchos teclados tienen un botón de <strong>transposición</strong> que cambia la altura del sonido sin cambiar lo que tocas. Es útil en un apuro, pero no te acostumbres: si solo tocas en C, nunca aprenderás a moverte por el teclado. Úsalo como último recurso.</p>
+    </div>
+  </section>
+
+  <!-- ============ 4. TECLAS NEGRAS ============ -->
+  <section class="block" id="negras">
+    <h2><span class="step-no">4</span>Tonalidades con teclas negras</h2>
+    <p>Muchas canciones pop no están en C, sino en tonalidades cómodas para la guitarra o para la voz: <strong>E, A, D, B♭ y E♭</strong>. Asustan un poco al principio, pero la fórmula del acorde mayor (4 + 3 semitonos) funciona igual en todas. Solo hay que acostumbrar la mano.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Tonalidad</th><th>Teclas negras de su escala</th><th>I</th><th>IV</th><th>V</th><th>vi</th></tr></thead>
+        <tbody>
+          <tr><td><b>E</b></td><td>F♯ G♯ C♯ D♯</td><td><span class="chord maj">E</span></td><td><span class="chord maj">A</span></td><td><span class="chord maj">B</span></td><td><span class="chord min">C♯m</span></td></tr>
+          <tr><td><b>A</b></td><td>F♯ C♯ G♯</td><td><span class="chord maj">A</span></td><td><span class="chord maj">D</span></td><td><span class="chord maj">E</span></td><td><span class="chord min">F♯m</span></td></tr>
+          <tr><td><b>D</b></td><td>F♯ C♯</td><td><span class="chord maj">D</span></td><td><span class="chord maj">G</span></td><td><span class="chord maj">A</span></td><td><span class="chord min">Bm</span></td></tr>
+          <tr><td><b>B♭</b></td><td>B♭ E♭</td><td><span class="chord maj">B♭</span></td><td><span class="chord maj">E♭</span></td><td><span class="chord maj">F</span></td><td><span class="chord min">Gm</span></td></tr>
+          <tr><td><b>E♭</b></td><td>E♭ A♭ B♭</td><td><span class="chord maj">E♭</span></td><td><span class="chord maj">A♭</span></td><td><span class="chord maj">B♭</span></td><td><span class="chord min">Cm</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <figure class="kbd" data-chord="E" data-alt="Acorde de E: meñique izquierdo en E, mano derecha E G sostenido B con 1 3 5"
+      data-kbd='{"from":"D3","to":"C5","lh":{"fingers":{"5":"E3"}},"rh":{"fingers":{"1":"E4","3":"G#4","5":"B4"}},"playLabel":"Escuchar E"}'>
+      <p class="fig-title">E mayor · la negra en el medio</p>
+      <figcaption><b>MD 1–3–5</b> en <b>E–G♯–B</b>: blanca, <b>negra</b>, blanca, como D y A. El dedo 3 entra un poco más hacia dentro del teclado para alcanzar el G♯; los otros dos se quedan en el borde de las blancas. <b>MI:</b> 5 en E.</figcaption>
+    </figure>
+
+    <figure class="kbd" data-chord="Bb" data-alt="Acorde de B bemol: meñique izquierdo en B bemol, mano derecha B bemol D F con 1 3 5"
+      data-kbd='{"from":"A2","to":"G4","lh":{"fingers":{"5":"Bb2"}},"rh":{"fingers":{"1":"Bb3","3":"D4","5":"F4"}},"playLabel":"Escuchar B♭"}'>
+      <p class="fig-title">B♭ mayor · el pulgar en la negra</p>
+      <figcaption><b>MD 1–3–5</b> en <b>B♭–D–F</b>: <b>negra</b>, blanca, blanca. Aquí el pulgar pisa la tecla negra, así que adelanta toda la mano hacia dentro del teclado para que el 3 y el 5 no queden en el borde. <b>MI:</b> 5 en B♭.</figcaption>
+    </figure>
+
+    <p>Las otras tres, con la mano derecha sola. Mira el <strong>dibujo</strong> de blancas y negras de cada una: es lo que la mano memoriza.</p>
+    <div class="grid grid-3">
+      <figure class="kbd" data-chord="A" data-alt="Acorde de A: A C sostenido E con 1 3 5"
+        data-kbd='{"from":"G3","to":"F4","rh":{"fingers":{"1":"A3","3":"C#4","5":"E4"}},"playLabel":"Escuchar A"}'>
+        <p class="fig-title">A mayor</p>
+        <figcaption><b>A–C♯–E</b>: blanca, negra, blanca.</figcaption>
+      </figure>
+      <figure class="kbd" data-chord="D" data-alt="Acorde de D: D F sostenido A con 1 3 5"
+        data-kbd='{"from":"C4","to":"B4","rh":{"fingers":{"1":"D4","3":"F#4","5":"A4"}},"playLabel":"Escuchar D"}'>
+        <p class="fig-title">D mayor</p>
+        <figcaption><b>D–F♯–A</b>: blanca, negra, blanca.</figcaption>
+      </figure>
+      <figure class="kbd" data-chord="Eb" data-alt="Acorde de E bemol: E bemol G B bemol con 1 3 5"
+        data-kbd='{"from":"D4","to":"C5","rh":{"fingers":{"1":"Eb4","3":"G4","5":"Bb4"}},"playLabel":"Escuchar E♭"}'>
+        <p class="fig-title">E♭ mayor</p>
+        <figcaption><b>E♭–G–B♭</b>: negra, blanca, negra.</figcaption>
+      </figure>
+    </div>
+
+    <figure class="kbd" data-prog='{"chords":["E",{"name":"B","bass":"B2"},"C#m",{"name":"A","bass":"A2"}],"nums":["I","V","vi","IV"],"bpm":76,"loop":2,"playLabel":"Escuchar I–V–vi–IV en E"}'>
+      <p class="fig-title">Para practicar · I–V–vi–IV en E</p>
+      <figcaption>La progresión de la lección 3 (C–G–Am–F), trasladada a E: <b>E–B–C♯m–A</b>. Tócala en bloques, primero en estado fundamental y, cuando la tengas, con inversiones cercanas. Repite lo mismo en B♭: <b>B♭–F–Gm–E♭</b>.</figcaption>
+    </figure>
+
+    <div class="callout">
+      <p><strong>Un truco de postura:</strong> en tonalidades con muchas negras, acerca la mano al fondo del teclado, donde conviven blancas y negras. Así los dedos no tienen que entrar y salir en cada acorde. Y no temas poner el pulgar en una negra si el acorde lo pide.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. CUANDO TE PIERDES ============ -->
+  <section class="block" id="perdido">
+    <h2><span class="step-no">5</span>Cuando te pierdes</h2>
+    <p>Te pasará: un cambio que no esperabas, un compás de más y, de pronto, no sabes dónde estás. No pares la canción. Haz esto:</p>
+    <div class="grid grid-2">
+      <div class="card"><h4 style="margin:0 0 6px">1. Suelta la derecha</h4><p style="margin:0;color:var(--ink-2)">Deja de tocar acordes. Menos notas equivocadas y más atención libre para escuchar.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">2. Solo bajo en el 1</h4><p style="margin:0;color:var(--ink-2)">Toca únicamente la fundamental con la izquierda en el pulso 1, o nada si no la sabes. Sigue contando 1-2-3-4.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">3. Escucha y busca un punto de anclaje</h4><p style="margin:0;color:var(--ink-2)">Identifica dónde está la canción: ¿estrofa?, ¿estribillo? El inicio de sección es el mejor sitio para volver a entrar.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">4. Reengancha en un 1</h4><p style="margin:0;color:var(--ink-2)">Vuelve a entrar siempre en el <strong>pulso 1</strong> de un compás, con el acorde completo, como si nada hubiera pasado.</p></div>
+    </div>
+
+    <div class="beats" aria-label="Modo emergencia: bajo en el pulso 1 y escuchar en 2, 3 y 4">
+      <div class="hit lh"><b>1</b><small>bajo</small></div>
+      <div class="hold"><b>2</b><small>escucha</small></div>
+      <div class="hold"><b>3</b><small>escucha</small></div>
+      <div class="hold"><b>4</b><small>escucha</small></div>
+    </div>
+
+    <figure class="kbd" data-prog='{"chords":["C","G",{"name":"Am","bass":"A2"},"F"],"nums":["I","V","vi","IV"],"bpm":80,"pattern":"B.......","grid":true,"playLabel":"Escuchar el modo emergencia"}'>
+      <p class="fig-title">Modo emergencia · solo el bajo en el 1</p>
+      <figcaption>Así suena C–G–Am–F solo con el bajo en el pulso 1. Parece poco, pero dentro de una canción basta para no perder el hilo: quien escucha sigue oyendo la armonía y el pulso. Cuando te encuentres, vuelve a añadir la mano derecha.</figcaption>
+    </figure>
+
+    <div class="callout key">
+      <p><strong>El ritmo manda.</strong> Quien te escucha perdona un acorde equivocado, pero no que la música se pare o se descuadre. Si dudas, <strong>simplifica y sigue contando</strong>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 6. REPERTORIO ============ -->
+  <section class="block" id="repertorio">
+    <h2><span class="step-no">6</span>Repertorio guiado</h2>
+    <p>Canciones conocidas ordenadas por dificultad. La tonalidad es la de la grabación original; si no te va bien para cantar, transporta con la tabla del apartado 3. Los acordes son los <strong>principales</strong>: en alguna hoja encontrarás acordes de paso o con barra que puedes simplificar con el apartado 1.</p>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Nivel</th><th>Canción</th><th>Intérprete</th><th>Tono</th><th>Acordes principales</th></tr></thead>
+        <tbody>
+          <tr><td><span class="lvl l1">1 · tres acordes</span></td><td>La Bamba</td><td>Ritchie Valens</td><td>C</td><td><span class="chord maj">C</span> <span class="chord maj">F</span> <span class="chord maj">G</span></td></tr>
+          <tr><td><span class="lvl l1">1 · tres acordes</span></td><td>Twist and Shout</td><td>The Beatles</td><td>D</td><td><span class="chord maj">D</span> <span class="chord maj">G</span> <span class="chord maj">A</span> <span class="chord dom">A7</span></td></tr>
+          <tr><td><span class="lvl l1">1 · cuatro fáciles</span></td><td>Knockin’ on Heaven’s Door</td><td>Bob Dylan</td><td>G</td><td><span class="chord maj">G</span> <span class="chord maj">D</span> <span class="chord min">Am</span> <span class="chord maj">C</span></td></tr>
+          <tr><td><span class="lvl l2">2 · pop</span></td><td>Let It Be</td><td>The Beatles</td><td>C</td><td><span class="chord maj">C</span> <span class="chord maj">G</span> <span class="chord min">Am</span> <span class="chord maj">F</span></td></tr>
+          <tr><td><span class="lvl l2">2 · pop</span></td><td>No Woman, No Cry</td><td>Bob Marley &amp; The Wailers</td><td>C</td><td><span class="chord maj">C</span> <span class="chord maj">G</span> <span class="chord min">Am</span> <span class="chord maj">F</span></td></tr>
+          <tr><td><span class="lvl l2">2 · pop</span></td><td>Stand by Me</td><td>Ben E. King</td><td>A</td><td><span class="chord maj">A</span> <span class="chord min">F♯m</span> <span class="chord maj">D</span> <span class="chord maj">E</span></td></tr>
+          <tr><td><span class="lvl l2">2 · pop</span></td><td>With or Without You</td><td>U2</td><td>D</td><td><span class="chord maj">D</span> <span class="chord maj">A</span> <span class="chord min">Bm</span> <span class="chord maj">G</span></td></tr>
+          <tr><td><span class="lvl l2">2 · pop</span></td><td>Someone Like You</td><td>Adele</td><td>A</td><td><span class="chord maj">A</span> <span class="chord maj">E</span> <span class="chord min">F♯m</span> <span class="chord maj">D</span></td></tr>
+          <tr><td><span class="lvl l3">3 · séptimas</span></td><td>Imagine</td><td>John Lennon</td><td>C</td><td><span class="chord maj">C</span> <span class="chord maj">Cmaj7</span> <span class="chord maj">F</span> <span class="chord min">Am</span> <span class="chord min">Dm</span> <span class="chord maj">G</span> <span class="chord dom">G7</span> <span class="chord dom">E7</span></td></tr>
+          <tr><td><span class="lvl l3">3 · séptimas</span></td><td>Hey Jude</td><td>The Beatles</td><td>F</td><td><span class="chord maj">F</span> <span class="chord maj">C</span> <span class="chord dom">C7</span> <span class="chord maj">B♭</span> <span class="chord dom">F7</span></td></tr>
+          <tr><td><span class="lvl l3">3 · blues</span></td><td>Johnny B. Goode</td><td>Chuck Berry</td><td>B♭</td><td><span class="chord maj">B♭</span> <span class="chord maj">E♭</span> <span class="chord maj">F</span> · blues de 12 compases</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card"><h4 style="margin:0 0 6px"><span class="lvl l1">Nivel 1</span></h4><p style="margin:6px 0 0;color:var(--ink-2)">Con la plantilla del mínimo viable. Céntrate en cambiar a tiempo. En <em>Twist and Shout</em>, D y A llevan la negra en el medio y G es todo blancas.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px"><span class="lvl l2">Nivel 2</span></h4><p style="margin:6px 0 0;color:var(--ink-2)">Cuatro acordes en bucle: son I–V–vi–IV, I–vi–IV–V y sus parientes. Úsalas para probar patrones de la lección 6 e inversiones cercanas.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px"><span class="lvl l3">Nivel 3</span></h4><p style="margin:6px 0 0;color:var(--ink-2)">Acordes de séptima y blues. En <em>Imagine</em> puedes tocar Cmaj7 como C al principio; en <em>Johnny B. Goode</em>, aplica el blues del módulo 3 en B♭.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. PRÁCTICA ============ -->
+  <section class="block" id="practica">
+    <h2><span class="step-no">7</span>Rutina diaria</h2>
+    <p>Unos 18 minutos. La mitad del tiempo es para tocar canciones de verdad: es lo que te mantendrá motivado.</p>
+
+    <div data-metro data-bpm="76"></div>
+
+    <div class="ex">
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Traductor de acordes</h4>
+        <p>Abre una hoja de acordes de internet de una canción que te guste y reescribe cada acorde en su versión simplificada con la tabla del apartado 1. Hazlo en voz alta: «Am7… Am; Cmaj7… C».</p>
+      </div>
+      <div class="card">
+        <span class="time">4 min</span>
+        <h4>Las cinco tonalidades negras</h4>
+        <p>Toca I–V–vi–IV en <strong>E, A, D, B♭ y E♭</strong> (usa la tabla del apartado 4 y el orden I, V, vi, IV), un acorde por clic del metrónomo a 60 ppm. Mano derecha sola primero; después, con el bajo.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Transportar a primera vista</h4>
+        <p>Elige una progresión del repertorio y tócala 2 semitonos más grave y 2 más aguda, usando la tabla del apartado 3. Canta encima y decide qué versión te queda mejor.</p>
+      </div>
+      <div class="card">
+        <span class="time">3 min</span>
+        <h4>Simulacro de emergencia</h4>
+        <p>Toca C–G–Am–F en bloques a 76 ppm. Cuando quieras, suelta la derecha, toca solo el bajo en el 1 durante dos compases y vuelve a entrar en un 1. Que el metrónomo nunca note el cambio.</p>
+      </div>
+      <div class="card">
+        <span class="time">5 min</span>
+        <h4>Una canción del repertorio</h4>
+        <p>Empieza por el nivel 1. Toca la canción entera con la plantilla del mínimo viable, siguiendo la grabación. Cuando la tengas, pasa a la siguiente o añade un patrón.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. PLAN ============ -->
+  <section class="block" id="plan">
+    <h2><span class="step-no">8</span>Tu plan para seguir avanzando</h2>
+    <p>Con este módulo ya tienes lo necesario para acompañar canciones reales. El resto lo da la práctica. Un plan orientativo para el próximo mes, y una rutina que puedes mantener mucho más tiempo:</p>
+    <div class="grid grid-2">
+      <div class="card"><h4 style="margin:0 0 6px">📅 Semana 1</h4><p style="margin:0;color:var(--ink-2)">Las tres canciones del nivel 1 con la plantilla mínima. Objetivo: tocarlas enteras con la grabación sin parar.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">📅 Semanas 2 y 3</h4><p style="margin:0;color:var(--ink-2)">Dos canciones del nivel 2, cada una con dos patrones distintos (por ejemplo, bloques en la estrofa y corcheas en el estribillo).</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">📅 Semana 4</h4><p style="margin:0;color:var(--ink-2)">Una canción del nivel 3 y un blues de 12 compases en B♭ o en E♭. Saca de oído una canción que no esté en la lista.</p></div>
+      <div class="card"><h4 style="margin:0 0 6px">♾️ Después</h4><p style="margin:0;color:var(--ink-2)">Rutina de 20 minutos: 5 de acordes en una tonalidad nueva cada semana, 10 de repertorio y 5 de oído. Y sigue con el módulo 5 para crear tus propias canciones.</p></div>
+    </div>
+    <div class="callout">
+      <p><strong>Grábate</strong> con el móvil una vez por semana. Al escucharte oirás cosas que mientras tocas se te escapan (acelerar, cambios tardíos) y, sobre todo, verás lo mucho que avanzas de una semana a otra.</p>
+    </div>
+  </section>
+
+  <!-- ============ CHECKLIST ============ -->
+  <section class="block" id="checklist">
+    <h2>¿Lo tienes? Pasa a la lección 15 cuando…</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" data-save="l14-a"> Simplifico al vuelo cualquier acorde de una hoja (maj7, m7, add9, sus, 9, con barra…).</label></li>
+      <li><label><input type="checkbox" data-save="l14-b"> Transporto una progresión 1 o 2 semitonos arriba o abajo con la tabla.</label></li>
+      <li><label><input type="checkbox" data-save="l14-c"> Toco los acordes I, IV, V y vi de E, A, D, B♭ y E♭ sin pensar las notas.</label></li>
+      <li><label><input type="checkbox" data-save="l14-d"> Si me pierdo, paso a «solo bajo en el 1» y vuelvo a entrar sin parar la canción.</label></li>
+      <li><label><input type="checkbox" data-save="l14-e"> Toco de principio a fin, con la grabación, al menos dos canciones del repertorio.</label></li>
+    </ul>
+    <p style="margin-top:12px;color:var(--muted);font-size:.9rem">Las casillas se guardan en este navegador.</p>
+  </section>
+
+  <nav class="pager" data-pager="14" aria-label="Navegación entre lecciones"></nav>
+</main>
+
+<footer class="site">
+  <div class="wrap">Piano de acompañamiento · Pop y blues. Los diagramas y el audio se generan en el propio navegador.</div>
+</footer>
+
+<script src="../assets/curso-data.js"></script>
+<script src="../assets/piano.js"></script>
+</body>
+</html>
