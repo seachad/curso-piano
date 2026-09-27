@@ -227,17 +227,20 @@
     return s;
   }
 
+  const handIsDeep = h => Object.values(h.fingers).some(n => BLACK.has(((parse(n).midi % 12) + 12) % 12));
+
   // Coloca una mano sobre el teclado a partir de "fingers" (dedo -> nota).
   function handOnKeys(side, h, press, L) {
     const dir = side === 'R' ? 1 : -1;
     const tips = {};
+    const deep = handIsDeep(h);   // si toca alguna negra, la mano se adelanta hacia el fondo de las teclas
     for (let f = 1; f <= 5; f++) {
       const n = h.fingers[f];
       if (!n) continue;
       const k = L.by[parse(n).midi];
       if (!k) throw new Error('La nota ' + n + ' está fuera del teclado dibujado');
-      let y = k.black ? TOP + BH - 40 : TOP + BH + 56;
-      if (f === 1) y += k.black ? 16 : 32;
+      let y = k.black ? TOP + BH - 44 : (deep ? TOP + BH - 12 : TOP + BH + 56);
+      if (f === 1) y += k.black ? 12 : (deep ? 40 : 32);
       if (f === 5 && !k.black) y += 8;
       tips[f] = { x: k.cx, y, state: press.has(k.m) ? 'press' : 'rest' };
     }
@@ -276,19 +279,23 @@
       const lb = label(mk.note);
       top.push({ cx: k.cx, main: mk.main || lb.main, sub: mk.sub != null ? mk.sub : (spec.solfeo ? lb.lat : ''), color: mk.ink || mk.color || '#c9184a' });
     });
-    TOP = top.length ? 48 : 14;
+    sides.forEach(([side, h]) => { if (!h.fingers) throw new Error('Falta "fingers" en la mano ' + side); });
+    // Si una mano toca negras, sus dedos entran hasta el fondo y taparían el nombre: va en la franja superior.
+    const anyDeep = sides.some(([, h]) => handIsDeep(h));
+    TOP = top.length || anyDeep ? 48 : 14;
 
     const hands = sides.map(([side, h]) => {
-      if (!h.fingers) throw new Error('Falta "fingers" en la mano ' + side);
       const c = HAND[side];
       const notes = Object.values(h.fingers);
       const press = new Set((h.press || notes).map(n => parse(n).midi));
+      const deep = handIsDeep(h);
       notes.forEach(n => {
         const k = L.by[parse(n).midi];
         if (!k) throw new Error('La nota ' + n + ' está fuera del teclado dibujado');
         const on = press.has(k.m);
         fills[k.m] = on ? (k.black ? c.keyBlack : c.key) : c.keySoft;
-        onKey.push({ k, text: label(n).main, color: c.ink, on });
+        if (deep && !k.black) top.push({ cx: k.cx, main: label(n).main, sub: '', color: c.ink, chip: true, faded: !on });
+        else onKey.push({ k, text: label(n).main, color: c.ink, on });
       });
       press.forEach(m => sounding.push(m));
       return Object.assign({ side }, handOnKeys(side, h, press, L));
@@ -328,6 +335,11 @@
       });
     }
     top.forEach(t => {
+      if (t.chip) {
+        s += `<g opacity="${t.faded ? 0.6 : 1}"><rect x="${t.cx - 16}" y="10" width="32" height="25" rx="8" fill="#fff" stroke="${t.color}" stroke-width="1.6"/>` +
+          `<text x="${t.cx}" y="28" text-anchor="middle" font-size="16" font-weight="800" fill="${t.color}">${esc(t.main)}</text></g>`;
+        return;
+      }
       s += `<text x="${t.cx}" y="${t.sub ? 20 : 30}" text-anchor="middle" font-size="16" font-weight="800" fill="${t.color}">${esc(t.main)}</text>`;
       if (t.sub) s += `<text x="${t.cx}" y="37" text-anchor="middle" font-size="11" fill="#8a8178">${esc(t.sub)}</text>`;
     });
