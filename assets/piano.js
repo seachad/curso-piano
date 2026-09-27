@@ -25,7 +25,6 @@
   const PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
   const LAT = { C: 'Do', D: 'Re', E: 'Mi', F: 'Fa', G: 'Sol', A: 'La', B: 'Si' };
   const BLACK = new Set([1, 3, 6, 8, 10]);
-  const FW = { 1: 25, 2: 21, 3: 21, 4: 20, 5: 18 };
   const SKIN = '#f1d0b2', SKIN_LINE = '#b3845f';
   const FONT = "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif";
   const HAND = {
@@ -64,26 +63,72 @@
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-  // Silueta de una mano vista desde arriba: palma + cinco dedos + círculos numerados en las yemas.
+  const pt = (x, y) => `${x.toFixed(1)} ${y.toFixed(1)}`;
+
+  // Dedo: forma que se estrecha desde el nudillo (semiancho a) hasta la yema redondeada (semiancho b),
+  // con un leve abultamiento en la articulación central. ext = cuánto entra en la palma.
+  function fingerPath(B, T, a, b, ext) {
+    const dx = T.x - B.x, dy = T.y - B.y, L = Math.hypot(dx, dy) || 1;
+    const ux = dx / L, uy = dy / L, nx = -uy, ny = ux;
+    const bx = B.x - ux * ext, by = B.y - uy * ext;
+    const mx = bx + (T.x - bx) * 0.5, my = by + (T.y - by) * 0.5, am = (a + b) / 2 + 1.5;
+    return `M${pt(bx + nx * a, by + ny * a)}` +
+      ` Q${pt(mx + nx * am, my + ny * am)} ${pt(T.x + nx * b, T.y + ny * b)}` +
+      ` A${b} ${b} 0 0 0 ${pt(T.x - nx * b, T.y - ny * b)}` +
+      ` Q${pt(mx - nx * am, my - ny * am)} ${pt(bx - nx * a, by - ny * a)} Z`;
+  }
+
+  // Pliegue de piel atravesando el dedo a una fracción t de su longitud.
+  function crease(B, T, t, w) {
+    const dx = T.x - B.x, dy = T.y - B.y, L = Math.hypot(dx, dy) || 1;
+    const nx = -dy / L, ny = dx / L, px = B.x + dx * t, py = B.y + dy * t;
+    const bend = 2.5;
+    return `M${pt(px + nx * w, py + ny * w)} Q${pt(px + dx / L * bend, py + dy / L * bend)} ${pt(px - nx * w, py - ny * w)}`;
+  }
+
+  // Semianchos (nudillo, yema) de cada dedo.
+  const FINGER_W = { 1: [15, 11], 2: [11.5, 9.5], 3: [12, 10], 4: [11, 9.2], 5: [9.5, 8] };
+
+  // Silueta de una mano vista desde arriba (palma hacia las teclas) + círculos numerados en las yemas.
   function handShape(side, tips, palm, showLabel) {
     const c = HAND[side];
     const { left, py, pw } = palm;
+    const s1 = side === 'R' ? 1 : -1;          // +1: pulgar a la izquierda (mano derecha)
+    const cx = left + pw / 2, h = pw / 2;
+    const X = rx => cx + s1 * rx;               // coordenadas "de mano derecha" -> reales
+    const knuckleY = { 2: py + 8, 3: py + 2, 4: py + 6, 5: py + 16 };
     const bases = {};
-    [2, 3, 4, 5].forEach((f, i) => {
-      const t = (i + 0.5) / 4;
-      bases[f] = { x: side === 'R' ? left + pw * t : left + pw * (1 - t), y: py + 10 };
+    [2, 3, 4, 5].forEach((f, i) => { bases[f] = { x: X(-h + pw * (i + 0.5) / 4), y: knuckleY[f] }; });
+    bases[1] = { x: X(-h + 14), y: py + 64 };
+
+    // Palma: arco de nudillos, borde del meñique, muñeca y eminencia del pulgar.
+    const palmD =
+      `M${pt(X(-h + 3), py + 14)}` +
+      ` Q${pt(X(0), py - 10)} ${pt(X(h - 4), py + 18)}` +
+      ` C${pt(X(h + 6), py + 52)} ${pt(X(h + 5), py + 96)} ${pt(X(h - 8), py + 138)}` +
+      ` L${pt(X(h - 16), py + 270)} L${pt(X(-h + 20), py + 270)}` +
+      ` L${pt(X(-h + 12), py + 150)}` +
+      ` C${pt(X(-h - 16), py + 112)} ${pt(X(-h - 12), py + 64)} ${pt(X(-h - 2), py + 42)}` +
+      ` Q${pt(X(-h - 1), py + 24)} ${pt(X(-h + 3), py + 14)} Z`;
+
+    const fingers = [1, 2, 3, 4, 5].map(f =>
+      fingerPath(bases[f], tips[f], FINGER_W[f][0], FINGER_W[f][1], f === 1 ? 20 : 16));
+
+    let s = '<g opacity="0.78" stroke-linejoin="round">';
+    // Contorno: se pinta todo con trazo grueso y encima el relleno, así las piezas se funden en una sola silueta.
+    s += `<path d="${palmD}" fill="${SKIN_LINE}" stroke="${SKIN_LINE}" stroke-width="3.5"/>`;
+    fingers.forEach(d => { s += `<path d="${d}" fill="${SKIN_LINE}" stroke="${SKIN_LINE}" stroke-width="3.5"/>`; });
+    s += `<path d="${palmD}" fill="${SKIN}"/>`;
+    fingers.forEach(d => { s += `<path d="${d}" fill="${SKIN}"/>`; });
+    // Volumen: luz en el dorso y pliegues de los nudillos.
+    s += `<ellipse cx="${X(h * 0.1).toFixed(1)}" cy="${py + 62}" rx="${(h * 0.62).toFixed(1)}" ry="34" fill="#fff" opacity="0.22"/>`;
+    s += `<g fill="none" stroke="${SKIN_LINE}" stroke-width="1.3" stroke-linecap="round" opacity="0.55">`;
+    [2, 3, 4, 5].forEach(f => {
+      const w = FINGER_W[f][0] * 0.55;
+      s += `<path d="${crease(bases[f], tips[f], 0.42, w)}"/><path d="${crease(bases[f], tips[f], 0.7, w * 0.9)}"/>`;
     });
-    bases[1] = { x: side === 'R' ? left + 8 : left + pw - 8, y: py + 54 };
-
-    const seg = (f, w, color) =>
-      `<line x1="${bases[f].x}" y1="${bases[f].y}" x2="${tips[f].x}" y2="${tips[f].y}" stroke="${color}" stroke-width="${w}" stroke-linecap="round"/>`;
-
-    let s = '<g opacity="0.68">';
-    s += `<rect x="${left - 2}" y="${py - 2}" width="${pw + 4}" height="260" rx="38" fill="${SKIN_LINE}"/>`;
-    for (let f = 1; f <= 5; f++) s += seg(f, FW[f] + 4, SKIN_LINE);
-    s += `<rect x="${left}" y="${py}" width="${pw}" height="260" rx="36" fill="${SKIN}"/>`;
-    for (let f = 1; f <= 5; f++) s += seg(f, FW[f], SKIN);
-    s += '</g>';
+    s += `<path d="${crease(bases[1], tips[1], 0.55, FINGER_W[1][0] * 0.5)}"/>`;
+    s += '</g></g>';
 
     for (let f = 1; f <= 5; f++) {
       const t = tips[f];
@@ -204,7 +249,7 @@
 
   function renderFingers(fig) {
     const Wd = 600, Hd = 300, py = 150;
-    const rel = { 1: [-118, -42], 2: [-50, -105], 3: [-12, -128], 4: [26, -114], 5: [62, -78] };
+    const rel = { 1: [-102, -30], 2: [-50, -105], 3: [-12, -128], 4: [26, -114], 5: [62, -78] };
     let s = `<svg viewBox="0 0 ${Wd} ${Hd}" role="img" aria-label="Numeración de los dedos de ambas manos" xmlns="http://www.w3.org/2000/svg" font-family="${FONT}">`;
     [['L', 170], ['R', 430]].forEach(([side, pcx]) => {
       const dir = side === 'R' ? 1 : -1;
