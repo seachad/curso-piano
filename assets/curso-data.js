@@ -24,7 +24,7 @@
         lessons: [
           { n: 9, file: '09-acordes-de-septima', title: 'Acordes de séptima', desc: 'C7, Cmaj7 y Cm7: tres colores con una sola nota nueva', ready: true },
           { n: 10, file: '10-blues-de-12-compases', title: 'El blues de 12 compases', desc: 'I7–IV7–V7 en C, G y F, y el ritmo shuffle', ready: true },
-          { n: 11, file: '11-mano-izquierda-blues', title: 'Mano izquierda blues', desc: 'Boogie-woogie y walking bass sencillo', ready: false },
+          { n: 11, file: '11-mano-izquierda-blues', title: 'Mano izquierda blues', desc: 'Boogie-woogie y walking bass sencillo', ready: true },
           { n: 12, file: '12-escala-de-blues', title: 'Escala de blues y turnarounds', desc: 'Frases de mano derecha y finales con sabor', ready: false }
         ] },
       { n: 4, title: 'Tocar cualquier canción', sub: 'De la hoja de acordes al oído', c1: '#1a9e5a', c2: '#22c55e',
