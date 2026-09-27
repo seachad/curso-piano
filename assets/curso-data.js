@@ -29,7 +29,7 @@
         ] },
       { n: 4, title: 'Tocar cualquier canción', sub: 'De la hoja de acordes al oído', c1: '#1a9e5a', c2: '#22c55e',
         lessons: [
-          { n: 13, file: '13-acordes-de-oido', title: 'Sacar acordes de oído', desc: 'Encontrar la nota base de la canción y adivinar los acordes probables', ready: false },
+          { n: 13, file: '13-acordes-de-oido', title: 'Sacar acordes de oído', desc: 'Encontrar la nota base de la canción y adivinar los acordes probables', ready: true },
           { n: 14, file: '14-kit-de-supervivencia', title: 'Kit de supervivencia', desc: 'Simplificar acordes raros, elegir tonalidad para cantar y repertorio guiado', ready: false }
         ] },
       { n: 5, title: 'Componer', sub: 'Conectar acordes con intención · basado en «Armonía Ilustrada»', c1: '#6d3fd6', c2: '#ff5fa2',
